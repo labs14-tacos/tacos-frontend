@@ -2,21 +2,32 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
-const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
 
-const configObj = {
+
+// CONFIG OBJECT -- DO NOT MERGE TO MASTER UNLESS YOU SWITCH CONFIG OBJECT TO PRODUCTION HERE 
+// STAGING CONFIG
+const stagingConfig = {
   apiKey: "AIzaSyAf-rgnLl6GvbQTo9WWT006Bk1-Kq8G7t4",
   authDomain: "staging-tacos.firebaseapp.com",
   databaseURL: "https://staging-tacos.firebaseio.com",
   projectId: "staging-tacos",
   storageBucket: "",
   messagingSenderId: "1019288223825",
-  appId: "1:1019288223825:web:833af7aeb7c524c1"
+  appId: "1:1019288223825:web:833af7aeb7c524c1" }
+
+  // PRODUCTION CONFIG 
+ const productionConfig = {
+    apiKey: "AIzaSyCqppe91fxT0OMhhUeVHLqBbVClhjQl0EQ",
+    authDomain: "lets-get-tacos.firebaseapp.com",
+    databaseURL: "https://lets-get-tacos.firebaseio.com",
+    projectId: "lets-get-tacos",
+    storageBucket: "",
+    messagingSenderId: "842045876194",
+    appId: "1:842045876194:web:b63d3672bc440443"
   }
 
-
-firebase.initializeApp(configObj);
+// switch config object from staging to production before merging into master!!!
+firebase.initializeApp(stagingConfig);
 
 class Login extends Component {
   state = {
