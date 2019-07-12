@@ -5,10 +5,13 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
 
-firebase.initializeApp({
-  apiKey: apiKey,
-  authDomain: authDomain
-})
+const configObj = {
+    apiKey: apiKey,
+    authDomain: authDomain
+  }
+
+
+firebase.initializeApp(configObj);
 
 class Login extends Component {
   state = {
