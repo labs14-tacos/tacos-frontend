@@ -26,8 +26,15 @@ const stagingConfig = {
     appId: "1:842045876194:web:b63d3672bc440443"
   }
 
+const envTest = {
+  apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
+}
+
+
+
 // switch config object from staging to production before merging into master!!!
-firebase.initializeApp(stagingConfig);
+firebase.initializeApp(envTest);
 
 class Login extends Component {
   state = {
