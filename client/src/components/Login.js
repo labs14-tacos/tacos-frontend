@@ -6,8 +6,13 @@ const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
 
 const configObj = {
-    apiKey: apiKey,
-    authDomain: authDomain
+  apiKey: "AIzaSyAf-rgnLl6GvbQTo9WWT006Bk1-Kq8G7t4",
+  authDomain: "staging-tacos.firebaseapp.com",
+  databaseURL: "https://staging-tacos.firebaseio.com",
+  projectId: "staging-tacos",
+  storageBucket: "",
+  messagingSenderId: "1019288223825",
+  appId: "1:1019288223825:web:833af7aeb7c524c1"
   }
 
 
