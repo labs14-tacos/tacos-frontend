@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
+const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
+const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
+
 firebase.initializeApp({
-  apiKey: 'AIzaSyAf-rgnLl6GvbQTo9WWT006Bk1-Kq8G7t4',
-  authDomain: 'staging-tacos.firebaseapp.com'
+  apiKey,
+  authDomain
 })
 
 class Login extends Component {
