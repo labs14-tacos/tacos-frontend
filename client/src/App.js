@@ -1,16 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import Friends from './components/Friends.js';
+import Login from './components/Login';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-     
         <p>
           Welcome to the <span>Let's Get Tacos!</span> React App! 
         </p>
-      
+      <Login />
       <Friends />
     </div>
   );
