@@ -6,8 +6,8 @@ const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
 
 firebase.initializeApp({
-  apiKey,
-  authDomain
+  apiKey: apiKey,
+  authDomain: authDomain
 })
 
 class Login extends Component {
