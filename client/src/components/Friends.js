@@ -14,7 +14,7 @@ state = {
 }
 
 componentDidMount() {
-     axios.get(process.env.REACT_APP_BACKEND_URL_USERS).then(res => this.setState({friends: res.data})).catch(error => console.log(error));
+     axios.get(`${process.env.REACT_APP_BACKEND_URL_USERS}`).then(res => this.setState({friends: res.data})).catch(error => console.log(error));
 }
 
 render() {
