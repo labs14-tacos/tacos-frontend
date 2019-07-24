@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
-const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
+const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
 
 firebase.initializeApp({
   apiKey,
@@ -22,7 +22,7 @@ class Login extends Component {
       firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccess: () => false
+      signInSuccessWithAuthResults: () => false
     }
   }
 
