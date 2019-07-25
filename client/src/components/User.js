@@ -1,5 +1,7 @@
 import React from 'react'; 
 // import UserAvatar from './UserAvatar';
+import Friends from './Friends.js';
+
 
 // This can be used to display the person who is logged in's own profile information
 const User = props => {
@@ -13,6 +15,7 @@ const User = props => {
                 <h4>{props.age} years old</h4>
                 <h4>{props.email}</h4>
             </div>
+            <Friends />
         </div>
     )
 }

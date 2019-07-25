@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import UserProfile from './UserProfile'
+import User from './User'
 
 
 
@@ -50,7 +50,7 @@ class Login extends Component {
               firebaseAuth={firebase.auth()}
             />           
           )}
-          <UserProfile />
+          <User />
       </div>
     )
   }
