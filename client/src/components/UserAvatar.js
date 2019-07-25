@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import Avatar from 'react-avatar-edit';
 
 class UserAvatar extends Component {
@@ -12,7 +12,7 @@ class UserAvatar extends Component {
             src
         }
         this.onCrop = this.onCrop.bind(this)
-        this.Close = this.Close.bind(this)        
+        this.onClose = this.onClose.bind(this)        
     }
 
     onClone() {

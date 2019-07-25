@@ -1,5 +1,5 @@
 import React from 'react'; 
-import UserAvatar from '/UserAvatar';
+import UserAvatar from './UserAvatar';
 
 // This can be used to display the person who is logged in's own profile information
 const UserProfile = props => {
@@ -14,6 +14,10 @@ const UserProfile = props => {
             </div>
         </div>
     )
+}
+
+UserProfile.defaultProps = {
+
 }
 
 export default UserProfile;
