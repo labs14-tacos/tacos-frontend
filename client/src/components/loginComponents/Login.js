@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import Authentication from './Authentication';
 
 const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
@@ -41,15 +42,10 @@ class Login extends Component {
   render() {
     return (
       <div>
-        {this.state.isSignedIn ? (
-          <h3>You have been signed in!</h3>,
-          <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
-        ) : (
-            <StyledFirebaseAuth
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
-          )}
+        <Authentication 
+          isSignedIn={this.state.isSignedIn}
+          uiConfig={this.uiConfig}
+        />
       </div>
     )
   }

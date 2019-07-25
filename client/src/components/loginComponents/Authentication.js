@@ -1,31 +1,31 @@
 import React from 'react';
+import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import Login from './Login';
 
-const Authentication = (Component1) => (Component2) =>
+const Authentication = (Component1) =>
   class extends React.Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = {
-        isLoggedIn: false
       }
     }
 
-    componentDidMount() {
-      if (localStorage.getItem('fbase_key')) {
-        this.setState({
-          isLoggedIn: true
-        })
-      } else {
-        this.setState({
-          isLoggedIn: false
-        })
-      }
-    }
+
 
     render() {
-      if (!this.state.isLoggedIn) {
-        return <Component1 />
+      if (!this.props.isSignedIn) {
+        return <StyledFirebaseAuth
+          uiConfig={this.props.uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
       } else {
-        return <Component2 />
+        return (
+          <div>
+          <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+          <Component1 />
+          </div>
+        )
       }
     }
   }
