@@ -1,6 +1,8 @@
 import React from 'react';
 import Friends from './Friends.js';
 
+// The new App.js! 
+
 function LoggedInApp() {
   return (
     <div className="App">

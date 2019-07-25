@@ -3,11 +3,6 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoggedInApp from '../LoggedInApp';
 
-const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
-const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
-
-
-
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
   authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
@@ -42,6 +37,7 @@ class Login extends Component {
   render() {
     return (
       <div>
+        {/* When you are logged in, you will be able to see the "new App.js". If you are not signed in, you will only be able to see the log-in prompt and anything else in the OG App.js. */}
         {this.state.isSignedIn ? (
           <div>
             <h3>You have been signed in!</h3>
