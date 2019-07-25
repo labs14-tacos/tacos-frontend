@@ -20,16 +20,7 @@ class Login extends Component {
     isSignedIn: false
   }
 
-  uiConfig = {
-    signInFlow: 'popup',
-    signInOptions: [
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-    callbacks: {
-      signInSuccessWithAuthResults: () => false
-    }
-  }
+  
 
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
@@ -44,7 +35,6 @@ class Login extends Component {
       <div>
         <Authentication 
           isSignedIn={this.state.isSignedIn}
-          uiConfig={this.uiConfig}
         />
       </div>
     )

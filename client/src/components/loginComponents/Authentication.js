@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import Login from './Login';
+import { uiConfig } from './firebaseUIConfig';
 
 const Authentication = (Component1) =>
   class extends React.Component {
@@ -11,19 +11,18 @@ const Authentication = (Component1) =>
       }
     }
 
-
-
     render() {
+      console.log(uiConfig)
       if (!this.props.isSignedIn) {
         return <StyledFirebaseAuth
-          uiConfig={this.props.uiConfig}
+          uiConfig={uiConfig}
           firebaseAuth={firebase.auth()}
         />
       } else {
         return (
           <div>
-          <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
-          <Component1 />
+            <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+            <Component1 />
           </div>
         )
       }
