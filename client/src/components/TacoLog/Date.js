@@ -7,7 +7,6 @@ class Date extends Component {
     render() {
         return(
             <h2>Hello World!</h2>
-            <
         )
     }
 }

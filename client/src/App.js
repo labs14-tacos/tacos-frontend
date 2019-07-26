@@ -1,15 +1,6 @@
-<<<<<<< HEAD
-import React from 'react';
-import Login from './components/loginComponents/Login';
-=======
-
 import React, { Component } from 'react';
-
 import Login from './components/loginComponents/Login';
-
->>>>>>> 85a5da4d67b28ac56173043ad4e7621df9812bd8
 import './App.css';
-// import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 import fontawesome from '@fortawesome/fontawesome'
@@ -42,36 +33,31 @@ export default class App extends Component {
 
 
 
-  render () {
-  //     return (
-  //       <div className="App">
-            
-  //           <p>
-  //             Welcome to the <span>Let's Get Tacos!</span> React App! 
-  //           </p>
-  //         <Route 
-  //           exact path='/'
-  //           render= {(props) => (
-  //             <Login {...props} users={this.state.users} />
-  //           )}
-  //           />
-  //       </div>
-  //     );
-  //   }
+  render() {
+    //     return (
+    //       <div className="App">
+
+    //           <p>
+    //             Welcome to the <span>Let's Get Tacos!</span> React App! 
+    //           </p>
+    //         <Route 
+    //           exact path='/'
+    //           render= {(props) => (
+    //             <Login {...props} users={this.state.users} />
+    //           )}
+    //           />
+    //       </div>
+    //     );
+    //   }
 
 
-  return (
-    <div className="App">
+    return (
+      <div className="App">
         <p>
-          Welcome to the <span>Let's Get Tacos!</span> React App! 
+          Welcome to the <span>Let's Get Tacos!</span> React App!
         </p>
-      <Login />
-    </div>
-  );
+        <Login />
+      </div>
+    );
+  }
 }
-<<<<<<< HEAD
-
-export default App;
-=======
-}
->>>>>>> 85a5da4d67b28ac56173043ad4e7621df9812bd8
