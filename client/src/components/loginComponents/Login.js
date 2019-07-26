@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoggedInApp from '../LoggedInApp';
 
+
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
   authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
@@ -48,8 +49,9 @@ class Login extends Component {
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}
-            />
+            />           
           )}
+          {/* <User /> */}
       </div>
     )
   }
