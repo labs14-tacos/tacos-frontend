@@ -4,8 +4,14 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 
+import StarRating from './components/StarRating'
+
+import fontawesome from '@fortawesome/fontawesome'
+import solid from '@fortawesome/fontawesome-free-solid'
+import regular from '@fortawesome/fontawesome-free-regular'
 
 
+fontawesome.library.add(solid, regular)
 
 class App extends Component {
   constructor(props) {
@@ -33,9 +39,11 @@ class App extends Component {
 render () {
     return (
       <div className="App">
+          
           <p>
             Welcome to the <span>Let's Get Tacos!</span> React App! 
           </p>
+          <StarRating  rating={7}/>
         <Route 
           exact path='/'
           render= {(props) => (
