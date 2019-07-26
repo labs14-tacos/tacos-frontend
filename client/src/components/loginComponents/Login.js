@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
 // import User from './User'
 
 
 
-
+import LoggedInApp from '../LoggedInApp';
 
 
 const configObject = {
@@ -27,14 +28,14 @@ class Login extends Component {
       firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccess: () => false
+      signInSuccessWithAuthResults: () => false
     }
   }
 
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({
-        isSignedIn: !!user
+        isSignedIn: user
       })
     })
   }
@@ -42,9 +43,13 @@ class Login extends Component {
   render() {
     return (
       <div>
+        {/* When you are logged in, you will be able to see the "new App.js". If you are not signed in, you will only be able to see the log-in prompt and anything else in the OG App.js. */}
         {this.state.isSignedIn ? (
-          <h3>You have been signed in!</h3>,
-          <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+          <div>
+            <h3>You have been signed in!</h3>
+            <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+            <LoggedInApp />
+          </div>
         ) : (
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
