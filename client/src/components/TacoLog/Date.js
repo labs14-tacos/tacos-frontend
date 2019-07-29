@@ -6,7 +6,7 @@ class Date extends Component {
 
     render() {
         return(
-            <h2>Hello World!</h2>
+            <h2>This is going to be the date-picker for our taco log!</h2>
         )
     }
 }
