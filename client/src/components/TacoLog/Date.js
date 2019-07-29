@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { DatePicker } from "@atlaskit/datetime-picker"
 
 class Date extends Component {
 
