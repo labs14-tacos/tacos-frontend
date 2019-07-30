@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import HeaderSection from './HeaderSection';
 import Date from './Date';
 import NameOfTaco from './NameOfTaco';
+import TacoIngredients from './TacoIngredients';
 
 class TacoView extends Component {
 
@@ -12,6 +13,7 @@ class TacoView extends Component {
         <HeaderSection />
         <Date />
         <NameOfTaco />
+        <TacoIngredients />
       </div>
     )
   }
