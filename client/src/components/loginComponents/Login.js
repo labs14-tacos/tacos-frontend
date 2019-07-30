@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoggedInApp from '../LoggedInApp';
 
+
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
   authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
@@ -19,7 +20,8 @@ class Login extends Component {
     signInFlow: 'popup',
     signInOptions: [
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ],
     callbacks: {
       signInSuccessWithAuthResults: () => false
@@ -48,8 +50,9 @@ class Login extends Component {
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}
-            />
+            />           
           )}
+          {/* <User /> */}
       </div>
     )
   }
