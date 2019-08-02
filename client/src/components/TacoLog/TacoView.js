@@ -24,7 +24,7 @@ class TacoView extends Component {
         <DatePicker
           style={style}
           width="302px"
-          onDayClick={(e, day) => this.onDayClick(e, day)} 
+          onDayClick={(e, day) => this.onDayClick(e, day)}
         />
         <div>
           <h2>Name:</h2>
@@ -34,7 +34,13 @@ class TacoView extends Component {
           />
         </div>
         <TacoIngredients />
-        <TacoFreeform />
+        <div>
+          <h2>Do you wanna taco 'bout it?</h2>
+          <input
+            type='textarea'
+            name='userExperience'
+          />
+        </div>
       </div>
     )
   }
