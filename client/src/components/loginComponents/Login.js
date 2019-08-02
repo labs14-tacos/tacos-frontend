@@ -34,13 +34,16 @@ class Login extends Component {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({
         isSignedIn: user,
+        // This grabs the user's key from the firebaseLocalStorage.
         user: firebase.auth().currentUser._lat
       })
+      // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
       sessionStorage.setItem("token", firebase.auth().currentUser._lat)
     })
   }
 
   fbSignOut = () => {
+    // This makes sure that the token is taken out of Session Storage as soon as the user is logged out.
     firebase.auth().signOut();
     sessionStorage.removeItem("token");
     this.setState({
