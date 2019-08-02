@@ -13,7 +13,8 @@ firebase.initializeApp(configObject);
 
 class Login extends Component {
   state = {
-    isSignedIn: false
+    isSignedIn: false,
+    user: {}
   }
 
   uiConfig = {
@@ -32,8 +33,18 @@ class Login extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({
-        isSignedIn: user
+        isSignedIn: user,
+        user: firebase.auth().currentUser._lat
       })
+      sessionStorage.setItem("token", firebase.auth().currentUser._lat)
+    })
+  }
+
+  fbSignOut = () => {
+    firebase.auth().signOut();
+    sessionStorage.removeItem("token");
+    this.setState({
+      isSignedIn: false
     })
   }
 
@@ -44,7 +55,7 @@ class Login extends Component {
         {this.state.isSignedIn ? (
           <div>
             <h3>You have been signed in!</h3>
-            <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+            <button onClick={this.fbSignOut}>Sign-out</button>
             <LoggedInApp />
           </div>
         ) : (
@@ -53,7 +64,6 @@ class Login extends Component {
               firebaseAuth={firebase.auth()}
             />           
           )}
-          {/* <User /> */}
       </div>
     )
   }
