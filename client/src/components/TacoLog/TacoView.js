@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 import HeaderSection from './HeaderSection';
-import DatePicker from './DatePicker'
+import DatePicker from './DatePicker';
 import NameOfTaco from './NameOfTaco';
 import TacoIngredients from './TacoIngredients';
+import TacoFreeform from './TacoFreeform';
 
 const style = {
   position: "relative",
@@ -25,6 +26,7 @@ class TacoView extends Component {
           onDayClick={(e, day)=> this.onDayClick(e, day)}/> 
         <NameOfTaco />
         <TacoIngredients />
+        <TacoFreeform />
       </div>
     )
   }
