@@ -106,6 +106,15 @@
     memoize-one "^3.0.1"
     react-popper "1.0.2"
 
+"@atlaskit/popper@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@atlaskit/popper/-/popper-3.0.1.tgz#76e972a179ac04417e2cf2f44b8c0c229ce66c04"
+  integrity sha512-Zzogo+HG6EypuEpfRhQFDxZzKyT+6O92pIWqNxTptu5YHJO29IVu7NfV9zqvBHYWKJDeF7o0Ey2GMYLWSz9UVQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    memoize-one "^3.0.1"
+    react-popper "1.0.2"
+
 "@atlaskit/portal@^3.0.7":
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@atlaskit/portal/-/portal-3.0.9.tgz#70acc3502051fd30e6c6a0bfadb52dbadba88f01"
@@ -156,12 +165,12 @@
     prop-types "^15.5.10"
 
 "@atlaskit/tooltip@^15.0.5":
-  version "15.0.6"
-  resolved "https://registry.yarnpkg.com/@atlaskit/tooltip/-/tooltip-15.0.6.tgz#f90d2fbc7e6610cc24b07658ce8d7bf4515315f7"
-  integrity sha512-lvVQJGsjSSY1mKjVIxwqLpy1MUIj1cAlkqXDcGOxJ1Uzy0J8nerStKTtqjeyS5FPN614aMN/ln6OPBgGXFk6IA==
+  version "15.0.8"
+  resolved "https://registry.yarnpkg.com/@atlaskit/tooltip/-/tooltip-15.0.8.tgz#4215a71468b75cf54c70932b389d310c9359a3a6"
+  integrity sha512-mFK65d0quTl6CuS5BZRa3EPP7f8fgdbHHrFKdolSp7fn3Sw3s1haQpZDANp4ufmTQnCD2Pa11rprYpBNkahaQQ==
   dependencies:
     "@atlaskit/analytics-next" "^5.1.2"
-    "@atlaskit/popper" "^3.0.0"
+    "@atlaskit/popper" "^3.0.1"
     "@atlaskit/portal" "^3.0.7"
     "@atlaskit/theme" "^9.0.0"
     "@babel/runtime" "^7.0.0"
@@ -7053,6 +7062,11 @@ mkdirp@0.5.1, mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
   dependencies:
     minimist "0.0.8"
+
+moment@^2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
 move-concurrently@^1.0.1:
   version "1.0.1"

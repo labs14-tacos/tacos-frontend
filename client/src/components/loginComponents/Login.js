@@ -3,6 +3,9 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoggedInApp from '../LoggedInApp';
 
+// import User from './User'
+
+
 
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
