@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-import React from 'react';
-import Login from './components/loginComponents/Login';
-=======
 
 import React, { Component } from 'react';
 
 // import Login from './components/loginComponents/Login';
 
->>>>>>> 3c0c2fdc0f8a41b682ee74dc631731c054cc88ce
 import './App.css';
 // import { Route } from 'react-router-dom';
 // import axios from 'axios';
@@ -20,17 +15,6 @@ const style = {
   margin: "50px auto"
 }
 
-<<<<<<< HEAD
-function App() {
-  return (
-    <div className="App">
-        <p>
-          Welcome to the <span>Let's Get Tacos!</span> React App! 
-        </p>
-      <Login />
-    </div>
-  );
-=======
 class App extends Component {
   onDayClick = (e, day) => {
     alert(day);
@@ -44,7 +28,6 @@ class App extends Component {
       </div>
     );
   }
->>>>>>> 3c0c2fdc0f8a41b682ee74dc631731c054cc88ce
 }
 
 export default App;
