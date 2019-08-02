@@ -16,7 +16,8 @@ firebase.initializeApp(configObject);
 
 class Login extends Component {
   state = {
-    isSignedIn: false
+    isSignedIn: false,
+    user: {}
   }
 
   uiConfig = {
@@ -35,8 +36,21 @@ class Login extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({
-        isSignedIn: user
+        isSignedIn: user,
+        // This grabs the user's key from the firebaseLocalStorage.
+        user: firebase.auth().currentUser._lat
       })
+      // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
+      sessionStorage.setItem("token", firebase.auth().currentUser._lat)
+    })
+  }
+
+  fbSignOut = () => {
+    // This makes sure that the token is taken out of Session Storage as soon as the user is logged out.
+    firebase.auth().signOut();
+    sessionStorage.removeItem("token");
+    this.setState({
+      isSignedIn: false
     })
   }
 
@@ -47,7 +61,7 @@ class Login extends Component {
         {this.state.isSignedIn ? (
           <div>
             <h3>You have been signed in!</h3>
-            <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+            <button onClick={this.fbSignOut}>Sign-out</button>
             <LoggedInApp />
           </div>
         ) : (
@@ -56,7 +70,6 @@ class Login extends Component {
               firebaseAuth={firebase.auth()}
             />           
           )}
-          {/* <User /> */}
       </div>
     )
   }
