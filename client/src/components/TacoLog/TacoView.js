@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import HeaderSection from './HeaderSection';
 import DatePicker from './DatePicker';
 import NameOfTaco from './NameOfTaco';
 import TacoIngredients from './TacoIngredients';
@@ -19,7 +18,10 @@ class TacoView extends Component {
   render() {
     return (
       <div>
-        <HeaderSection />
+        <div>
+          <h1>Log A Taco:</h1>
+          <button>Save</button>
+        </div>
         <DatePicker 
           style={style} 
           width="302px" 
