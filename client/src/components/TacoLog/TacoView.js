@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import DatePicker from './DatePicker';
-import NameOfTaco from './NameOfTaco';
 import TacoIngredients from './TacoIngredients';
 import TacoFreeform from './TacoFreeform';
 
@@ -22,11 +21,18 @@ class TacoView extends Component {
           <h1>Log A Taco:</h1>
           <button>Save</button>
         </div>
-        <DatePicker 
-          style={style} 
-          width="302px" 
-          onDayClick={(e, day)=> this.onDayClick(e, day)}/> 
-        <NameOfTaco />
+        <DatePicker
+          style={style}
+          width="302px"
+          onDayClick={(e, day) => this.onDayClick(e, day)} 
+        />
+        <div>
+          <h2>Name:</h2>
+          <input
+            type='text'
+            name='name'
+          />
+        </div>
         <TacoIngredients />
         <TacoFreeform />
       </div>
