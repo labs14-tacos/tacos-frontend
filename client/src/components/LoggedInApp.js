@@ -1,8 +1,6 @@
 
 import React from 'react';
 import Friends from './Friends.js';
-import React, { Component } from 'react';
-import Friends from './Friends.js';
 import DatePicker from './TacoLog/DatePicker'
 import TacoView from './TacoLog/TacoView';
 

@@ -5,7 +5,6 @@ import LoggedInApp from '../LoggedInApp';
 
 // import User from './User'
 
-import LoggedInApp from '../LoggedInApp';
 
 
 const configObject = {
