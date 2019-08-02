@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import DatePicker from './DatePicker';
 import TacoIngredients from './TacoIngredients';
-import TacoFreeform from './TacoFreeform';
 
 const style = {
   position: "relative",
