@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+<<<<<<< HEAD:client/src/components/loginComponents/Login.js
 import LoggedInApp from '../LoggedInApp';
+=======
+
+// import User from './User'
+
+
+>>>>>>> 3c0c2fdc0f8a41b682ee74dc631731c054cc88ce:client/src/components/Login.js
+
+import LoggedInApp from '../LoggedInApp';
+
 
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
@@ -48,8 +58,9 @@ class Login extends Component {
             <StyledFirebaseAuth
               uiConfig={this.uiConfig}
               firebaseAuth={firebase.auth()}
-            />
+            />           
           )}
+          {/* <User /> */}
       </div>
     )
   }

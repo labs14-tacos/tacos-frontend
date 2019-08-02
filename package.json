@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-avatar-edit": "^0.8.3",
+    "react-router-dom": "^5.0.1"
+  }
+}
