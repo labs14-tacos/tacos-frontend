@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-<<<<<<< HEAD:client/src/components/loginComponents/Login.js
 import LoggedInApp from '../LoggedInApp';
-=======
 
 // import User from './User'
-
-
->>>>>>> 3c0c2fdc0f8a41b682ee74dc631731c054cc88ce:client/src/components/Login.js
 
 import LoggedInApp from '../LoggedInApp';
 
@@ -29,7 +24,9 @@ class Login extends Component {
     signInFlow: 'popup',
     signInOptions: [
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.TwitterAuthProvider.PROVIDER_ID
     ],
     callbacks: {
       signInSuccessWithAuthResults: () => false
