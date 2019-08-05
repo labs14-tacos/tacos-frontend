@@ -9,8 +9,27 @@ const style = {
 }
 
 class TacoView extends Component {
+  state = {
+    tacoEntry: {
+      typeOfTaco: '',
+      tacoName: '',
+      tacoLogPhoto: '',
+      restaurantName: '',
+      // rating
+      notes: '',
+      date: '',
+      address: ''
+    }
+  }
+
   onDayClick = (e, day) => {
     alert(day);
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
 
   render() {
@@ -26,18 +45,36 @@ class TacoView extends Component {
           onDayClick={(e, day) => this.onDayClick(e, day)}
         />
         <div>
-          <h2>Name:</h2>
+          <h2>Name of Taco:</h2>
           <input
             type='text'
-            name='name'
+            name='tacoName'
           />
+          <h2>Type of Taco:</h2>
+          <input
+            type='text'
+            name='typeOfTaco'
+          />
+          <h2>Restaurant Name:</h2>
+          <input
+            type='text'
+            name='restaurantName'
+          />
+          <h2>Restaurant Address:</h2>
+          <input
+            type='text'
+            name='address'
+          />
+        </div>
+        <div>
+
         </div>
         <TacoIngredients />
         <div>
           <h2>Do you wanna taco 'bout it?</h2>
           <input
             type='textarea'
-            name='userExperience'
+            name='notes'
           />
         </div>
       </div>
