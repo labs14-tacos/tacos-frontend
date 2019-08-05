@@ -19,7 +19,13 @@ class TacoView extends Component {
       notes: '',
       date: '',
       address: ''
-    }
+    },
+    cheese: [],
+    protein: ['crickets', 'pumpkin', 'lollipop'],
+    salsa: [],
+    topping: [],
+    tortilla: [],
+    crunchy: null
   }
 
   onDayClick = (e, day) => {
@@ -30,6 +36,15 @@ class TacoView extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  addToIngList = ing => {
+    const protein = this.state.protein;
+    protein.push(ing);
+    this.setState({
+      protein
+    })
+    console.log(protein)
   }
 
   render() {
@@ -74,7 +89,10 @@ class TacoView extends Component {
             onChange={this.handleChange}
           />
         </div>
-        <TacoIngredients />
+        <TacoIngredients
+          addToIngList={this.addToIngList}
+          protein={this.state.protein}
+        />
         <div>
           <h2>Do you wanna taco 'bout it?</h2>
           <input
