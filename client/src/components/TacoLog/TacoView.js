@@ -49,32 +49,39 @@ class TacoView extends Component {
           <input
             type='text'
             name='tacoName'
+            value={this.state.tacoName}
+            onChange={this.handleChange}
           />
           <h2>Type of Taco:</h2>
           <input
             type='text'
             name='typeOfTaco'
+            value={this.state.typeOfTaco}
+            onChange={this.handleChange}
           />
           <h2>Restaurant Name:</h2>
           <input
             type='text'
             name='restaurantName'
+            value={this.state.restaurantName}
+            onChange={this.handleChange}
           />
           <h2>Restaurant Address:</h2>
           <input
             type='text'
             name='address'
+            value={this.state.address}
+            onChange={this.handleChange}
           />
-        </div>
-        <div>
-
         </div>
         <TacoIngredients />
         <div>
           <h2>Do you wanna taco 'bout it?</h2>
           <input
-            type='textarea'
+            type='text'
             name='notes'
+            value={this.state.notes}
+            onChange={this.handleChange}
           />
         </div>
       </div>
