@@ -40,10 +40,13 @@ class TacoView extends Component {
 
   addToTortillaList = ing => {
     const tortilla = this.state.tortilla;
-    tortilla.push(ing);
-    this.setState({
-      tortilla
-    })
+    if (!tortilla.includes(ing)) {
+      tortilla.push(ing);
+      this.setState({
+        tortilla
+      })
+    }
+
   }
   deleteFromTortillaList = ings => {
     this.setState({
@@ -53,10 +56,13 @@ class TacoView extends Component {
 
   addToProteinList = ing => {
     const protein = this.state.protein;
-    protein.push(ing);
-    this.setState({
-      protein
-    })
+    if (!protein.includes(ing)) {
+      protein.push(ing);
+      this.setState({
+        protein
+      })
+    }
+
   }
   deleteFromProteinList = ings => {
     this.setState({
@@ -66,10 +72,13 @@ class TacoView extends Component {
 
   addToCheeseList = ing => {
     const cheese = this.state.cheese;
-    cheese.push(ing);
-    this.setState({
-      cheese
-    })
+    if (!cheese.includes(ing)) {
+      cheese.push(ing);
+      this.setState({
+        cheese
+      })
+    }
+
   }
   deleteFromCheeseList = ings => {
     this.setState({
@@ -79,10 +88,12 @@ class TacoView extends Component {
 
   addToToppingList = ing => {
     const topping = this.state.topping;
-    topping.push(ing);
-    this.setState({
-      topping
-    })
+    if (!topping.includes(ing)) {
+      topping.push(ing);
+      this.setState({
+        topping
+      })
+    }
   }
   deleteFromToppingList = ings => {
     this.setState({
@@ -91,11 +102,16 @@ class TacoView extends Component {
   }
 
   addToSalsaList = ing => {
+
     const salsa = this.state.salsa;
-    salsa.push(ing);
-    this.setState({
-      salsa
-    })
+
+    if (!salsa.includes(ing)) {
+      salsa.push(ing);
+      this.setState({
+        salsa
+      })
+    }
+
   }
   deleteFromSalsaList = ings => {
     this.setState({
@@ -103,11 +119,12 @@ class TacoView extends Component {
     })
   }
 
-  
 
-  
+
+
 
   render() {
+    console.log(this.state.salsa)
     return (
       <div>
         <div>
@@ -160,11 +177,11 @@ class TacoView extends Component {
           deleteFromCheeseList={this.deleteFromCheeseList}
           deleteFromToppingList={this.deleteFromToppingList}
           deleteFromSalsaList={this.deleteFromSalsaList}
+          tortilla={this.state.tortilla}
           protein={this.state.protein}
           cheese={this.state.cheese}
           topping={this.state.topping}
           salsa={this.state.salsa}
-          tortilla={this.state.tortilla}
         />
         <div>
           <h2>Do you wanna taco 'bout it?</h2>
