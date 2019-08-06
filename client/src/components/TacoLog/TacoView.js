@@ -21,7 +21,7 @@ class TacoView extends Component {
       address: ''
     },
     cheese: [],
-    protein: ['crickets', 'pumpkin', 'lollipop'],
+    protein: [],
     salsa: [],
     topping: [],
     tortilla: [],
@@ -38,13 +38,44 @@ class TacoView extends Component {
     });
   }
 
-  addToIngList = ing => {
+  addToProteinList = ing => {
     const protein = this.state.protein;
     protein.push(ing);
     this.setState({
       protein
     })
-    console.log(protein)
+  }
+
+  addToToppingList = ing => {
+    const topping = this.state.topping;
+    topping.push(ing);
+    this.setState({
+      topping
+    })
+  }
+
+  addToSalsaList = ing => {
+    const salsa = this.state.salsa;
+    salsa.push(ing);
+    this.setState({
+      salsa
+    })
+  }
+
+  addToTortillaList = ing => {
+    const tortilla = this.state.tortilla;
+    tortilla.push(ing);
+    this.setState({
+      tortilla
+    })
+  }
+
+  addToCheeseList = ing => {
+    const cheese = this.state.cheese;
+    cheese.push(ing);
+    this.setState({
+      cheese
+    })
   }
 
   render() {
@@ -90,8 +121,16 @@ class TacoView extends Component {
           />
         </div>
         <TacoIngredients
-          addToIngList={this.addToIngList}
+          addToProteinList={this.addToProteinList}
+          addToCheeseList={this.addToCheeseList}
+          addToToppingList={this.addToToppingList}
+          addToSalsaList={this.addToSalsaList}
+          addToTortillaList={this.addToTortillaList}
           protein={this.state.protein}
+          cheese={this.state.cheese}
+          topping={this.state.topping}
+          salsa={this.state.salsa}
+          tortilla={this.state.tortilla}
         />
         <div>
           <h2>Do you wanna taco 'bout it?</h2>
