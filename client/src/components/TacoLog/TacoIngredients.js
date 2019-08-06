@@ -20,23 +20,26 @@ class TacoIngredients extends Component {
       <div>
         <div>
           <h2>Ingredients:</h2>
+          {this.props.tortilla.map(ing => (
+            <span className="tortilla" onClick={() => { this.props.deleteFromTortillaList(ing) }}>{ing}</span>
+          ))}
           {this.props.protein.map(ing => (
-            <span className="protein">{ing}</span>
+            <span className="protein" onClick={() => { this.props.deleteFromProteinList(ing) }}>{ing}</span>
           ))}
           {this.props.cheese.map(ing => (
-            <span className="cheese">{ing}</span>
+            <span className="cheese" onClick={() => { this.props.deleteFromCheeseList(ing) }}>{ing}</span>
           ))}
           {this.props.topping.map(ing => (
-            <span className="topping">{ing}</span>
+            <span className="topping" onClick={() => { this.props.deleteFromToppingList(ing) }}>{ing}</span>
           ))}
           {this.props.salsa.map(ing => (
-            <span className="salsa">{ing}</span>
-          ))}
-          {this.props.tortilla.map(ing => (
-            <span className="tortilla">{ing}</span>
+            <span className="salsa" onClick={() => { this.props.deleteFromSalsaList(ing) }}>{ing}</span>
           ))}
         </div>
         <Tabs>
+        <div label="Tortillas">
+            {this.state.tortillas.map(tortilla => <button onClick={() => { this.props.addToTortillaList(tortilla) }}>{tortilla}</button>)}
+          </div>
           <div label="Proteins">
             {this.state.proteins.map(protein => <button onClick={() => { this.props.addToProteinList(protein) }}>{protein}</button>)}
           </div>
@@ -48,9 +51,6 @@ class TacoIngredients extends Component {
           </div>
           <div label="Salsas">
             {this.state.salsa.map(salsa => <button onClick={() => { this.props.addToSalsaList(salsa) }}>{salsa}</button>)}
-          </div>
-          <div label="Tortillas">
-            {this.state.tortillas.map(tortilla => <button onClick={() => { this.props.addToTortillaList(tortilla) }}>{tortilla}</button>)}
           </div>
         </Tabs>
 

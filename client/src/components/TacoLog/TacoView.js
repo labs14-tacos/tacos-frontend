@@ -20,11 +20,11 @@ class TacoView extends Component {
       date: '',
       address: ''
     },
-    cheese: [],
-    protein: [],
-    salsa: [],
-    topping: [],
     tortilla: [],
+    protein: [],
+    cheese: [],
+    topping: [],
+    salsa: [],
     crunchy: null
   }
 
@@ -38,6 +38,19 @@ class TacoView extends Component {
     });
   }
 
+  addToTortillaList = ing => {
+    const tortilla = this.state.tortilla;
+    tortilla.push(ing);
+    this.setState({
+      tortilla
+    })
+  }
+  deleteFromTortillaList = ings => {
+    this.setState({
+      tortilla: this.state.tortilla.filter(ing => ing !== ings)
+    })
+  }
+
   addToProteinList = ing => {
     const protein = this.state.protein;
     protein.push(ing);
@@ -45,28 +58,9 @@ class TacoView extends Component {
       protein
     })
   }
-
-  addToToppingList = ing => {
-    const topping = this.state.topping;
-    topping.push(ing);
+  deleteFromProteinList = ings => {
     this.setState({
-      topping
-    })
-  }
-
-  addToSalsaList = ing => {
-    const salsa = this.state.salsa;
-    salsa.push(ing);
-    this.setState({
-      salsa
-    })
-  }
-
-  addToTortillaList = ing => {
-    const tortilla = this.state.tortilla;
-    tortilla.push(ing);
-    this.setState({
-      tortilla
+      protein: this.state.protein.filter(ing => ing !== ings)
     })
   }
 
@@ -77,6 +71,41 @@ class TacoView extends Component {
       cheese
     })
   }
+  deleteFromCheeseList = ings => {
+    this.setState({
+      cheese: this.state.cheese.filter(ing => ing !== ings)
+    })
+  }
+
+  addToToppingList = ing => {
+    const topping = this.state.topping;
+    topping.push(ing);
+    this.setState({
+      topping
+    })
+  }
+  deleteFromToppingList = ings => {
+    this.setState({
+      topping: this.state.topping.filter(ing => ing !== ings)
+    })
+  }
+
+  addToSalsaList = ing => {
+    const salsa = this.state.salsa;
+    salsa.push(ing);
+    this.setState({
+      salsa
+    })
+  }
+  deleteFromSalsaList = ings => {
+    this.setState({
+      salsa: this.state.salsa.filter(ing => ing !== ings)
+    })
+  }
+
+  
+
+  
 
   render() {
     return (
@@ -121,11 +150,16 @@ class TacoView extends Component {
           />
         </div>
         <TacoIngredients
+          addToTortillaList={this.addToTortillaList}
           addToProteinList={this.addToProteinList}
           addToCheeseList={this.addToCheeseList}
           addToToppingList={this.addToToppingList}
           addToSalsaList={this.addToSalsaList}
-          addToTortillaList={this.addToTortillaList}
+          deleteFromTortillaList={this.deleteFromTortillaList}
+          deleteFromProteinList={this.deleteFromProteinList}
+          deleteFromCheeseList={this.deleteFromCheeseList}
+          deleteFromToppingList={this.deleteFromToppingList}
+          deleteFromSalsaList={this.deleteFromSalsaList}
           protein={this.state.protein}
           cheese={this.state.cheese}
           topping={this.state.topping}
