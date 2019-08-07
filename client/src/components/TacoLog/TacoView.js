@@ -46,7 +46,6 @@ class TacoView extends Component {
         tortilla
       })
     }
-
   }
   deleteFromTortillaList = ings => {
     this.setState({
@@ -62,7 +61,6 @@ class TacoView extends Component {
         protein
       })
     }
-
   }
   deleteFromProteinList = ings => {
     this.setState({
@@ -102,16 +100,13 @@ class TacoView extends Component {
   }
 
   addToSalsaList = ing => {
-
     const salsa = this.state.salsa;
-
     if (!salsa.includes(ing)) {
       salsa.push(ing);
       this.setState({
         salsa
       })
     }
-
   }
   deleteFromSalsaList = ings => {
     this.setState({
@@ -141,28 +136,28 @@ class TacoView extends Component {
           <input
             type='text'
             name='tacoName'
-            value={this.state.tacoName}
+            value={this.state.tacoEntry.tacoName}
             onChange={this.handleChange}
           />
           <h2>Type of Taco:</h2>
           <input
             type='text'
             name='typeOfTaco'
-            value={this.state.typeOfTaco}
+            value={this.state.tacoEntry.typeOfTaco}
             onChange={this.handleChange}
           />
           <h2>Restaurant Name:</h2>
           <input
             type='text'
             name='restaurantName'
-            value={this.state.restaurantName}
+            value={this.state.tacoEntry.restaurantName}
             onChange={this.handleChange}
           />
           <h2>Restaurant Address:</h2>
           <input
             type='text'
             name='address'
-            value={this.state.address}
+            value={this.state.tacoEntry.address}
             onChange={this.handleChange}
           />
         </div>
@@ -188,7 +183,7 @@ class TacoView extends Component {
           <input
             type='text'
             name='notes'
-            value={this.state.notes}
+            value={this.state.tacoEntry.notes}
             onChange={this.handleChange}
           />
         </div>
