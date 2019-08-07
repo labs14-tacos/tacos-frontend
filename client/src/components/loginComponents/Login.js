@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoggedInApp from '../LoggedInApp';
+import axios from 'axios';
 
 // import User from './User'
 
@@ -10,7 +11,9 @@ import LoggedInApp from '../LoggedInApp';
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
   authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
-}
+} 
+
+const backendURL = process.env.REACT_APP_BACKEND_URL; 
 
 firebase.initializeApp(configObject);
 
@@ -29,7 +32,7 @@ class Login extends Component {
       firebase.auth.TwitterAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccessWithAuthResults: () => false
+      signInSuccessWithAuthResults: () => false 
     }
   }
 
@@ -39,10 +42,31 @@ class Login extends Component {
         isSignedIn: user,
         // This grabs the user's key from the firebaseLocalStorage.
         user: firebase.auth().currentUser._lat
-      })
+      }) 
+  
       // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
-      sessionStorage.setItem("token", firebase.auth().currentUser._lat)
-    })
+     const token = firebase.auth().currentUser._lat
+     
+      sessionStorage.setItem("token", token); 
+        axios
+          .post(`${backendURL}/api/auth/register`, { token })
+          .then(res => {
+            this.setState({
+              user_id: res.id
+            })
+          }
+          )
+          .catch(error => {
+            console.log("error from register", error)
+            axios
+            .post(`${backendURL}/api/auth/login`, { token })
+            .then(res => console.log('loginjs login non new user success'))
+            .catch(error => {
+              console.log('from register error', error);
+            });
+          });
+        });
+    
   }
 
   fbSignOut = () => {
@@ -51,7 +75,7 @@ class Login extends Component {
     sessionStorage.removeItem("token");
     this.setState({
       isSignedIn: false
-    })
+    });
   }
 
   render() {
@@ -71,7 +95,7 @@ class Login extends Component {
             />           
           )}
       </div>
-    )
+    );
   }
 }
 
