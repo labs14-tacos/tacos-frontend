@@ -32,27 +32,8 @@ class Login extends Component {
       firebase.auth.TwitterAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccessWithAuthResults: function(authResult, redirectUrl) {
-        const newUser = authResult.additionalUserInfo.isNewUser;
-        const token = authResult.user._lat;
-        sessionStorage.setItem('token', token);
-        if (newUser) {
-          axios
-            .post(`${backendURL}/api/auth/register`, { token })
-            .then(res => console.log('loginjs register new user success', res))
-            .catch(error => {
-              console.log('from register error', error);
-            });
-        } else {
-          axios
-            .post(`${backendURL}/api/auth/login`, { token })
-            .then(res => console.log('loginjs login non new user success'))
-            .catch(error => {
-              console.log('from register error', error);
-            });
-        }
-      },
-    },
+      signInSuccessWithAuthResults: () => false 
+    }
   }
 
   componentDidMount = () => {
@@ -60,12 +41,33 @@ class Login extends Component {
       this.setState({
         isSignedIn: user,
         // This grabs the user's key from the firebaseLocalStorage.
-      })
+        user: firebase.auth().currentUser._lat
+      }) 
+  
       // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
-      //sessionStorage.setItem("token", firebase.auth().currentUser._lat); 
+     const token = firebase.auth().currentUser._lat
      
-  })
-}
+      sessionStorage.setItem("token", token); 
+        axios
+          .post(`${backendURL}/api/auth/register`, { token })
+          .then(res => {
+            this.setState({
+              user_id: res.id
+            })
+          }
+          )
+          .catch(error => {
+            console.log("error from register", error)
+            axios
+            .post(`${backendURL}/api/auth/login`, { token })
+            .then(res => console.log('loginjs login non new user success'))
+            .catch(error => {
+              console.log('from register error', error);
+            });
+          });
+        });
+    
+  }
 
   fbSignOut = () => {
     // This makes sure that the token is taken out of Session Storage as soon as the user is logged out.
@@ -73,7 +75,7 @@ class Login extends Component {
     sessionStorage.removeItem("token");
     this.setState({
       isSignedIn: false
-    })
+    });
   }
 
   render() {
@@ -93,7 +95,7 @@ class Login extends Component {
             />           
           )}
       </div>
-    )
+    );
   }
 }
 
