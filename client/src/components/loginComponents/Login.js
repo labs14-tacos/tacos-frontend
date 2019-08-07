@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoggedInApp from '../LoggedInApp';
+import axios from 'axios';
 
 // import User from './User'
 
@@ -10,7 +11,9 @@ import LoggedInApp from '../LoggedInApp';
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
   authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
-}
+} 
+
+const backendURL = process.env.REACT_APP_BACKEND_URL; 
 
 firebase.initializeApp(configObject);
 
@@ -29,8 +32,27 @@ class Login extends Component {
       firebase.auth.TwitterAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccessWithAuthResults: () => false
-    }
+      signInSuccessWithAuthResults: function(authResult, redirectUrl) {
+        const newUser = authResult.additionalUserInfo.isNewUser;
+        const token = authResult.user._lat;
+        sessionStorage.setItem('token', token);
+        if (newUser) {
+          axios
+            .post(`${backendURL}/api/auth/register`, { token })
+            .then(res => console.log('loginjs register new user success', res))
+            .catch(error => {
+              console.log('from register error', error);
+            });
+        } else {
+          axios
+            .post(`${backendURL}/api/auth/login`, { token })
+            .then(res => console.log('loginjs login non new user success'))
+            .catch(error => {
+              console.log('from register error', error);
+            });
+        }
+      },
+    },
   }
 
   componentDidMount = () => {
@@ -38,12 +60,12 @@ class Login extends Component {
       this.setState({
         isSignedIn: user,
         // This grabs the user's key from the firebaseLocalStorage.
-        user: firebase.auth().currentUser._lat
       })
       // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
-      sessionStorage.setItem("token", firebase.auth().currentUser._lat)
-    })
-  }
+      //sessionStorage.setItem("token", firebase.auth().currentUser._lat); 
+     
+  })
+}
 
   fbSignOut = () => {
     // This makes sure that the token is taken out of Session Storage as soon as the user is logged out.
