@@ -15,7 +15,7 @@ export default class DatePicker extends React.Component {
         super(props);
         this.width = props.width || "350px";
         this.style = props.style || {};
-        this.style.width = this.width; // add this
+        // this.style.width = this.width; // add this
     }
 
 
@@ -191,8 +191,8 @@ export default class DatePicker extends React.Component {
 
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let className = (d == this.currentDay() ? "day current-day": "day");
-            let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
+            let className = (d === this.currentDay() ? "day current-day": "day");
+            let selectedClass = (d === this.state.selectedDay ? " selected-day " : "")
             daysInMonth.push(
                 <td key={d} className={className + selectedClass} >
                     <span onClick={(e)=>{this.onDayClick(e, d)}}>{d}</span>
