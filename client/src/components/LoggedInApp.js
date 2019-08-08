@@ -1,25 +1,13 @@
 
 import React from 'react';
 import Friends from './Friends.js';
-import DatePicker from './TacoLog/DatePicker'
 import TacoView from './TacoLog/TacoView';
 import editTacoLog from './TacoLog/editTacoLog';
 import UpdateUserProfile from './UpdateUserProfile';
 
 // The new App.js! 
 
-
-const style = {
-  position: "relative",
-  margin: "50px auto"
-}
-
 class LoggedInApp extends React.Component {
-
- onDayClick = (e, day) => {
-    alert(day);
-  }
-
   render() {
   return (
     <div className="App">
@@ -27,6 +15,7 @@ class LoggedInApp extends React.Component {
           Let's Get Tacos Homepage
         </p>
       <Friends />
+<<<<<<< HEAD
       <editTacoLog />
       <UpdateUserProfile />
     
@@ -35,6 +24,8 @@ class LoggedInApp extends React.Component {
      
       {/* <Date /> */}
 
+=======
+>>>>>>> d6c50afc57c743521ccc690d2c073174e786008a
       <TacoView />
     </div>
   );
