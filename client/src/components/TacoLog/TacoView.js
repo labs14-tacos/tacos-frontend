@@ -119,7 +119,7 @@ class TacoView extends Component {
 
 
   render() {
-    console.log(this.state.salsa)
+    console.log("state", this.state)
     return (
       <div>
         <div>
@@ -136,28 +136,28 @@ class TacoView extends Component {
           <input
             type='text'
             name='tacoName'
-            value={this.state.tacoEntry.tacoName}
+            value={this.state.tacoName}
             onChange={this.handleChange}
           />
           <h2>Type of Taco:</h2>
           <input
             type='text'
             name='typeOfTaco'
-            value={this.state.tacoEntry.typeOfTaco}
+            value={this.state.typeOfTaco}
             onChange={this.handleChange}
           />
           <h2>Restaurant Name:</h2>
           <input
             type='text'
             name='restaurantName'
-            value={this.state.tacoEntry.restaurantName}
+            value={this.state.restaurantName}
             onChange={this.handleChange}
           />
           <h2>Restaurant Address:</h2>
           <input
             type='text'
             name='address'
-            value={this.state.tacoEntry.address}
+            value={this.state.address}
             onChange={this.handleChange}
           />
         </div>

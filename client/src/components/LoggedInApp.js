@@ -17,12 +17,6 @@ class LoggedInApp extends React.Component {
       <Friends />
       <editTacoLog />
       <UpdateUserProfile />
-    
-        <DatePicker style={style} width="302px" 
-          onDayClick={(e, day)=> this.onDayClick(e, day)}/>     
-     
-      {/* <Date /> */}
-
       <TacoView />
     </div>
   );

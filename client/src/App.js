@@ -16,7 +16,7 @@ class App extends Component {
         <p>
           Welcome to the <span>Let's Get Tacos!</span> React App!
         </p>
-        <Route exact path="/login" component={Login}/>
+        <Login />
         <Route exact path="/tacoimage" component={UserTacoImage} />
         <Route exact path="/myprofile" component={MyProfile}/>
         <Route exact path="/user" component={TacoLogHomepage} />
