@@ -1,0 +1,10 @@
+.TacoLog__main {
+    /* width: 80%; */
+    background: lightblue;
+}
+
+.TacoLog__nav {
+   display: flex;
+   justify-content: space-around;   
+ 
+}
