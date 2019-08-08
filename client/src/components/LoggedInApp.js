@@ -24,7 +24,6 @@ class LoggedInApp extends React.Component {
       {/* <Date /> */}
 
 =======
->>>>>>> d6c50afc57c743521ccc690d2c073174e786008a
       <TacoView />
     </div>
   );
