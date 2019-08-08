@@ -32,8 +32,9 @@ class Login extends Component {
       firebase.auth.TwitterAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccessWithAuthResults: () => false 
-    }
+      signInSuccessWithAuthResults: () => false
+      }
+    
   }
 
   componentDidMount = () => {
@@ -41,13 +42,12 @@ class Login extends Component {
       this.setState({
         isSignedIn: user,
         // This grabs the user's key from the firebaseLocalStorage.
-        user: firebase.auth().currentUser._lat
       }) 
   
       // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
      const token = firebase.auth().currentUser._lat
-     
       sessionStorage.setItem("token", token); 
+     axios.post(`${backendURL}/api/users`, {headers: {token: token}}).then(res => console.log("IT WORKED")).catch(err => {console.log("it didn't work", err)})
     })
     
   }
