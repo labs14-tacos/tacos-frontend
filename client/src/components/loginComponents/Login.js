@@ -48,24 +48,7 @@ class Login extends Component {
      const token = firebase.auth().currentUser._lat
      
       sessionStorage.setItem("token", token); 
-        axios
-          .post(`${backendURL}/api/auth/register`, { token })
-          .then(res => {
-            this.setState({
-              user_id: res.id
-            })
-          }
-          )
-          .catch(error => {
-            console.log("error from register", error)
-            axios
-            .post(`${backendURL}/api/auth/login`, { token })
-            .then(res => console.log('loginjs login non new user success'))
-            .catch(error => {
-              console.log('from register error', error);
-            });
-          });
-        });
+    })
     
   }
 
