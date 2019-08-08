@@ -15,7 +15,6 @@ class LoggedInApp extends React.Component {
           Let's Get Tacos Homepage
         </p>
       <Friends />
-<<<<<<< HEAD
       <editTacoLog />
       <UpdateUserProfile />
     
