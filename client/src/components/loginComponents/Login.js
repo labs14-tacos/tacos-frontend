@@ -13,14 +13,17 @@ const configObject = {
   authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
 } 
 
-const backendURL = process.env.REACT_APP_BACKEND_URL; 
 
 firebase.initializeApp(configObject);
+
+
+const backendURL = process.env.REACT_APP_BACKEND_URL; 
 
 class Login extends Component {
   state = {
     isSignedIn: false,
-    user: {}
+    user: {},
+    token: ''
   }
 
   uiConfig = {
@@ -32,7 +35,10 @@ class Login extends Component {
       firebase.auth.TwitterAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccessWithAuthResults: () => false
+      signInSuccessWithAuthResults: () => {
+        this.postToSQL();
+        return false;
+      }
       }
     
   }
@@ -47,9 +53,21 @@ class Login extends Component {
       // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
      const token = firebase.auth().currentUser._lat
       sessionStorage.setItem("token", token); 
-     axios.post(`${backendURL}/api/users`, {headers: {token: token}}).then(res => console.log("IT WORKED")).catch(err => {console.log("it didn't work", err)})
+      this.setState({token});
+    console.log("component did mount login")
+    console.log(`${token}`, "token")
     })
     
+  }
+
+  postToSQL = () => {
+    axios.post(`${backendURL}/api/users`,  
+    {"token": sessionStorage.getItem("token")}, 
+    {headers: {"Access-Control-Allow-Origin": "*"}}
+     )
+      .then(res => console.log("IT WORKED", res))
+      .catch(err => {console.log("it didn't work", err.code, err.detail)})
+    console.log("sign in with success after post")
   }
 
   fbSignOut = () => {
