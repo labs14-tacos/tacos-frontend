@@ -63,7 +63,7 @@ class Login extends Component {
   postToSQL = () => {
     console.log("postToSQL", sessionStorage.getItem("token"));
     const bodyToken = sessionStorage.getItem("token");
-    axios.post(`${backendURL}/api/users`, {token: `${bodyToken}` }, {headers: {token: bodyToken } }).then(res => console.log("IT WORKED", res)).catch(err => {console.log("it didn't work", err.code, err.detail)})
+    axios.post(`${backendURL}/api/users`, {token: `${bodyToken}` }, {token: bodyToken }).then(res => console.log("IT WORKED", res)).catch(err => {console.log("it didn't work", err.code, err.detail)})
     console.log("sign in with success after post")
   }
 
