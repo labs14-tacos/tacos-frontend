@@ -36,7 +36,6 @@ class Login extends Component {
     ],
     callbacks: {
       signInSuccessWithAuthResults: () => {
-        this.postToSQL();
         return false;
       }
       }
@@ -55,18 +54,16 @@ class Login extends Component {
       sessionStorage.setItem("token", token); 
       this.setState({token});
     console.log("component did mount login")
-    console.log(`${token}`, "token")
+    // console.log(`${token}`, "token")
+    this.postToSQL();
     })
     
   }
 
   postToSQL = () => {
-    axios.post(`${backendURL}/api/users`,  
-    {"token": sessionStorage.getItem("token")}, 
-    {headers: {"Access-Control-Allow-Origin": "*"}}
-     )
-      .then(res => console.log("IT WORKED", res))
-      .catch(err => {console.log("it didn't work", err.code, err.detail)})
+    console.log("postToSQL", sessionStorage.getItem("token"));
+    const bodyToken = sessionStorage.getItem("token");
+    axios.post(`${backendURL}/api/users`, {token: `${bodyToken}` }).then(res => console.log("IT WORKED", res)).catch(err => {console.log("it didn't work", err.code, err.detail)})
     console.log("sign in with success after post")
   }
 
@@ -80,6 +77,7 @@ class Login extends Component {
   }
 
   render() {
+    
     return (
       <div>
         {/* When you are logged in, you will be able to see the "new App.js". If you are not signed in, you will only be able to see the log-in prompt and anything else in the OG App.js. */}
