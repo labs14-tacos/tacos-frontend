@@ -10,7 +10,8 @@ import axios from 'axios';
 
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
-  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
+  signInSuccessUrl: "http://localhost:3000"
 } 
 
 
@@ -43,21 +44,27 @@ class Login extends Component {
   }
 
   componentDidMount = () => {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        isSignedIn: user,
-        // This grabs the user's key from the firebaseLocalStorage.
-      }) 
-  
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(async user => {
+      
+      const token = firebase.auth().currentUser._lat
+      this.setState({token, isSignedIn: user});
+      console.log('component did mount click buttons')
+      // this.setState({
+      //   isSignedIn: user,
+      //   // This grabs the user's key from the firebaseLocalStorage.
+      // }) 
+      await sessionStorage.setItem("token", token); 
+      this.postToSQL();
       // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
-     const token = firebase.auth().currentUser._lat
-      sessionStorage.setItem("token", token); 
-      this.setState({token});
     console.log("component did mount login")
     // console.log(`${token}`, "token")
-    this.postToSQL();
     })
-    
+
+  }
+
+   // Make sure we un-register Firebase observers when the component unmounts.
+   componentWillUnmount() {
+    this.unregisterAuthObserver();
   }
 
   postToSQL = () => {
