@@ -17,7 +17,7 @@ const configObject = {
 firebase.initializeApp(configObject);
 
 
-const backendURL = process.env.REACT_APP_BACKEND_URL; 
+const backendURL = process.env.REACT_APP_BACKEND_URL || process.env.BACKEND_URL; 
 
 class Login extends Component {
   state = {
