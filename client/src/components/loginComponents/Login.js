@@ -10,17 +10,21 @@ import axios from 'axios';
 
 const configObject = {
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
-  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
+  signInSuccessUrl: "http://localhost:3000"
 } 
 
-const backendURL = process.env.REACT_APP_BACKEND_URL; 
 
 firebase.initializeApp(configObject);
+
+
+const backendURL = process.env.REACT_APP_BACKEND_URL || process.env.BACKEND_URL; 
 
 class Login extends Component {
   state = {
     isSignedIn: false,
-    user: {}
+    user: {},
+    token: ''
   }
 
   uiConfig = {
@@ -32,41 +36,42 @@ class Login extends Component {
       firebase.auth.TwitterAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccessWithAuthResults: () => false 
-    }
+      signInSuccessWithAuthResults: () => {
+        return false;
+      }
+      }
+    
   }
 
   componentDidMount = () => {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        isSignedIn: user,
-        // This grabs the user's key from the firebaseLocalStorage.
-        user: firebase.auth().currentUser._lat
-      }) 
-  
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(async user => {
+      
+      const token = firebase.auth().currentUser._lat
+      this.setState({token, isSignedIn: user});
+      console.log('component did mount click buttons')
+      // this.setState({
+      //   isSignedIn: user,
+      //   // This grabs the user's key from the firebaseLocalStorage.
+      // }) 
+      await sessionStorage.setItem("token", token); 
+      this.postToSQL();
       // This line takes the user's key that we just grabbed and set's it as the token in the Session Storage.
-     const token = firebase.auth().currentUser._lat
-     
-      sessionStorage.setItem("token", token); 
-        axios
-          .post(`${backendURL}/api/auth/register`, { token })
-          .then(res => {
-            this.setState({
-              user_id: res.id
-            })
-          }
-          )
-          .catch(error => {
-            console.log("error from register", error)
-            axios
-            .post(`${backendURL}/api/auth/login`, { token })
-            .then(res => console.log('loginjs login non new user success'))
-            .catch(error => {
-              console.log('from register error', error);
-            });
-          });
-        });
-    
+    console.log("component did mount login")
+    // console.log(`${token}`, "token")
+    })
+
+  }
+
+   // Make sure we un-register Firebase observers when the component unmounts.
+   componentWillUnmount() {
+    this.unregisterAuthObserver();
+  }
+
+  postToSQL = () => {
+    console.log("postToSQL", sessionStorage.getItem("token"));
+    const bodyToken = sessionStorage.getItem("token");
+    axios.post(`${backendURL}/api/users`, {token: `${bodyToken}` }, {token: bodyToken }).then(res => console.log("IT WORKED", res)).catch(err => {console.log("it didn't work", err.code, err.detail)})
+    console.log("sign in with success after post")
   }
 
   fbSignOut = () => {
@@ -79,6 +84,7 @@ class Login extends Component {
   }
 
   render() {
+    
     return (
       <div>
         {/* When you are logged in, you will be able to see the "new App.js". If you are not signed in, you will only be able to see the log-in prompt and anything else in the OG App.js. */}
