@@ -15,6 +15,7 @@ class LoggedInApp extends React.Component {
           Let's Get Tacos Homepage
         </p>
       <Friends />
+<<<<<<< HEAD
       <EditTacoLog />
       <UpdateUserProfile />
     
@@ -23,6 +24,10 @@ class LoggedInApp extends React.Component {
      
       {/* <Date /> */}
 
+=======
+      <editTacoLog />
+      <UpdateUserProfile />
+>>>>>>> 17720c1a58dbe67295ea6da30f38bc38201ac1b2
       <TacoView />
     </div>
   );
