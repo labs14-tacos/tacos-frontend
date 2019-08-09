@@ -69,41 +69,6 @@ class UpdateUserProfile extends React.Component {
                             onChange={this.handleChange}
                             placeholder="Img url"
                         />
-                        <input
-                            type="text"
-                            name="zipCode"
-                            onChange={this.handleChange}
-                            placeholder="Zip Code"
-                        />
-                        <input
-                            type="text"
-                            name="tacosPerMonth"
-                            onChange={this.handleChange}
-                            placeholder="Tacos Per Month"
-                        />
-                        <input
-                            type="text"
-                            name="hardOrSoft"
-                            onChange={this.handleChange}
-                            placeholder="Hard or Soft"
-                        />
-                        <input
-                            type="text"
-                            name="cornOrFlour"
-                            onChange={this.handleChange}
-                            placeholder="Corn or Flour"
-                        />
-                        <input
-                            type="text"
-                            name="heatPreference"
-                            onChange={this.handleChange}
-                            placeholder="Heat Preference"
-                        />
-                        <input
-                            type="text"
-                            name="streetOrGourmet"
-                            onChange={this.handleChange}
-                            placeholder="Street or Gourmet"
                         />
                         <input
                             type="text"
@@ -111,17 +76,6 @@ class UpdateUserProfile extends React.Component {
                             onChange={this.handleChange}
                             placeholder="Favorite Taco"
                         />
-                        <input
-                            type="text"
-                            name="favTacoLocation"
-                            onChange={this.handleChange}
-                            placeholder="Favorite Taco Location"
-                        />
-                        <input
-                            type="text"
-                            name="bestTacoMemory"
-                            onChange={this.handleChange}
-                            placeholder="Best Taco Memory"
                         />
                         <input
                             type="text"

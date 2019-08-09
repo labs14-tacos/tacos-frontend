@@ -2,7 +2,7 @@
 import React from 'react';
 import Friends from './Friends.js';
 import TacoView from './TacoLog/TacoView';
-import editTacoLog from './TacoLog/editTacoLog';
+import EditTacoLog from './TacoLog/editTacoLog';
 import UpdateUserProfile from './UpdateUserProfile';
 
 // The new App.js! 
@@ -15,8 +15,7 @@ class LoggedInApp extends React.Component {
           Let's Get Tacos Homepage
         </p>
       <Friends />
-<<<<<<< HEAD
-      <editTacoLog />
+      <EditTacoLog />
       <UpdateUserProfile />
     
         <DatePicker style={style} width="302px" 
@@ -24,8 +23,6 @@ class LoggedInApp extends React.Component {
      
       {/* <Date /> */}
 
-=======
->>>>>>> d6c50afc57c743521ccc690d2c073174e786008a
       <TacoView />
     </div>
   );
