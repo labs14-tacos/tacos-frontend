@@ -11,14 +11,12 @@ const style = {
 class TacoView extends Component {
   state = {
     tacoEntry: {
-      typeOfTaco: '',
-      tacoName: '',
+      nameOfTaco: '',
       tacoLogPhoto: '',
       restaurantName: '',
       // rating
       notes: '',
-      date: '',
-      address: ''
+      date: ''
     },
     tortilla: [],
     protein: [],
@@ -136,28 +134,21 @@ class TacoView extends Component {
           <input
             type='text'
             name='tacoName'
-            value={this.state.tacoName}
-            onChange={this.handleChange}
-          />
-          <h2>Type of Taco:</h2>
-          <input
-            type='text'
-            name='typeOfTaco'
-            value={this.state.typeOfTaco}
+            value={this.state.tacoEntry.nameOfTaco}
             onChange={this.handleChange}
           />
           <h2>Restaurant Name:</h2>
           <input
             type='text'
             name='restaurantName'
-            value={this.state.restaurantName}
+            value={this.state.tacoEntry.restaurantName}
             onChange={this.handleChange}
           />
-          <h2>Restaurant Address:</h2>
+          <h2>Do you wanna taco 'bout it?</h2>
           <input
             type='text'
-            name='address'
-            value={this.state.address}
+            name='notes'
+            value={this.state.tacoEntry.notes}
             onChange={this.handleChange}
           />
         </div>
@@ -178,15 +169,6 @@ class TacoView extends Component {
           topping={this.state.topping}
           salsa={this.state.salsa}
         />
-        <div>
-          <h2>Do you wanna taco 'bout it?</h2>
-          <input
-            type='text'
-            name='notes'
-            value={this.state.tacoEntry.notes}
-            onChange={this.handleChange}
-          />
-        </div>
       </div>
     )
   }
