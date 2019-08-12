@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
 
-import DatePicker from './DatePicker';
+//import DatePicker from './DatePicker';
 import TacoIngredients from './TacoIngredients';
+import TextField from '@material-ui/core/TextField';
+import StarRatingComponent from 'react-star-rating-component';
 
 const style = {
   position: "relative",
   margin: "50px auto"
 }
 
+
+
 class TacoView extends Component {
   state = {
-    tacoEntry: {
-      nameOfTaco: '',
-      tacoLogPhoto: '',
-      restaurantName: '',
-      // rating
-      notes: '',
-      date: ''
-    },
+    nameOfTaco: '',
+    tacoLogPhoto: '',
+    restaurantName: '',
+    rating: null,
+    notes: '',
+    date: '',
+
     tortilla: [],
     protein: [],
     cheese: [],
     topping: [],
     salsa: [],
+
     crunchy: null
   }
 
@@ -112,46 +116,46 @@ class TacoView extends Component {
     })
   }
 
-
-
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rating: nextValue});
+  }
 
 
   render() {
     console.log("state", this.state)
     return (
+
       <div>
-        <div>
-          <h1>Log A Taco:</h1>
-          <button>Save</button>
-        </div>
-        <DatePicker
-          style={style}
-          width="302px"
-          onDayClick={(e, day) => this.onDayClick(e, day)}
-        />
-        <div>
-          <h2>Name of Taco:</h2>
-          <input
+        <form>
+          <TextField
             type='text'
-            name='tacoName'
-            value={this.state.tacoEntry.nameOfTaco}
+            name='date'
+            value={this.state.date}
             onChange={this.handleChange}
+            label='Date'
           />
-          <h2>Restaurant Name:</h2>
-          <input
+          <TextField
+            type='text'
+            name='nameOfTaco'
+            value={this.state.nameOfTaco}
+            onChange={this.handleChange}
+            label='Taco Name'
+          />
+          <TextField
             type='text'
             name='restaurantName'
-            value={this.state.tacoEntry.restaurantName}
+            value={this.state.restaurantName}
             onChange={this.handleChange}
+            label='Restaurant'
           />
-          <h2>Do you wanna taco 'bout it?</h2>
-          <input
+          <TextField
             type='text'
             name='notes'
-            value={this.state.tacoEntry.notes}
+            value={this.state.notes}
             onChange={this.handleChange}
+            label="Wanna taco 'bout it?"
           />
-        </div>
+        </form>
         <TacoIngredients
           addToTortillaList={this.addToTortillaList}
           addToProteinList={this.addToProteinList}
@@ -169,6 +173,17 @@ class TacoView extends Component {
           topping={this.state.topping}
           salsa={this.state.salsa}
         />
+        <div>
+        <h2>Overall Rating: {this.state.rating}</h2>
+        <StarRatingComponent 
+          name='rate1' 
+          starCount={5}
+          starColor = "#a1dd70"
+          value={this.state.rating}
+          //renderStarIcon={() => <span></span>}
+          onStarClick={this.onStarClick.bind(this)}
+        />
+      </div>
       </div>
     )
   }
