@@ -1,19 +1,17 @@
-import React from 'react'; 
+import React from 'react';
 
-// this can be used as the update area for the logged-in person's profile info
-class UpdateUserProfile extends React.Component {
+class TacoExperience extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
+            restaurantName: "",
+            date: "",
+            totalTacos: 1,
             userPhoto: "",
-            favTaco: "",
-            instaHandle: "",
-            twitterHandle: "",
-            facebookPage: "",
-            website: ""
+            tacoName: "",
+            description: "",
+            rating: 1,
+            comments: ""
         };
     }
     
@@ -21,13 +19,13 @@ class UpdateUserProfile extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     };
     
-    updateProfile = event => {
+    tacoExp = event => {
         event.preventDefault();
         const id = this.props.match.params.id;
-        const userProfile = {
+        const userExperience = {
             ...this.state
         };
-        this.props.UpdateUserProfile(id, userProfile);
+        this.props.TacoExperience(id, userExperience);
         this.props.history.push('/');
     };
     
@@ -39,24 +37,24 @@ class UpdateUserProfile extends React.Component {
                     <form className="edit-form">
                         <input
                             type="text"
-                            name="firstName"
+                            name="restarauntName"
                             onChange={this.handleChange}
-                            value={this.firstName}
-                            placeholder="First Name"
+                            value={this.restaurantName}
+                            placeholder="Restaraunt Name"
                         />
                         <input
                             type="text"
-                            name="lastName"
+                            name="date"
                             onChange={this.handleChange}
-                            value={this.lastName}
-                            placeholder="Last Name"
+                            value={this.date}
+                            placeholder="Date"
                         />
                         <input
-                            type="text"
-                            name="email"
+                            type="number"
+                            name="totalTacos"
                             onChange={this.handleChange}
-                            value={this.email}
-                            placeholder="Email"
+                            value={this.totalTacos}
+                            placeholder="Total Tacos"
                         />
                         <input
                             type="text"
@@ -68,39 +66,33 @@ class UpdateUserProfile extends React.Component {
                         />
                         <input
                             type="text"
-                            name="favTaco"
+                            name="tacoName"
                             onChange={this.handleChange}
-                            value={this.favTaco}
-                            placeholder="Favorite Taco"
+                            value={this.tacoName}
+                            placeholder="Taco Name"
                         />
                         />
                         <input
                             type="text"
-                            name="instaHandle"
+                            name="description"
                             onChange={this.handleChange}
-                            value={this.instaHandle}
-                            placeholder="Instagram Account Here"
+                            value={this.description}
+                            placeholder="Describe Ingredients"
+                        />
+                        <input
+                            type="number"
+                            name="rating"
+                            onChange={this.handleChange}
+                            value={this.rating}
+                            placeholder="Rating"
                         />
                         <input
                             type="text"
-                            name="twitterHandle"
+                            name="comments"
                             onChange={this.handleChange}
-                            value={this.twitterHandle}
-                            placeholder="Twitter Handle Here"
+                            value={this.comments}
+                            placeholder="Describe your Experience"
                         />
-                        <input
-                            type="text"
-                            name="facebookPage"
-                            onChange={this.handleChange}
-                            value={this.facebookPage}
-                            placeholder="Facebook Page Here"
-                        />
-                        <input
-                            type="text"
-                            name="website"
-                            onChange={this.handleChange}
-                            value={this.website}
-                            placeholder="Your Website Here"
                         />
                         <button type="submit" onClick={this.updateProfile} className="btn">
                             Save
@@ -112,5 +104,4 @@ class UpdateUserProfile extends React.Component {
     }
     }
 
-
-export default UpdateUserProfile;
+    export default TacoExperience;
