@@ -34,7 +34,7 @@ class MyTacoFeed extends React.Component {
                 </Button>
             </ButtonGroup>
             <GridList>
-            {this.state.tacofeed.map(taco => <GridListTile key={taco.img}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>)}
+            {this.state.tacofeed.map(taco => <GridListTile key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>)}
             </GridList>
             </div>
         )
