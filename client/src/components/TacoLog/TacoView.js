@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import DatePicker from './DatePicker';
 import TacoIngredients from './TacoIngredients';
+import axios from 'axios';
 
 const style = {
   position: "relative",
@@ -112,11 +113,20 @@ class TacoView extends Component {
     this.setState({
       salsa: this.state.salsa.filter(ing => ing !== ings)
     })
+  } 
+
+  postTacoLog = (event) => {
+    event.preventDefault();
+    axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, {/**insert taco log here */} ).then(res => console.log(res)).catch(err => console.log(err));
+  } 
+
+  viewTacoLog = (event, tacolog_id) => {
+    event.preventDefault();
+    axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${tacolog_id}`)
+    .then(res => this.setState({ tacolog: res.data })) // fix this to be consistent 
+    .catch(err => console.log(err));
+
   }
-
-
-
-
 
   render() {
     console.log("state", this.state)
@@ -124,7 +134,7 @@ class TacoView extends Component {
       <div>
         <div>
           <h1>Log A Taco:</h1>
-          <button>Save</button>
+          <button onClick={this.postTacolog}>Save</button>
         </div>
         <DatePicker
           style={style}
