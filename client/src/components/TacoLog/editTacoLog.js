@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+
+// we'll need to flip between this and the actual tacolog view or we won't have a way to edit it because we need the taco log id. 
 
 class EditTacoLog extends React.Component {
     constructor(props) {
@@ -19,14 +22,14 @@ handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
 };
 
-updateLog = event => {
+updateLog = (event, tacolog_id) => {
     event.preventDefault();
-    const id = this.props.match.params.id;
     const tacoLog = {
         ...this.state,
         rating: parseInt(this.state.rating)
-    };
-    this.props.EditTacoLog(id, tacoLog);
+    }; 
+
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${tacolog_id}`, tacoLog).then(res => console.log(res)).catch(err => console.log(err));
     this.props.history.push('/');
 };
 
