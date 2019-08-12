@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 //import DatePicker from './DatePicker';
 import TacoIngredients from './TacoIngredients';
 import TextField from '@material-ui/core/TextField';
-import StarRatingComponent from 'react-star-rating-component';
-
+import Rating from '@material-ui/lab/rating';
 const style = {
   position: "relative",
   margin: "50px auto"
@@ -18,8 +17,13 @@ class TacoView extends Component {
     tacoLogPhoto: '',
     restaurantName: '',
     rating: null,
+    t_rating: null,
+    a_rating: null,
+    c_rating: null,
+    o_rating: null,
     notes: '',
     date: '',
+
 
     tortilla: [],
     protein: [],
@@ -116,9 +120,9 @@ class TacoView extends Component {
     })
   }
 
-  onStarClick(nextValue, prevValue, name) {
-    this.setState({rating: nextValue});
-  }
+  // onStarClick(nextValue, prevValue, name) {
+  //   this.setState({rating: nextValue});
+  // }
 
 
   render() {
@@ -175,13 +179,38 @@ class TacoView extends Component {
         />
         <div>
         <h2>Overall Rating: {this.state.rating}</h2>
-        <StarRatingComponent 
-          name='rate1' 
-          starCount={5}
-          starColor = "#a1dd70"
+        <Rating
+          name='rating' 
           value={this.state.rating}
-          //renderStarIcon={() => <span></span>}
-          onStarClick={this.onStarClick.bind(this)}
+          onChange={this.handleChange}
+        />
+        <h3>"T" Rating: {this.state.t_rating}</h3>
+        <h4>"<span>T</span>he Fundamentals"</h4>
+        <Rating
+          name='t_rating' 
+          value={this.state.t_rating}
+          onChange={this.handleChange}
+        />
+        <h3>"A" Rating: {this.state.a_rating}</h3>
+        <h4>"<span>A</span>lways Different, Positive, Special"</h4>
+        <Rating
+          name='a_rating' 
+          value={this.state.a_rating}
+          onChange={this.handleChange}
+        />
+        <h3>"C" Rating: {this.state.c_rating}</h3>
+        <h4>"<span>C</span>onsistent Commitment"</h4>
+        <Rating
+          name='c_rating' 
+          value={this.state.c_rating}
+          onChange={this.handleChange}
+        />
+        <h3>"O" Rating: {this.state.o_rating}</h3>
+        <h4>"<span>O</span>h, Wow!"</h4>
+        <Rating
+          name='o_rating' 
+          value={this.state.o_rating}
+          onChange={this.handleChange}
         />
       </div>
       </div>
