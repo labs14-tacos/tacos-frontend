@@ -45,6 +45,13 @@
   margin-top: -1rem;
 }
 
+.avatar-image {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 5%;
+  margin: 1rem;
+}
+
 .button-container {
   margin: 1rem;
 }
