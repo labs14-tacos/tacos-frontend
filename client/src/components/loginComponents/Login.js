@@ -46,7 +46,7 @@ class Login extends Component {
   componentDidMount = () => {
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(async user => {
       
-      const token = firebase.auth().currentUser._lat
+      const token = await firebase.auth().currentUser._lat
       this.setState({token, isSignedIn: user});
       console.log('component did mount click buttons')
       // this.setState({
@@ -67,6 +67,7 @@ class Login extends Component {
     this.unregisterAuthObserver();
   }
 
+  // this is what is adding the user to our SQL database. It pulls the information from the Firebase token and inserts it into our table
   postToSQL = () => {
     console.log("postToSQL", sessionStorage.getItem("token"));
     const bodyToken = sessionStorage.getItem("token");
