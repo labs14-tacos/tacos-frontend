@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import TacoIngredients from './TacoIngredients';
 import TextField from '@material-ui/core/TextField';
-import Rating from '@material-ui/lab/rating';
+import Rating from '@material-ui/lab/Rating';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import axios from 'axios';
