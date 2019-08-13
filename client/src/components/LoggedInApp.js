@@ -14,6 +14,7 @@ import axios from 'axios';
 import { Route, Link as RouterLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import sun from '../images/sun.svg';
+import NavBar from './NavBar'
 
 // The new App.js! 
 
@@ -25,9 +26,10 @@ class LoggedInApp extends React.Component {
  
   render() {
   return (
+
     <div>
      
-
+        {/* <NavBar /> */}
         
         <Route exact path="/" component={LoggedInHome} />
         <Route exact path="/log-a-taco" component={TacoView} />
