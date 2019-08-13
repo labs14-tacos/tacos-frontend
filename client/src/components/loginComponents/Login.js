@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoggedInApp from '../LoggedInApp';
 import axios from 'axios';
+import NavBar from '../NavBar'
 
 // import User from './User'
 
@@ -91,8 +92,9 @@ class Login extends Component {
         {/* When you are logged in, you will be able to see the "new App.js". If you are not signed in, you will only be able to see the log-in prompt and anything else in the OG App.js. */}
         {this.state.isSignedIn ? (
           <div>
-            <h3>You have been signed in!</h3>
-            <button onClick={this.fbSignOut}>Sign-out</button>
+            {/* <h3>You have been signed in!</h3> */}
+            <NavBar signout={this.fbSignOut}/>
+            
             <LoggedInApp />
           </div>
         ) : (
