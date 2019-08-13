@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/rating';
 import Checkbox from '@material-ui/core/Checkbox';
 
+import axios from 'axios';
 
 
 class TacoView extends Component {
@@ -119,13 +120,30 @@ class TacoView extends Component {
     this.setState({ ...this.state, [name]: event.target.checked });
   };
 
+  postTacoLog = (event) => {
+    event.preventDefault();
+    axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, {/**insert taco log here */}).then(res => console.log(res)).catch(err => console.log(err));
+  }
+
+  viewTacoLog = (event, tacolog_id) => {
+    event.preventDefault();
+    axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${tacolog_id}`)
+      .then(res => this.setState({ tacolog: res.data }))
+      // fix this to be consistent 
+      .catch(err => console.log(err));
+  }
 
   render() {
     console.log("state", this.state)
     return (
 
       <div>
+        <div>
+          <h1>Log A Taco:</h1>
+          <button onClick={this.postTacolog}>Save</button>
+        </div>
         <form>
+          <h2>Name of Taco:</h2>
           <TextField
             type='text'
             name='date'
@@ -173,12 +191,12 @@ class TacoView extends Component {
           salsa={this.state.salsa}
         />
         <div>
-          <h3>Crunchy?</h3> 
+          <h3>Crunchy?</h3>
           {/* FIX THIS */}
-          <Checkbox 
-          name='crunchy'
-          value={this.state.crunchy}
-          onChange={this.state.handleCheck}
+          <Checkbox
+            name='crunchy'
+            value={this.state.crunchy}
+            onChange={this.state.handleCheck}
           />
         </div>
         <div>
