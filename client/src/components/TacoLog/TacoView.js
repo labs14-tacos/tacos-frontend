@@ -117,7 +117,7 @@ class TacoView extends Component {
   }
 
   handleCheck = name => event => {
-    this.setState({ ...this.state, [name]: event.target.checked });
+    this.setState({ ...this.state, crunchy: event.target.checked });
   };
 
   postTacoLog = (event) => {
@@ -196,7 +196,7 @@ class TacoView extends Component {
           <Checkbox
             name='crunchy'
             value={this.state.crunchy}
-            onChange={this.state.handleCheck}
+            onChange={this.handleCheck(this.state.crunchy)}
           />
         </div>
         <div>
