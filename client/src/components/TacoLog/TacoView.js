@@ -192,7 +192,6 @@ class TacoView extends Component {
         />
         <div>
           <h3>Crunchy?</h3>
-          {/* FIX THIS */}
           <Checkbox
             name='crunchy'
             value={this.state.crunchy}
