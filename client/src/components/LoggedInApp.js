@@ -4,6 +4,7 @@ import Friends from './Friends.js';
 import TacoView from './TacoLog/TacoView';
 import editTacoLog from './TacoLog/editTacoLog';
 import UpdateUserProfile from './UpdateUserProfile';
+import User from './User';
 import UserTacoImage from './user/TacoUser';
 import MyProfile from './user/MyProfile';
 import TacoLogHomepage from './TacoLog/TacoView';
@@ -34,7 +35,7 @@ class LoggedInApp extends React.Component {
         <Route exact path="/my-tacos" component={MyTacoList}/>
         <Route exact path="/explore-tacos" component={OthersTacos} />
         <Route exact path="/tacoimage" component={UserTacoImage} />
-        <Route exact path="/my-profile" component={MyProfile}/>
+        <Route exact path="/my-profile" component={User}/>
         <Route exact path="/user" component={TacoLogHomepage} />
     </div>
   );

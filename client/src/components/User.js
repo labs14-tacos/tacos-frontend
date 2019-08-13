@@ -1,29 +1,31 @@
 import React from 'react'; 
 // import UserAvatar from './UserAvatar';
-import Friends from './Friends.js';
+import Paper from '@material-ui/core/Paper';
+import Axios from 'axios';
 
 
 // This can be used to display the person who is logged in's own profile information
-const User = props => {
+class User extends React.Component {
+    state = {
+        user: {}
+    }
 
+
+    componentDidMount() {
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/my_profile`).then(user => this.setState({user})).catch(error=> console.log(error));
+    }
+    render() {
     return (
         <div>
-            <div className = "user-profile">
-                <h1>Profile</h1>
-                {/* <UserAvatar /> */}
-                <h4>{props.name}</h4>
-                <h4>{props.age} years old</h4>
-                <h4>{props.email}</h4>
-            </div>
-            <Friends />
+               <Paper>
+                <img src={this.state.user.photoURL}/>
+                <h1>{this.state.user.firstName} {this.state.user.lastName}</h1> 
+
+               </Paper>
         </div>
     )
+    }
 }
 
-User.defaultProps = {
-name: '',
-age: '',
-email: ''
-}
 
 export default User;
