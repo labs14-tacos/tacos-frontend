@@ -6,6 +6,8 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
+const token = sessionStorage.getItem("token")
+
 
 class OthersTacos extends React.Component {
     state = {
@@ -13,7 +15,7 @@ class OthersTacos extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/tacolog`).then(
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, {headers: {token:token}}).then(
             res => {
                 this.setState({tacofeed: res.data})
             }
@@ -33,7 +35,7 @@ class OthersTacos extends React.Component {
                 </Button>
             </ButtonGroup>
             <GridList>
-            {this.state.tacofeed.map(taco => <GridListTile key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>)}
+            {this.state.tacofeed.map(taco => <GridListTile component={RouterLink} to="/taco" key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>)}
             </GridList>
             </div>
         )

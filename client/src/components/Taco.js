@@ -5,38 +5,40 @@ import GridListTile from '@material-ui/core/GridListTile';
 import ButtonGroup from '@material-ui/core/Button';
 import axios from 'axios';
 
+const token = sessionStorage.getItem("token")
+
 class Taco extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            taco: null
+            taco: {}
         };
     }
 
     componentDidMount() {
-        const id = this.props.match.params.id;
-        this.fetchTaco(this.props.match.params.id);
+        this.setState({taco: this.props.taco});
+        console.log(this.props.taco, 'tacos');
     }
 
-    fetchTaco = id => {
-        axios
-        .get(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`)
-        .then(res => {
-            this.setState(() => ({ taco: res.data }));
-        })
-        .catch(error => console.log(error))
-    }
+    // fetchTaco = id => {
+    //     axios
+    //     .get(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, {headers: {token: token}})
+    //     .then(res => {
+    //         this.setState(() => ({ taco: res.data }));
+    //     })
+    //     .catch(error => console.log(error))
+    // }
 
     render() {
         if (!this.state.taco) {
             return <div>Loading Taco information...</div>
         }
 
-        const { restauant, date, totalTacos, tacoName, description, rating, comments } = this.state.taco;
+        const { restaurant, date, totalTacos, tacoName, description, rating, comments } = this.state.taco;
         return (
             <div>
                 <div className="taco-card">
-                    <h2>{restauant}</h2>
+                    <h2>{restaurant}</h2>
                     <div className="date">
                         <h2>{date}</h2>
                     </div>

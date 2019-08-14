@@ -1,0 +1,21 @@
+.navbar {
+    background: #2196f3;
+    height: 60px;
+}
+.navbar__main-flex {
+    display: flex;
+    justify-content: space-between;
+}
+.navbar__logo-flex {
+    display: flex;
+}
+.navbar__image {
+    height: 70px;
+    width: 70px;
+}
+.navbar__name {
+  color: #fff;
+}
+.menu__item {
+    text-decoration: none;
+}
