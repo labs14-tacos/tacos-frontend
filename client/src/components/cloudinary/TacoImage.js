@@ -10,7 +10,7 @@ const TacoImage = (props) => {
   const [loading, loadingState] = useState(false)
 
   useEffect(() => {
-    props.setUserPhoto(image)
+    props.setTacoLogPhoto(image)
   }, [image])
 
   const imageUpload = async (e) => {
