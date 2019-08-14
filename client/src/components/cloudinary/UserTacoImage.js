@@ -1,10 +1,17 @@
-import React, {useState} from 'react';
-import '../../App.css'
+import React, {useState, useEffect} from 'react';
+import '../../App.css' 
 
-const UserTacoImage = () => {
+
+// this is the component for uploading the User Profile Photo
+
+const UserTacoImage = (props) => {
 
   const [image, setImage] = useState('')
   const [loading, loadingState] = useState(false)
+
+  useEffect(() => {
+    props.setUserPhoto(image)
+  }, [image])
 
   const imageUpload = async (e) => {
        const files = e.target.files
@@ -43,7 +50,8 @@ const UserTacoImage = () => {
           <img src={image} alt=""/>
         )}
        
-      </header>
+      </header> 
+  
     </div>
   );
 }
