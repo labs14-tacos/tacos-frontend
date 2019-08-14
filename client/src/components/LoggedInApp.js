@@ -2,7 +2,7 @@
 import React from 'react';
 import Friends from './Friends.js';
 import TacoView from './TacoLog/TacoView';
-import editTacoLog from './TacoLog/editTacoLog';
+import EditTacoLog from './TacoLog/editTacoLog';
 import UpdateUserProfile from './UpdateUserProfile';
 import User from './User';
 import UserTacoImage from './user/TacoUser';
@@ -16,6 +16,7 @@ import { Route, Link as RouterLink } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import sun from '../images/sun.svg';
 import NavBar from './NavBar'
+import Taco from '../components/Taco';
 
 // The new App.js! 
 
@@ -27,7 +28,6 @@ class LoggedInApp extends React.Component {
  
   render() {
   return (
-
     <div>
      
         {/* <NavBar /> */}
@@ -40,6 +40,7 @@ class LoggedInApp extends React.Component {
         <Route exact path="/my-profile" component={User}/> 
         <Route exact path="/update-profile" component={UpdateUserProfile} />
         <Route exact path="/user" component={TacoLogHomepage} />
+        <Route exact path="/taco" component={Taco} />
     </div>
   );
   }
