@@ -13,7 +13,7 @@ class MyTacoFeed extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/tacolog/mytacolog`).then(
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`).then(
             res => {
                 this.setState({tacofeed: res.data})
             }
