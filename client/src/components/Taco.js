@@ -12,23 +12,30 @@ class Taco extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            taco: {}
+            taco: {},
+            taco_id: null,
+            taco_ingredients: {protein: [], topping: [], salsa: [], cheese: [], tortilla: []}
         };
     }
 
     componentDidMount() {
-        this.setState({taco: this.props.location.state});
-        console.log(this.props.location.state, "taco");
+        const ing = this.props.location.state.ingredients
+        const ingredientObject = JSON.parse(ing);
+        this.setState({taco_id: this.props.location.state.id, taco_ingredients: ingredientObject});
+        this.fetchTaco(this.props.location.state.id);
+        console.log(ingredientObject, "ingredients");
     }
 
-    // fetchTaco = id => {
-    //     axios
-    //     .get(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, {headers: {token: token}})
-    //     .then(res => {
-    //         this.setState(() => ({ taco: res.data }));
-    //     })
-    //     .catch(error => console.log(error))
-    // }
+    fetchTaco = id => {
+        axios
+        .get(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, {headers: {token: token}})
+        .then(res => {
+            this.setState({ taco: res.data });
+            console.log(this.state.taco, 'fetchTaco')
+
+        })
+        .catch(error => console.log(error, "fetchTacoError"))
+    }
 
     render() {
         console.log(this.state.taco, 'tacoState')
@@ -37,9 +44,9 @@ class Taco extends Component {
             return <div>Loading Taco information...</div>
 
         }
-        const { restaurantName, date, totalTacos, nameOfTaco, tortilla, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
+        const { restaurantName, date, totalTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
 
-
+        console.log(this.state)
         return (
             <div>
                 <div className="taco-card">
@@ -55,13 +62,14 @@ class Taco extends Component {
                         Taco Name: <strong>{nameOfTaco}</strong>
                     </div>
                     <div className="description">
-                        <h2>Description:
-                        {this.state.tortilla.map(tortilla => {return {tortilla}})}
-                        {/* {protein.map(protein => {return {protein}})}
-                        {topping.map(topping => {return {topping}})}
-                        {cheese.map(cheese => {return {cheese}})}
-                        {salsa.map(salsa => {return {salsa}})} */}
-                        </h2>
+                        <h2>Description:</h2>
+                        <p>{this.state.taco_ingredients.protein[0]}</p>
+                          {this.state.taco_ingredients.tortilla.map(function(tortilla) {return <p>{tortilla}</p>})} 
+        {this.state.taco_ingredients.protein.map(function(protein)  {return <p>{protein}</p>})}
+                         {this.state.taco_ingredients.topping.map(function(topping) {return <p>{topping}</p>})}
+                        {this.state.taco_ingredients.cheese.map(function(cheese) {return <p>{cheese}</p>})}
+                        {this.state.taco_ingredients.salsa.map(function(salsa) {return <p>{salsa}</p>})} 
+                        
                     </div>
                     <div className="rating">
                     <h1>"Overall Rating"</h1>
