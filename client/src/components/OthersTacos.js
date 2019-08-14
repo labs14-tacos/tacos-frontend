@@ -35,7 +35,14 @@ class OthersTacos extends React.Component {
                 </Button>
             </ButtonGroup>
             <GridList>
-            {this.state.tacofeed.map(taco => <GridListTile component={RouterLink} to="/taco" key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>)}
+            {this.state.tacofeed.map(taco => {const tacoInfo = taco; console.log(taco);
+             return <GridListTile component={RouterLink} to={{pathname:"/taco", state: {restaurantName: taco.restaurantName, date: taco.date, totalTacos: taco.totalTacos, nameOfTaco: taco.nameOfTaco, tortilla: taco.ingredients.tortilla,
+                protein: taco.ingredients.protein,
+                topping: taco.ingredients.topping,
+                
+                salsa: taco.ingredients.salsa,
+                cheese: taco.ingredients.cheese, rating: taco.rating, notes: taco.notes, tacoLogPhoto: taco.tacoLogPhoto, t_rating: taco.t_rating, a_rating: taco.a_rating, c_rating: taco.c_rating, o_rating: taco.o_rating}}}
+            key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>})}
             </GridList>
             </div>
         )

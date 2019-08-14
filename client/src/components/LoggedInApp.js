@@ -40,7 +40,7 @@ class LoggedInApp extends React.Component {
         <Route exact path="/my-profile" component={User}/> 
         <Route exact path="/update-profile" component={UpdateUserProfile} />
         <Route exact path="/user" component={TacoLogHomepage} />
-        <Route exact path="/taco" component={props => <Taco taco={this.taco} />} />
+        <Route exact path="/taco" component={Taco} />
     </div>
   );
   }
