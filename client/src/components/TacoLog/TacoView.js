@@ -143,7 +143,6 @@ class TacoView extends Component {
           <button onClick={this.postTacolog}>Save</button>
         </div>
         <form>
-          <h2>Name of Taco:</h2>
           <TextField
             type='text'
             name='date'
