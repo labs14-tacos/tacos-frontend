@@ -16,6 +16,10 @@ class User extends React.Component {
     componentDidMount() {
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/my_info`, {headers: {token: `${token}`}}).then(user => this.setState({user: user.data})).catch(error=> console.log(error));
     }
+
+    passProps() {
+       
+    }
     render() {
         console.log(this.state.user, "user console log")
     return (
@@ -31,6 +35,9 @@ class User extends React.Component {
                 <div className="button-container">
         <Button component={RouterLink} to="/my-tacos" variant="contained" size="medium" color="primary">
           My Tacos
+        </Button>
+        <Button component={RouterLink} onClick={this.passProps} to={{pathname:"/update-profile", state: {user: this.state.user} }} variant="contained" size="medium" color="primary">
+          Update Profile
         </Button>
         </div>
 
