@@ -1,113 +1,136 @@
 import React from 'react'; 
+import PhotoUpload from './cloudinary/UserTacoImage'
+import {Paper, Button} from '@material-ui/core/';
+import Axios from 'axios';
+
+const token = sessionStorage.getItem("token");
 
 // this can be used as the update area for the logged-in person's profile info
 class UpdateUserProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
-            userPhoto: "",
-            favTaco: "",
-            instaHandle: "",
-            twitterHandle: "",
-            facebookPage: "",
-            website: ""
+           firstName: '',
+           lastName: '',
+           favTaco: '',
+           userPhoto: '', 
+           email: '',
+           facebookPage: '',
+           twitterHandle: '',
+           instaHandle: '',
+           website: ''
         };
+    }
+
+    componentDidMount() {
+      let  userInfo = this.props.location.state.user; 
+        this.setState({
+            firstName: userInfo.firstName,
+            lastName: userInfo.lastName,
+            favTaco: userInfo.favTaco,
+            userPhoto: userInfo.userPhoto, 
+            email: userInfo.email,
+            facebookPage: userInfo.facebookPage,
+            twitterHandle: userInfo.twitterHandle,
+            instaHandle: userInfo.instaHandle,
+            website: userInfo.website
+        });
+
+        console.log("componentDidMount in update profile", userInfo);
     }
     
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
     };
+
+    setUserPhoto = userPhoto => {
+        this.setState({userPhoto})
+
+    }
+
     
     updateProfile = event => {
         event.preventDefault();
-        const id = this.props.match.params.id;
-        const userProfile = {
-            ...this.state
-        };
-        this.props.UpdateUserProfile(id, userProfile);
-        this.props.history.push('/');
+        Axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/users`, this.state, {headers: {token: token}} ).then(res => console.log(res)).catch(err => console.log(err))
     };
     
     render() {
+        // console.log(this.props.location.state.user, "update user profile props")
         return(
-            <>
-                <div>
-                    <h2 className="form-heading">Update Taco Log</h2>
-                    <form className="edit-form">
-                        <input
+           
+               
+               <Paper>
+                <form>
+                <PhotoUpload setUserPhoto={this.setUserPhoto}/>
+                <p>First name:</p>
+                <input
                             type="text"
                             name="firstName"
+                            value={this.state.firstName}
                             onChange={this.handleChange}
-                            value={this.firstName}
-                            placeholder="First Name"
+                            placeholder={this.state.firstName}
                         />
-                        <input
+                <p>Last Name</p>
+                <input
+                    type="text"
+                    name="lastName"         
+                    value={this.state.lastName}
+                    onChange={this.handleChange}
+                    placeholder={this.state.lastName}
+                />
+                <p>Email:</p>
+                <input
                             type="text"
-                            name="lastName"
+                            name="user.email"
                             onChange={this.handleChange}
-                            value={this.lastName}
-                            placeholder="Last Name"
+                            placeholder={this.state.email}
                         />
-                        <input
-                            type="text"
-                            name="email"
-                            onChange={this.handleChange}
-                            value={this.email}
-                            placeholder="Email"
-                        />
-                        <input
-                            type="text"
-                            name="userPhoto"
-                            onChange={this.handleChange}
-                            value={this.userPhoto}
-                            placeholder="Img url"
-                        />
-                        />
-                        <input
-                            type="text"
-                            name="favTaco"
-                            onChange={this.handleChange}
-                            value={this.favTaco}
-                            placeholder="Favorite Taco"
-                        />
-                        />
-                        <input
+                <p>Instagram:</p>
+                <input
                             type="text"
                             name="instaHandle"
                             onChange={this.handleChange}
-                            value={this.instaHandle}
+                            value={this.state.instaHandle}
                             placeholder="Instagram Account Here"
-                        />
-                        <input
+                        />            
+                <p>Twitter:</p>
+                <input
                             type="text"
                             name="twitterHandle"
                             onChange={this.handleChange}
-                            value={this.twitterHandle}
+                            value={this.state.twitterHandle}
                             placeholder="Twitter Handle Here"
                         />
-                        <input
+                <p>Facebook:</p>
+                <input
                             type="text"
                             name="facebookPage"
                             onChange={this.handleChange}
-                            value={this.facebookPage}
+                            value={this.state.facebookPage}
                             placeholder="Facebook Page Here"
                         />
-                        <input
+                <p>Website:</p> 
+                <input
                             type="text"
+                            value={this.state.website}
                             name="website"
                             onChange={this.handleChange}
-                            value={this.website}
-                            placeholder="Your Website Here"
+                            placeholder="Personal website here"
                         />
-                        <button type="submit" onClick={this.updateProfile} className="btn">
-                            Save
-                        </button>
-                    </form>
-                </div>
-            </>
+                <p>Favorite Taco:</p>
+                <input
+                            type="text"
+                            name="favTaco"
+                            value={this.state.favTaco}
+                            onChange={this.handleChange}
+                            placeholder="Favorite Taco"
+                />
+                <button type="submit" onClick={this.updateProfile} className="btn">
+                    Save
+                </button>
+                </form>
+               </Paper>
+               
         );
     }
     }

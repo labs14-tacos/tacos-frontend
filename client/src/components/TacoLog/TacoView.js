@@ -5,8 +5,11 @@ import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
 import Checkbox from '@material-ui/core/Checkbox';
 import DatePicker from 'react-date-picker';
+import TacoImage from '../cloudinary/TacoImage';
 
 import axios from 'axios';
+
+const token = sessionStorage.getItem('token');
 
 
 class TacoView extends Component {
@@ -21,6 +24,7 @@ class TacoView extends Component {
     o_rating: null,
     notes: '',
     date: new Date(),
+    numberOfTacos: 1,
 
     tortilla: [],
     protein: [],
@@ -119,9 +123,36 @@ class TacoView extends Component {
     this.setState({ ...this.state, crunchy: event.target.checked });
   };
 
+  setTacoLogPhoto = tacoLogPhoto => {
+    this.setState({ tacoLogPhoto })
+  }
+
   postTacoLog = (event) => {
     event.preventDefault();
-    axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, {/**insert taco log here */}).then(res => console.log(res)).catch(err => console.log(err));
+    const ingredients = {
+      tortilla: this.state.tortilla,
+      protein: this.state.protein,
+      cheese: this.state.cheese,
+      topping: this.state.topping,
+      salsa: this.state.salsa,
+      crunchy: this.state.crunchy
+    }
+    const taco = {
+      nameOfTaco: this.state.nameOfTaco,
+      tacoLogPhoto: this.state.tacoLogPhoto,
+      restaurantName: this.state.restaurantName,
+      rating: this.state.rating,
+      numberOfTacos: this.state.numberOfTacos,
+      t_rating: this.state.t_rating,
+      a_rating: this.state.a_rating,
+      c_rating: this.state.c_rating,
+      o_rating: this.state.o_rating,
+      notes: this.state.notes,
+      date: this.state.date,
+      ingredients: ingredients
+    }
+    console.log("taco", taco)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, taco, { headers: { token: token } }).then(res => console.log(res)).catch(err => console.log(err));
   }
 
   viewTacoLog = (event, tacolog_id) => {
@@ -137,16 +168,30 @@ class TacoView extends Component {
     return (
 
       <div>
-        <div>
-          <h1>Log A Taco:</h1>
-          <button onClick={this.postTacolog}>Save</button>
-        </div>
+        <h1>Log A Taco:</h1>
+      <TacoIngredients
+          addToTortillaList={this.addToTortillaList}
+          addToProteinList={this.addToProteinList}
+          addToCheeseList={this.addToCheeseList}
+          addToToppingList={this.addToToppingList}
+          addToSalsaList={this.addToSalsaList}
+          deleteFromTortillaList={this.deleteFromTortillaList}
+          deleteFromProteinList={this.deleteFromProteinList}
+          deleteFromCheeseList={this.deleteFromCheeseList}
+          deleteFromToppingList={this.deleteFromToppingList}
+          deleteFromSalsaList={this.deleteFromSalsaList}
+          tortilla={this.state.tortilla}
+          protein={this.state.protein}
+          cheese={this.state.cheese}
+          topping={this.state.topping}
+          salsa={this.state.salsa}
+        />
         <form>
-          <h2>Name of Taco:</h2>
           <DatePicker
             onChange={this.onChange}
             value={this.state.date}
           />
+          <TacoImage setTacoLogPhoto={this.setTacoLogPhoto} />
           <TextField
             type='text'
             name='nameOfTaco'
@@ -168,24 +213,13 @@ class TacoView extends Component {
             onChange={this.handleChange}
             label="Wanna taco 'bout it?"
           />
-        </form>
-        <TacoIngredients
-          addToTortillaList={this.addToTortillaList}
-          addToProteinList={this.addToProteinList}
-          addToCheeseList={this.addToCheeseList}
-          addToToppingList={this.addToToppingList}
-          addToSalsaList={this.addToSalsaList}
-          deleteFromTortillaList={this.deleteFromTortillaList}
-          deleteFromProteinList={this.deleteFromProteinList}
-          deleteFromCheeseList={this.deleteFromCheeseList}
-          deleteFromToppingList={this.deleteFromToppingList}
-          deleteFromSalsaList={this.deleteFromSalsaList}
-          tortilla={this.state.tortilla}
-          protein={this.state.protein}
-          cheese={this.state.cheese}
-          topping={this.state.topping}
-          salsa={this.state.salsa}
-        />
+          <TextField
+            type='number'
+            name='numberOfTacos'
+            value={this.state.numberOfTacos}
+            onChange={this.handleChange}
+            label="How many tacos?"
+          />
         <div>
           <h3>Crunchy?</h3>
           <Checkbox
@@ -230,6 +264,9 @@ class TacoView extends Component {
             onChange={this.handleChange}
           />
         </div>
+        <button type='submit' onClick={this.postTacoLog}>Save Taco Log</button>
+        </form>
+        
       </div>
     )
   }

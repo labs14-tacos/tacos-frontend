@@ -19,7 +19,7 @@ class TacoIngredients extends Component {
     return (
       <div>
         <div>
-          <h2>Ingredients:</h2>
+          <h2>Description of Taco:</h2>
           {this.props.tortilla.map(ing => (
             <span className="tortilla" onClick={() => { this.props.deleteFromTortillaList(ing) }}>{ing}</span>
           ))}
