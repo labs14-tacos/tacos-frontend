@@ -4,6 +4,7 @@ import TacoIngredients from './TacoIngredients';
 import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
 import Checkbox from '@material-ui/core/Checkbox';
+import DatePicker from 'react-date-picker';
 
 import axios from 'axios';
 
@@ -19,7 +20,7 @@ class TacoView extends Component {
     c_rating: null,
     o_rating: null,
     notes: '',
-    date: '',
+    date: new Date(),
 
     tortilla: [],
     protein: [],
@@ -30,9 +31,7 @@ class TacoView extends Component {
     crunchy: false,
   }
 
-  onDayClick = (e, day) => {
-    alert(day);
-  }
+  onChange = date => this.setState({ date })
 
   handleChange = event => {
     this.setState({
@@ -143,12 +142,10 @@ class TacoView extends Component {
           <button onClick={this.postTacolog}>Save</button>
         </div>
         <form>
-          <TextField
-            type='text'
-            name='date'
+          <h2>Name of Taco:</h2>
+          <DatePicker
+            onChange={this.onChange}
             value={this.state.date}
-            onChange={this.handleChange}
-            label='Date'
           />
           <TextField
             type='text'
