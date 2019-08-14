@@ -27,12 +27,13 @@ class User extends React.Component {
                 <p>Instagram: {this.state.user.instaHandle}</p>
                 <p>Twitter: {this.state.user.twitterHandle}</p>
                 <p>Facebook: {this.state.user.facebookPage}</p> 
-                <p>Website: {this.state.user.website}</p>
+                <p>Website: {this.state.user.website}</p> 
                 <div className="button-container">
         <Button component={RouterLink} to="/my-tacos" variant="contained" size="medium" color="primary">
           My Tacos
         </Button>
         </div>
+
                </Paper>
         </div>
     )
