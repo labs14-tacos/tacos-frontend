@@ -17,7 +17,8 @@ class OthersTacos extends React.Component {
     componentDidMount() {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, {headers: {token:token}}).then(
             res => {
-                this.setState({tacofeed: res.data})
+                const reverseTaco = res.data.reverse()
+                this.setState({tacofeed: reverseTaco})
             }
         ).catch(error => console.log(error))
     }

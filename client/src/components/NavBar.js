@@ -27,7 +27,7 @@ export default function NavBar3({signout}) {
         </div>
         <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         
-            <i className="material-icons" style={{fontSize: "45px", color: "#fff"}}>dehaze</i>
+            <i className="material-icons" style={{fontSize: "45px", color: "#a83027"}}>dehaze</i>
         </Button>
         <Menu
             id="simple-menu"
