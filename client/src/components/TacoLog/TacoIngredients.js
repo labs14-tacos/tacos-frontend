@@ -38,19 +38,19 @@ class TacoIngredients extends Component {
         </div>
         <Tabs>
         <div label="Tortillas">
-            {this.state.tortillas.map(tortilla => <button onClick={() => { this.props.addToTortillaList(tortilla) }}>{tortilla}</button>)}
+            {this.state.tortillas.map(tortilla => <button className="ingBtn" onClick={() => { this.props.addToTortillaList(tortilla) }}>{tortilla}</button>)}
           </div>
           <div label="Proteins">
-            {this.state.proteins.map(protein => <button onClick={() => { this.props.addToProteinList(protein) }}>{protein}</button>)}
+            {this.state.proteins.map(protein => <button className="ingBtn" onClick={() => { this.props.addToProteinList(protein) }}>{protein}</button>)}
           </div>
           <div label="Cheeses">
-            {this.state.cheese.map(cheese => <button onClick={() => { this.props.addToCheeseList(cheese) }}>{cheese}</button>)}
+            {this.state.cheese.map(cheese => <button className="ingBtn" onClick={() => { this.props.addToCheeseList(cheese) }}>{cheese}</button>)}
           </div>
           <div label="Toppings">
-            {this.state.toppings.map(topping => <button onClick={() => { this.props.addToToppingList(topping) }}>{topping}</button>)}
+            {this.state.toppings.map(topping => <button className="ingBtn" onClick={() => { this.props.addToToppingList(topping) }}>{topping}</button>)}
           </div>
           <div label="Salsas">
-            {this.state.salsa.map(salsa => <button onClick={() => { this.props.addToSalsaList(salsa) }}>{salsa}</button>)}
+            {this.state.salsa.map(salsa => <button className="ingBtn" onClick={() => { this.props.addToSalsaList(salsa) }}>{salsa}</button>)}
           </div>
         </Tabs>
 

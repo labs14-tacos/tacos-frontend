@@ -188,33 +188,8 @@ class TacoView extends Component {
           salsa={this.state.salsa}
         />
         <form>
-          <DatePicker
-            onChange={this.onChange}
-            value={this.state.date}
-          />
-          <TacoImage className="tacoCloud" setTacoLogPhoto={this.setTacoLogPhoto} />
-          <TextField
-            type='text'
-            name='nameOfTaco'
-            value={this.state.nameOfTaco}
-            onChange={this.handleChange}
-            label='Taco Name'
-          />
-          <TextField
-            type='text'
-            name='restaurantName'
-            value={this.state.restaurantName}
-            onChange={this.handleChange}
-            label='Restaurant'
-          />
-          <TextField
-            type='text'
-            name='notes'
-            value={this.state.notes}
-            onChange={this.handleChange}
-            label="Wanna taco 'bout it?"
-          />
-          <TextField
+        <TextField
+            className='textField-num'
             type='number'
             name='numberOfTacos'
             value={this.state.numberOfTacos}
@@ -224,11 +199,42 @@ class TacoView extends Component {
           <div>
             <h3>Crunchy?</h3>
             <Checkbox
+              color='primary'
               name='crunchy'
               value={this.state.crunchy}
               onChange={this.handleCheck(this.state.crunchy)}
             />
           </div>
+          <DatePicker
+            onChange={this.onChange}
+            value={this.state.date}
+          />
+          <TacoImage className="tacoCloud" setTacoLogPhoto={this.setTacoLogPhoto} />
+          <TextField
+            className='textField'
+            type='text'
+            name='nameOfTaco'
+            value={this.state.nameOfTaco}
+            onChange={this.handleChange}
+            label='Taco Name'
+          />
+          <TextField
+            className='textField'
+            type='text'
+            name='restaurantName'
+            value={this.state.restaurantName}
+            onChange={this.handleChange}
+            label='Restaurant'
+          />
+          <TextField
+            className='textField'
+            type='text'
+            name='notes'
+            value={this.state.notes}
+            onChange={this.handleChange}
+            label="Wanna taco 'bout it?"
+          />
+         
           <div className="ratings">
             <h2>Overall Rating: {this.state.rating}</h2>
             <Rating
@@ -270,7 +276,7 @@ class TacoView extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <button type='submit' onClick={this.postTacoLog}>Save Taco Log</button>
+          <button className="saveButton" type='submit' onClick={this.postTacoLog}>Save Taco Log</button>
         </form>
 
       </div>
