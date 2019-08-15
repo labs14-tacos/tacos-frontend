@@ -1,6 +1,6 @@
 import React from 'react'; 
 import PhotoUpload from './cloudinary/UserTacoImage'
-import {Paper, Button} from '@material-ui/core/';
+import {Paper, Button, TextField} from '@material-ui/core/';
 import Axios from 'axios';
 
 const token = sessionStorage.getItem("token");
@@ -61,75 +61,83 @@ class UpdateUserProfile extends React.Component {
                
                <Paper>
                 <form>
-                <PhotoUpload setUserPhoto={this.setUserPhoto}/>
-                <p>First name:</p>
-                <input
-                            type="text"
+               
+                <div >
+                <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto}/>
+                </div>
+                <div className="flex-container">
+                
+                <TextField
+                            label="First Name"
                             name="firstName"
                             value={this.state.firstName}
                             onChange={this.handleChange}
                             placeholder={this.state.firstName}
                         />
-                <p>Last Name</p>
-                <input
-                    type="text"
+        
+                <TextField
+                    className="wider-text-field"
+                    label="Last Name"
                     name="lastName"         
                     value={this.state.lastName}
                     onChange={this.handleChange}
                     placeholder={this.state.lastName}
                 />
-                <p>Email:</p>
-                <input
-                            type="text"
-                            name="user.email"
+             
+                <TextField
+                            disabled
+                            label="Email"
+                            name="email"
                             onChange={this.handleChange}
-                            placeholder={this.state.email}
+                            value={this.state.email}
                         />
-                <p>Instagram:</p>
-                <input
-                            type="text"
+               
+                <TextField
+                            label="Instagram Handle"
                             name="instaHandle"
                             onChange={this.handleChange}
                             value={this.state.instaHandle}
-                            placeholder="Instagram Account Here"
+                            placeholder="Instagram Handle"
                         />            
-                <p>Twitter:</p>
-                <input
-                            type="text"
+             
+                <TextField
+                            label="Twitter Handle"
                             name="twitterHandle"
                             onChange={this.handleChange}
                             value={this.state.twitterHandle}
                             placeholder="Twitter Handle Here"
                         />
-                <p>Facebook:</p>
-                <input
-                            type="text"
+            
+                <TextField
+                            label="Facebook Page"
                             name="facebookPage"
                             onChange={this.handleChange}
                             value={this.state.facebookPage}
                             placeholder="Facebook Page Here"
                         />
-                <p>Website:</p> 
-                <input
-                            type="text"
+             
+                <TextField
+                            label="Website"
                             value={this.state.website}
                             name="website"
                             onChange={this.handleChange}
                             placeholder="Personal website here"
                         />
-                <p>Favorite Taco:</p>
-                <input
-                            type="text"
+             
+                <TextField
+                            label="Favorite Taco"
                             name="favTaco"
                             value={this.state.favTaco}
                             onChange={this.handleChange}
                             placeholder="Favorite Taco"
                 />
-                <button type="submit" onClick={this.updateProfile} className="btn">
-                    Save
-                </button>
+         
+                </div>
+                {/* <button type="submit" onClick={this.updateProfile} component={RouterLink} to="/my-profile" className="btn"> */}
+                    {/* Save
+                </button> */}
                 </form>
-               </Paper>
+                </Paper>
                
         );
     }
