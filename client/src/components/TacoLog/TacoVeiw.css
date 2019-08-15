@@ -1,0 +1,26 @@
+.tacoLogContainer {
+ padding: 5px 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}
+
+#tacoCloudHeader {
+  width: 300px;
+  min-height: 300px;
+  margin-top: 15px; 
+}
+
+.rating {
+  width: 119px;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
