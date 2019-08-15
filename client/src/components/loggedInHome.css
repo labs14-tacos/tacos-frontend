@@ -1,0 +1,9 @@
+#homeButton {
+  background: #a83027;
+  width: 200px;
+  border-radius: 20px
+}
+
+#homeButton:hover {
+  background: #f44336
+}
