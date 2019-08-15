@@ -8,6 +8,7 @@ import DatePicker from 'react-date-picker';
 import TacoImage from '../cloudinary/TacoImage';
 
 import axios from 'axios';
+import './TacoVeiw.css';
 
 const token = sessionStorage.getItem('token');
 
@@ -167,9 +168,9 @@ class TacoView extends Component {
     console.log("state", this.state)
     return (
 
-      <div>
+      <div className="tacoLogContainer">
         <h1>Log A Taco:</h1>
-      <TacoIngredients
+        <TacoIngredients
           addToTortillaList={this.addToTortillaList}
           addToProteinList={this.addToProteinList}
           addToCheeseList={this.addToCheeseList}
@@ -187,12 +188,30 @@ class TacoView extends Component {
           salsa={this.state.salsa}
         />
         <form>
+        <TextField
+            className='textField-num'
+            type='number'
+            name='numberOfTacos'
+            value={this.state.numberOfTacos}
+            onChange={this.handleChange}
+            label="How many tacos?"
+          />
+          <div>
+            <h3>Crunchy?</h3>
+            <Checkbox
+              color='primary'
+              name='crunchy'
+              value={this.state.crunchy}
+              onChange={this.handleCheck(this.state.crunchy)}
+            />
+          </div>
           <DatePicker
             onChange={this.onChange}
             value={this.state.date}
           />
-          <TacoImage setTacoLogPhoto={this.setTacoLogPhoto} />
+          <TacoImage className="tacoCloud" setTacoLogPhoto={this.setTacoLogPhoto} />
           <TextField
+            className='textField'
             type='text'
             name='nameOfTaco'
             value={this.state.nameOfTaco}
@@ -200,6 +219,7 @@ class TacoView extends Component {
             label='Taco Name'
           />
           <TextField
+            className='textField'
             type='text'
             name='restaurantName'
             value={this.state.restaurantName}
@@ -207,66 +227,58 @@ class TacoView extends Component {
             label='Restaurant'
           />
           <TextField
+            className='textField'
             type='text'
             name='notes'
             value={this.state.notes}
             onChange={this.handleChange}
             label="Wanna taco 'bout it?"
           />
-          <TextField
-            type='number'
-            name='numberOfTacos'
-            value={this.state.numberOfTacos}
-            onChange={this.handleChange}
-            label="How many tacos?"
-          />
-        <div>
-          <h3>Crunchy?</h3>
-          <Checkbox
-            name='crunchy'
-            value={this.state.crunchy}
-            onChange={this.handleCheck(this.state.crunchy)}
-          />
-        </div>
-        <div>
-          <h2>Overall Rating: {this.state.rating}</h2>
-          <Rating
-            name='rating'
-            value={this.state.rating}
-            onChange={this.handleChange}
-          />
-          <h3>"T" Rating: {this.state.t_rating}</h3>
-          <h4>"<span>T</span>he Fundamentals"</h4>
-          <Rating
-            name='t_rating'
-            value={this.state.t_rating}
-            onChange={this.handleChange}
-          />
-          <h3>"A" Rating: {this.state.a_rating}</h3>
-          <h4>"<span>A</span>lways Different, Positive, Special"</h4>
-          <Rating
-            name='a_rating'
-            value={this.state.a_rating}
-            onChange={this.handleChange}
-          />
-          <h3>"C" Rating: {this.state.c_rating}</h3>
-          <h4>"<span>C</span>onsistent Commitment"</h4>
-          <Rating
-            name='c_rating'
-            value={this.state.c_rating}
-            onChange={this.handleChange}
-          />
-          <h3>"O" Rating: {this.state.o_rating}</h3>
-          <h4>"<span>O</span>h, Wow!"</h4>
-          <Rating
-            name='o_rating'
-            value={this.state.o_rating}
-            onChange={this.handleChange}
-          />
-        </div>
-        <button type='submit' onClick={this.postTacoLog}>Save Taco Log</button>
+         
+          <div className="ratings">
+            <h2>Overall Rating: {this.state.rating}</h2>
+            <Rating
+              className='rating'
+              name='rating'
+              value={this.state.rating}
+              onChange={this.handleChange}
+            />
+            <h3>"T" Rating: {this.state.t_rating}</h3>
+            <h4>"<span>T</span>he Fundamentals"</h4>
+            <Rating
+              className='rating'
+              name='t_rating'
+              value={this.state.t_rating}
+              onChange={this.handleChange}
+            />
+            <h3>"A" Rating: {this.state.a_rating}</h3>
+            <h4>"<span>A</span>lways Different, Positive, Special"</h4>
+            <Rating
+              className='rating'
+              name='a_rating'
+              value={this.state.a_rating}
+              onChange={this.handleChange}
+            />
+            <h3>"C" Rating: {this.state.c_rating}</h3>
+            <h4>"<span>C</span>onsistent Commitment"</h4>
+            <Rating
+              className='rating'
+              name='c_rating'
+              value={this.state.c_rating}
+              onChange={this.handleChange}
+            />
+            <h3>"O" Rating: {this.state.o_rating}</h3>
+            <h4>"<span>O</span>h, Wow!"</h4>
+            <Rating
+              className='rating'
+              name='o_rating'
+              value={this.state.o_rating}
+              onChange={this.handleChange}
+            />
+          </div>
+          <button className="saveButton" type='submit' onClick={this.postTacoLog}>Save Taco Log</button>
         </form>
-        
+
       </div>
     )
   }

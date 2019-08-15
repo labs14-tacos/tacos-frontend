@@ -92,7 +92,7 @@ export const tortillas = [
   'Corn - Blue',
   'Double Tortillas',
   'Flour',
-  'Grilled cheese',
+  'Grilled Cheese',
   // crunchy or no?
   //other -- please describe
   ] 
