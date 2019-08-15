@@ -6,6 +6,8 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
+const token = sessionStorage.getItem("token")
+
 
 class MyTacoFeed extends React.Component {
     state = {
@@ -13,7 +15,7 @@ class MyTacoFeed extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`).then(
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`, {headers: {token: token}}).then(
             res => {
                 this.setState({tacofeed: res.data})
             }
