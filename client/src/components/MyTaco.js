@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const token = sessionStorage.getItem("token")
 
-class Taco extends Component {
+class MyTaco extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,8 +38,16 @@ class Taco extends Component {
         .catch(error => console.log(error, "fetchTacoError"))
     }
 
-    
+    onDelete(){
+        let id = this.state.taco.id;
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, {headers: {token: token}})
+          .then(response => {
+            this.props.history.push('/api/mytacolog');
+          }).catch(err => console.log(err));
 
+        }
+
+    
     render() {
         console.log(this.state.taco, 'tacoState')
 
@@ -113,10 +121,21 @@ class Taco extends Component {
                         <h2>{notes}</h2>
                     
                     </div>
+                    <button onCLick={this.onDelete.bind(this)} className="delete-btn">Delete Taco log</button>
+
+                    <GridList>
+            {this.state.tacofeed.map(taco => {const ingredients = JSON.stringify(taco.ingredients); console.log(taco);
+             return <GridListTile component={RouterLink} to={{pathname:"/taco", state: {restaurantName: taco.restaurantName, date: taco.date, totalTacos: taco.totalTacos, nameOfTaco: taco.nameOfTaco,
+                ingredients: ingredients,
+
+                id: taco.id,
+                rating: taco.rating, notes: taco.notes, tacoLogPhoto: taco.tacoLogPhoto, t_rating: taco.t_rating, a_rating: taco.a_rating, c_rating: taco.c_rating, o_rating: taco.o_rating}}}
+            key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>})}
+            </GridList>
                 </div>
             </div>
         )
     }
 }
 
-export default Taco;
+export default MyTaco;
