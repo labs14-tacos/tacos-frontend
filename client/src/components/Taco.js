@@ -59,7 +59,7 @@ class Taco extends Component {
             return <div>Loading Taco information...</div>
 
         }
-        const { restaurantName, date, totalTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
+        const { restaurantName, date, numberOfTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
 
         console.log(this.state)
         return (
@@ -71,7 +71,7 @@ class Taco extends Component {
                         <h2>{date}</h2>
                     </div>
                     <div className="total-tacos">
-                        Total Tacos: <strong>{totalTacos}</strong>
+                        Total Tacos: <strong>{numberOfTacos}</strong>
                     </div>
                     <img src={tacoLogPhoto} alt={nameOfTaco}/>
                     <div className="taco-name">
