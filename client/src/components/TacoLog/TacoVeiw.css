@@ -171,3 +171,12 @@ span {
 
 /* update profile styles */
 
+.flex-container {
+  height: 33rem;
+  justify-content: space-evenly;
+  width: 15rem;
+}
+
+#userTextField {
+  margin-bottom: 1rem;
+}
