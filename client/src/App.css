@@ -39,6 +39,24 @@
   justify-content: center;
 } 
 
+.flex-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+
+#photo-container {
+  max-width: 250px;
+  max-height: 100px;
+}
+
 .image {
   max-width: 250px;
   max-height: 250px;

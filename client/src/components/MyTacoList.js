@@ -10,15 +10,13 @@ import './TacoViews.css';
 const token = sessionStorage.getItem("token")
 
 
-
 class MyTacoFeed extends React.Component {
     state = {
         tacofeed: []
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`, {headers: {token: token}}
-        ).then(
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`, {headers: {token: token}}).then(
             res => {
                 const reverseTaco = res.data.reverse()
                 this.setState({tacofeed: reverseTaco})

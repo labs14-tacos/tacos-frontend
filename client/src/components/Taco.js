@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ButtonGroup from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
 const token = sessionStorage.getItem("token")
@@ -14,17 +15,31 @@ class Taco extends Component {
         this.state = {
             taco: {},
             taco_id: null,
-            taco_ingredients: {protein: [], topping: [], salsa: [], cheese: [], tortilla: []}
+            taco_ingredients: {protein: [], topping: [], salsa: [], cheese: [], tortilla: []}, 
+            tacoCreatorId: '', 
+            tacoFanFirstName: 'Taco',
+            tacoFanLastName: 'Taco'
         };
     }
 
     componentDidMount() {
         const ing = this.props.location.state.ingredients
         const ingredientObject = JSON.parse(ing);
-        this.setState({taco_id: this.props.location.state.id, taco_ingredients: ingredientObject});
-        this.fetchTaco(this.props.location.state.id);
+        this.setState({taco_id: this.props.location.state.id, taco_ingredients: ingredientObject, tacoCreatorId: this.props.location.state.firebaseId});
+        this.fetchTaco(this.props.location.state.id); 
+        this.getTacoFan();
         console.log(ingredientObject, "ingredients");
+    } 
+
+
+    getTacoFan() {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/tacofan_info/${this.state.tacoCreatorId}`, {headers: {token: token}}).then(res => { console.log("it worked!!!!");
+        this.setState({
+           tacoFanFirstName: res.data.firstName, 
+           tacoFanLastName: res.data.lastName
+       })}).catch(err => console.log("this is an error in the getTacoFan function", err))
     }
+
 
     fetchTaco = id => {
         axios
@@ -50,6 +65,7 @@ class Taco extends Component {
         return (
             <div>
                 <div className="taco-card">
+                    <Button component={RouterLink} to={{pathname:"/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId }}}>{this.state.tacoFanFirstName} {this.state.tacoFanLastName}</Button>
                     <h2>{restaurantName}</h2>
                     <div className="date">
                         <h2>{date}</h2>
