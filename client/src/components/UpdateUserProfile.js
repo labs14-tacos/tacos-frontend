@@ -2,6 +2,7 @@ import React from 'react';
 import PhotoUpload from './cloudinary/UserTacoImage'
 import {Paper, Button, TextField} from '@material-ui/core/';
 import Axios from 'axios';
+import {Link as RouterLink} from 'react-router-dom';
 
 const token = sessionStorage.getItem("token");
 
@@ -133,10 +134,13 @@ class UpdateUserProfile extends React.Component {
                 />
          
                 </div>
-                {/* <button type="submit" onClick={this.updateProfile} component={RouterLink} to="/my-profile" className="btn"> */}
-                    {/* Save
-                </button> */}
+                <Button type="submit" onClick={this.updateProfile} >
+                    Save
+                </Button>
                 </form>
+                <Button component={RouterLink} to="/my-profile">
+                    Back to Profile
+                </Button>
                 </Paper>
                
         );

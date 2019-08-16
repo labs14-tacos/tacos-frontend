@@ -17,7 +17,7 @@ import Button from '@material-ui/core/Button';
 import sun from '../images/sun.svg';
 import NavBar from './NavBar'
 import Taco from '../components/Taco';
-
+import Tacofan from '../components/TacoFan.js';
 // The new App.js! 
 
 const token = sessionStorage.getItem('token');
@@ -41,6 +41,7 @@ class LoggedInApp extends React.Component {
         <Route exact path="/update-profile" component={UpdateUserProfile} />
         <Route exact path="/user" component={TacoLogHomepage} />
         <Route exact path="/taco" component={Taco} />
+        <Route exact path="/tacofan" component={Tacofan} />
     </div>
   );
   }
