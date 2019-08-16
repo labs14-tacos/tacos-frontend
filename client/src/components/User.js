@@ -27,11 +27,11 @@ class User extends React.Component {
                 <Paper id="paper">
                     <img className="avatar-image" src={this.state.user.userPhoto} />
                     <h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
-                    <p>Email: {this.state.user.email}</p>
-                    <p>Instagram: {this.state.user.instaHandle}</p>
-                    <p>Twitter: {this.state.user.twitterHandle}</p>
-                    <p>Facebook: {this.state.user.facebookPage}</p>
-                    <p>Website: {this.state.user.website}</p>
+                    <p><span>Email:</span> {this.state.user.email}</p>
+                    <p><span>Instagram:</span> {this.state.user.instaHandle}</p>
+                    <p><span>Twitter:</span> {this.state.user.twitterHandle}</p>
+                    <p><span>Facebook:</span> {this.state.user.facebookPage}</p>
+                    <p><span>Website:</span> {this.state.user.website}</p>
                     <div className="button-container">
 
                         <Button id="proBtn" component={RouterLink} to="/my-tacos" variant="contained" size="medium" color="primary">
