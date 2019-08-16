@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -15,10 +15,10 @@ class MyTacoFeed extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`, {headers: {token: token}}).then(
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`, { headers: { token: token } }).then(
             res => {
                 const reverseTaco = res.data.reverse()
-                this.setState({tacofeed: reverseTaco})
+                this.setState({ tacofeed: reverseTaco })
             }
         ).catch(error => console.log(error))
     }
@@ -27,18 +27,49 @@ class MyTacoFeed extends React.Component {
         console.log(this.state.tacofeed, "tacofeed");
         return (
             <div>
-            <ButtonGroup id="btnGrp" 
-              aria-label="full-width contained primary button group">
-                <Button id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained" >
-                    My Tacos
+                <ButtonGroup id="btnGrp"
+                    aria-label="full-width contained primary button group">
+                    <Button id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained" >
+                        My Tacos
                 </Button>
-                <Button component={RouterLink} to="/explore-tacos" color="primary" variant="outlined"> 
-                    Other People's Tacos
+                    <Button component={RouterLink} to="/explore-tacos" color="primary" variant="outlined">
+                        Other People's Tacos
                 </Button>
-            </ButtonGroup>
-            <GridList>
-            {this.state.tacofeed.map(taco => <GridListTile key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>)}
-            </GridList>
+                </ButtonGroup>
+                <GridList>
+                    {this.state.tacofeed.map(taco => {
+                        const ingredients = JSON.stringify(taco.ingredients);
+                        console.log(taco);
+                        return <GridListTile
+                            component={RouterLink}
+                            to={{
+                                pathname: "/taco",
+                                state: {
+                                    restaurantName: taco.restaurantName,
+                                    date: taco.date,
+                                    totalTacos: taco.totalTacos,
+                                    nameOfTaco: taco.nameOfTaco,
+                                    ingredients: ingredients,
+                                    firebaseId: taco.firebaseId,
+                                    id: taco.id,
+                                    rating: taco.rating,
+                                    notes: taco.notes,
+                                    tacoLogPhoto: taco.tacoLogPhoto,
+                                    t_rating: taco.t_rating,
+                                    a_rating: taco.a_rating,
+                                    c_rating: taco.c_rating,
+                                    o_rating: taco.o_rating
+                                }
+                            }}
+                            key={taco.id}
+                        >
+                            <img
+                                src={taco.tacoLogPhoto}
+                                alt={taco.nameOfTaco}
+                            />
+                        </GridListTile>
+                    })}
+                </GridList>
             </div>
         )
     }
