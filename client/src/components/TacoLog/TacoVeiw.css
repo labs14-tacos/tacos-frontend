@@ -140,3 +140,34 @@ span {
   width: 300px;
   height: auto;
 }
+
+/* Personal Profile View */
+
+#paper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#proBtn {
+  background: #a83027;
+  width: 200px;
+  border-radius: 20px;
+  margin: 0.5rem;
+}
+
+#proBtn span {
+  color: white;
+} 
+
+#proBtn:hover {
+  background: #f44336;
+}
+
+/* update profile styles */
+
