@@ -10,6 +10,9 @@ form {
   padding: 3px 0;
   margin: 3px;
 }
+ .redIng {
+   color: #a83027;
+ }
 
 .rating {
   width: 119px;
@@ -53,7 +56,8 @@ form {
 #tacoCloudHeader {
   width: 300px;
   min-height: 300px;
-  margin-top: 15px; 
+  margin: 2rem; 
+
 }
 
 #tacoCloudHeader img {
@@ -83,4 +87,22 @@ form {
 }
 .tabs {
   width: 95vw;
+}
+
+h3 {
+  margin-top:  2rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.checkbox {
+  margin-bottom: 2rem;
+}
+
+.checkbox h3 {
+  margin: 0;
 }

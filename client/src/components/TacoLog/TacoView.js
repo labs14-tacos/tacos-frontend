@@ -160,14 +160,11 @@ class TacoView extends Component {
     event.preventDefault();
     axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${tacolog_id}`)
       .then(res => this.setState({ tacolog: res.data }))
-      // fix this to be consistent 
       .catch(err => console.log(err));
   }
 
   render() {
-    console.log("state", this.state)
     return (
-
       <div className="tacoLogContainer">
         <h1>Log A Taco:</h1>
         <TacoIngredients
@@ -196,7 +193,7 @@ class TacoView extends Component {
             onChange={this.handleChange}
             label="How many tacos?"
           />
-          <div>
+          <div className='checkbox'>
             <h3>Crunchy?</h3>
             <Checkbox
               color='primary'
