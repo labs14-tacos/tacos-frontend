@@ -5,6 +5,9 @@ import GridListTile from '@material-ui/core/GridListTile';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import './TacoViews.css';
+
+const token = sessionStorage.getItem("token")
 
 
 class MyTacoFeed extends React.Component {
@@ -13,9 +16,10 @@ class MyTacoFeed extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`).then(
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/mytacolog`, {headers: {token: token}}).then(
             res => {
-                this.setState({tacofeed: res.data})
+                const reverseTaco = res.data.reverse()
+                this.setState({tacofeed: reverseTaco})
             }
         ).catch(error => console.log(error))
     }

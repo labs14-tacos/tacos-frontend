@@ -1,5 +1,5 @@
 .navbar {
-    background: #2196f3;
+    background: #f44336;
     height: 60px;
 }
 .navbar__main-flex {
@@ -18,4 +18,6 @@
 }
 .menu__item {
     text-decoration: none;
+    width: 100%;
+    color: #a83027;
 }
