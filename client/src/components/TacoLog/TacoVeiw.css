@@ -133,3 +133,10 @@ span {
 #btnGrp {
   margin: 1rem;
 }
+
+/* Ind. taco card styles */
+
+.taco-card img {
+  width: 300px;
+  height: auto;
+}
