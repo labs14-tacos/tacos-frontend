@@ -5,6 +5,10 @@ form {
   margin-top: 25px;
 }
 
+.blkIng {
+  color: black;
+}
+
 .ingBtn {
   width: 133px;
   padding: 3px 0;
@@ -32,7 +36,7 @@ form {
   color: white;
   font-weight: bold;
   font-size: 17px;
-  margin: 20px;
+  margin: 2rem;
 }
 
 .saveButton:hover {
@@ -89,6 +93,11 @@ form {
   width: 95vw;
 }
 
+h1 {
+  color: #a83027;
+  font-size: 3rem;
+}
+
 h3 {
   margin-top:  2rem;
   margin-bottom: 1rem;
@@ -105,4 +114,8 @@ h4 {
 
 .checkbox h3 {
   margin: 0;
+}
+
+span {
+  color: #a83027
 }

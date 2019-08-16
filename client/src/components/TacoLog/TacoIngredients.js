@@ -21,19 +21,19 @@ class TacoIngredients extends Component {
         <div>
           <h2>Description of Taco:</h2>
           {this.props.tortilla.map(ing => (
-            <span onClick={() => { this.props.deleteFromTortillaList(ing) }}>{ing + ', '}</span>
+            <span className="blkIng" onClick={() => { this.props.deleteFromTortillaList(ing) }}>{ing + ', '}</span>
           ))}
           {this.props.protein.map(ing => (
             <span className="redIng" onClick={() => { this.props.deleteFromProteinList(ing) }}>{ing + ', '}</span>
           ))}
           {this.props.cheese.map(ing => (
-            <span onClick={() => { this.props.deleteFromCheeseList(ing) }}>{ing + ', '}</span>
+            <span className="blkIng" onClick={() => { this.props.deleteFromCheeseList(ing) }}>{ing + ', '}</span>
           ))}
           {this.props.topping.map(ing => (
             <span className="redIng" onClick={() => { this.props.deleteFromToppingList(ing) }}>{ing + ', '}</span>
           ))}
           {this.props.salsa.map(ing => (
-            <span onClick={() => { this.props.deleteFromSalsaList(ing) }}>{ing + ', '}</span>
+            <span className="blkIng" onClick={() => { this.props.deleteFromSalsaList(ing) }}>{ing + ', '}</span>
           ))}
         </div>
         <Tabs>

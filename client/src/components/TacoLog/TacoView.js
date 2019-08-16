@@ -166,7 +166,7 @@ class TacoView extends Component {
   render() {
     return (
       <div className="tacoLogContainer">
-        <h1>Log A Taco:</h1>
+        <h1>Log A Taco</h1>
         <TacoIngredients
           addToTortillaList={this.addToTortillaList}
           addToProteinList={this.addToProteinList}
