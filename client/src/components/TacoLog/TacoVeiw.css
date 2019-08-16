@@ -119,3 +119,17 @@ h4 {
 span {
   color: #a83027
 }
+
+/* My Tacos/Other's Tacos view styles */
+
+#primaryBtn {
+  background-color: #a83027;
+}
+
+#primaryBtn span {
+  color: white;
+}
+
+#btnGrp {
+  margin: 1rem;
+}

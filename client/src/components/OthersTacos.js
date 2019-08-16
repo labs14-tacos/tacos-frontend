@@ -27,12 +27,12 @@ class OthersTacos extends React.Component {
         console.log(this.state.tacofeed, "TACOFEED")
         return (
             <div>
-            <ButtonGroup  
+            <ButtonGroup id="btnGrp" 
               aria-label="full-width contained primary button group">
                 <Button component={RouterLink} to="/my-tacos" color="primary" variant="outlined">
                     My Tacos
                 </Button>
-                <Button component={RouterLink} to="/explore-tacos" color="primary" variant="contained"> 
+                <Button id="primaryBtn" component={RouterLink} to="/explore-tacos" color="primary" variant="contained"> 
                     Other People's Tacos
                 </Button>
             </ButtonGroup>
