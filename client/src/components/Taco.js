@@ -79,7 +79,6 @@ class Taco extends Component {
                     </div>
                     <div className="description">
                         <h2>Description:</h2>
-                        <p>{this.state.taco_ingredients.protein[0]}</p>
                           {this.state.taco_ingredients.tortilla.map(function(tortilla) {return <p>{tortilla}</p>})} 
         {this.state.taco_ingredients.protein.map(function(protein)  {return <p>{protein}</p>})}
                          {this.state.taco_ingredients.topping.map(function(topping) {return <p>{topping}</p>})}
