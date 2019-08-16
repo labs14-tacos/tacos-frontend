@@ -24,14 +24,15 @@ class OthersTacos extends React.Component {
     }
 
     render() {
+        console.log(this.state.tacofeed, "TACOFEED")
         return (
             <div>
-            <ButtonGroup  
+            <ButtonGroup id="btnGrp" 
               aria-label="full-width contained primary button group">
                 <Button component={RouterLink} to="/my-tacos" color="primary" variant="outlined">
                     My Tacos
                 </Button>
-                <Button component={RouterLink} to="/explore-tacos" color="primary" variant="contained"> 
+                <Button id="primaryBtn" component={RouterLink} to="/explore-tacos" color="primary" variant="contained"> 
                     Other People's Tacos
                 </Button>
             </ButtonGroup>
@@ -39,7 +40,7 @@ class OthersTacos extends React.Component {
             {this.state.tacofeed.map(taco => {const ingredients = JSON.stringify(taco.ingredients); console.log(taco);
              return <GridListTile component={RouterLink} to={{pathname:"/taco", state: {restaurantName: taco.restaurantName, date: taco.date, totalTacos: taco.totalTacos, nameOfTaco: taco.nameOfTaco,
                 ingredients: ingredients,
-
+                firebaseId: taco.firebaseId,
                 id: taco.id,
                 rating: taco.rating, notes: taco.notes, tacoLogPhoto: taco.tacoLogPhoto, t_rating: taco.t_rating, a_rating: taco.a_rating, c_rating: taco.c_rating, o_rating: taco.o_rating}}}
             key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>})}

@@ -5,11 +5,18 @@ form {
   margin-top: 25px;
 }
 
+.blkIng {
+  color: black;
+}
+
 .ingBtn {
   width: 133px;
   padding: 3px 0;
   margin: 3px;
 }
+ .redIng {
+   color: #a83027;
+ }
 
 .rating {
   width: 119px;
@@ -29,7 +36,7 @@ form {
   color: white;
   font-weight: bold;
   font-size: 17px;
-  margin: 20px;
+  margin: 2rem;
 }
 
 .saveButton:hover {
@@ -53,10 +60,123 @@ form {
 #tacoCloudHeader {
   width: 300px;
   min-height: 300px;
-  margin-top: 15px; 
+  margin: 2rem; 
+
 }
 
 #tacoCloudHeader img {
   width: 300px;
   height: auto;
+}
+
+.tab-list {
+  border-bottom: 1px solid #ccc;
+  padding-left: 0;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  font-size: 15px
+}
+
+.tab-list-item {
+  list-style: none;
+  margin-bottom: 1px;
+  padding: 0.5rem 0.5rem;
+}
+
+.tab-list-active {
+  list-style: none;
+  background-color: white;
+  color: red;
+}
+.tabs {
+  width: 95vw;
+}
+
+h1 {
+  color: #a83027;
+  font-size: 3rem;
+}
+
+h3 {
+  margin-top:  2rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.checkbox {
+  margin-bottom: 2rem;
+}
+
+.checkbox h3 {
+  margin: 0;
+}
+
+span {
+  color: #a83027
+}
+
+/* My Tacos/Other's Tacos view styles */
+
+#primaryBtn {
+  background-color: #a83027;
+}
+
+#primaryBtn span {
+  color: white;
+}
+
+#btnGrp {
+  margin: 1rem;
+}
+
+/* Ind. taco card styles */
+
+.taco-card img {
+  width: 300px;
+  height: auto;
+}
+
+/* Personal Profile View */
+
+#paper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#proBtn {
+  background: #a83027;
+  width: 200px;
+  border-radius: 20px;
+  margin: 0.5rem;
+}
+
+#proBtn span {
+  color: white;
+} 
+
+#proBtn:hover {
+  background: #f44336;
+}
+
+/* update profile styles */
+
+.flex-container {
+  height: 33rem;
+  justify-content: space-evenly;
+  width: 15rem;
+}
+
+#userTextField {
+  margin-bottom: 1rem;
 }

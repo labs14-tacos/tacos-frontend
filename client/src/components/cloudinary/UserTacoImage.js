@@ -37,7 +37,7 @@ const UserTacoImage = (props) => {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header tacoCloud" id="tacoCloudHeader">
         <h3>Upload Your Image Here</h3>
         <input type="file"
                name="file"
