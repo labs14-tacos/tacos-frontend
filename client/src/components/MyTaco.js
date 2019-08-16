@@ -42,7 +42,7 @@ class MyTaco extends Component {
         let id = this.state.taco.id;
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, {headers: {token: token}})
           .then(response => {
-            this.props.history.push('/api/mytacolog');
+            this.props.history.push('/api/myTacoFeed');
           }).catch(err => console.log(err));
 
         }
@@ -125,7 +125,7 @@ class MyTaco extends Component {
 
                     <GridList>
             {this.state.tacofeed.map(taco => {const ingredients = JSON.stringify(taco.ingredients); console.log(taco);
-             return <GridListTile component={RouterLink} to={{pathname:"/taco", state: {restaurantName: taco.restaurantName, date: taco.date, totalTacos: taco.totalTacos, nameOfTaco: taco.nameOfTaco,
+             return <GridListTile component={RouterLink} to={{pathname:"/my-tacos", state: {restaurantName: taco.restaurantName, date: taco.date, totalTacos: taco.totalTacos, nameOfTaco: taco.nameOfTaco,
                 ingredients: ingredients,
 
                 id: taco.id,
