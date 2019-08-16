@@ -87,7 +87,7 @@ class Taco extends Component {
                         {this.state.taco_ingredients.salsa.map(function(salsa) {return <p>{salsa}</p>})} 
                         
                     </div>
-                    <div className="rating">
+                    <div className="ratings">
                     <h1>"Overall Rating"</h1>
                      <Rating
                     name= 'rating'

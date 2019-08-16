@@ -4,6 +4,10 @@
   border-radius: 20px
 }
 
+#homeButton span {
+  color: white;
+}
+
 #homeButton:hover {
   background: #f44336;
 }

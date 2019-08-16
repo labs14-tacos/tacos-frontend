@@ -78,6 +78,7 @@ class UpdateUserProfile extends React.Component {
         
                 <TextField
                     className="wider-text-field"
+
                     label="Last Name"
                     name="lastName"         
                     value={this.state.lastName}
@@ -134,11 +135,11 @@ class UpdateUserProfile extends React.Component {
                 />
          
                 </div>
-                <Button type="submit" onClick={this.updateProfile} >
+                <Button id='proBtn' type="submit" onClick={this.updateProfile} >
                     Save
                 </Button>
                 </form>
-                <Button component={RouterLink} to="/my-profile">
+                <Button id='proBtn' component={RouterLink} to="/my-profile">
                     Back to Profile
                 </Button>
                 </Paper>
