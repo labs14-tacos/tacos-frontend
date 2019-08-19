@@ -226,6 +226,7 @@ class TacoView extends Component {
             label='Restaurant'
           />
           <TextField
+          required
             className='textField'
             type='text'
             name='notes'
