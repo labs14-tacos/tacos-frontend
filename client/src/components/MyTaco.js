@@ -6,6 +6,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import ButtonGroup from '@material-ui/core/Button';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 
@@ -94,43 +95,45 @@ class MyTaco extends Component {
 
                     </div>
                     <div className="ratings">
-                        <h1>"Overall Rating"</h1>
-                        <Rating
-                            name='rating'
-                            value={rating}
-                        />
+                    <h1>"Overall Rating"</h1>
+                     <Rating
+                    name= 'rating'
+                    value={rating}
+                    />
 
-                        <h3>"T" Rating: {t_rating}</h3>
-                        <h4>"<span>T</span>he Fundamentals"</h4>
-                        <Rating
-                            name='t_rating'
-                            value={t_rating}
-                        />
-                        <h3>"A" Rating: {a_rating}</h3>
-                        <h4>"<span>A</span>lways Different, Positive, Special"</h4>
+                    <h3>"T" Rating: {t_rating}</h3>
+                    <h4>"<span>T</span>he Fundamentals"</h4>
+                    <Rating
+                    name='t_rating'
+                    value={t_rating}
+                    />
+                    <h3>"A" Rating: {a_rating}</h3>
+                    <h4>"<span>A</span>lways Different, Positive, Special"</h4>
 
-                        <Rating
-                            name='a_rating'
-                            value={a_rating}
-                        />
-                        <h3>"C" Rating: {c_rating}</h3>
-                        <h4>"<span>C</span>onsistent Commitment"</h4>
+                     <Rating
+                    name='a_rating'
+                    value={a_rating}
+                    />
+                    <h3>"C" Rating: {c_rating}</h3>
+                    <h4>"<span>C</span>onsistent Commitment"</h4>
 
-                        <Rating
-                            name='c_rating'
-                            value={c_rating}
-                        />
-                        <h3>"O" Rating: {o_rating}</h3>
-                        <h4>"<span>O</span>h, Wow!"</h4>
-                        <Rating
-                            name='o_rating'
-                            value={o_rating}
-                        />
+                     <Rating
+                    name='c_rating'
+                    value={c_rating}
+                    />
+                    <h3>"O" Rating: {o_rating}</h3>
+                    <h4>"<span>O</span>h, Wow!"</h4>
+                     <Rating
+                    name='o_rating'
+                    value={o_rating}
+                    />
                     </div>
                     <div className="comments">
                         <h2>{notes}</h2>
                     </div>
                     <ButtonGroup>
+                    <Button component={RouterLink} className="btn" to={`/my-tacos/edit/${this.props.location.state.id}`}> Edit</Button>
+
                         <Button onClick={() => this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained">
                             Delete
                     </Button>
