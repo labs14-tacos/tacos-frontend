@@ -9,37 +9,23 @@ import axios from 'axios';
 
 const token = sessionStorage.getItem("token")
 
-class Taco extends Component {
+class MyTaco extends Component {
     constructor(props) {
         super(props);
         this.state = {
             taco: {},
             taco_id: null,
-            taco_ingredients: {protein: [], topping: [], salsa: [], cheese: [], tortilla: []}, 
-            tacoCreatorId: '', 
-            tacoFanFirstName: 'Taco',
-            tacoFanLastName: 'Taco'
+            taco_ingredients: {protein: [], topping: [], salsa: [], cheese: [], tortilla: []}
         };
     };
 
     componentDidMount() {
         const ing = this.props.location.state.ingredients
         const ingredientObject = JSON.parse(ing);
-        this.setState({taco_id: this.props.location.state.id, taco_ingredients: ingredientObject, tacoCreatorId: this.props.location.state.firebaseId});
-        this.fetchTaco(this.props.location.state.id); 
-        this.getTacoFan();
+        this.setState({taco_id: this.props.location.state.id, taco_ingredients: ingredientObject});
+        this.fetchTaco(this.props.location.state.id);
         console.log(ingredientObject, "ingredients");
-    } 
-
-
-    getTacoFan() {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/tacofan_info/${this.state.tacoCreatorId}`, {headers: {token: token}}).then(res => { console.log("it worked!!!!");
-        this.setState({
-           tacoFanFirstName: res.data.firstName, 
-           tacoFanLastName: res.data.lastName
-       })}).catch(err => console.log("this is an error in the getTacoFan function", err))
     }
-
 
     fetchTaco = id => {
         axios
@@ -52,14 +38,7 @@ class Taco extends Component {
         .catch(error => console.log(error, "fetchTacoError"))
     }
 
-    onDelete() {
-        let id = this.props.location.state.id;
-        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, )
-        .then(response => {
-            this.props.history.push('/');
-        }) .catch(err => console.log(err));
-    }
-
+    
     render() {
         console.log(this.state.taco, 'tacoState')
 
@@ -74,7 +53,6 @@ class Taco extends Component {
         return (
             <div>
                 <div className="taco-card">
-                    <Button component={RouterLink} to={{pathname:"/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId }}}>{this.state.tacoFanFirstName} {this.state.tacoFanLastName}</Button>
                     <h2>{restaurantName}</h2>
                     <div className="date">
                         <h2>{date}</h2>
@@ -90,13 +68,13 @@ class Taco extends Component {
                         <h2>Description:</h2>
                         <p>{this.state.taco_ingredients.protein[0]}</p>
                           {this.state.taco_ingredients.tortilla.map(function(tortilla) {return <p>{tortilla}</p>})} 
-                        {this.state.taco_ingredients.protein.map(function(protein)  {return <p>{protein}</p>})}
+        {this.state.taco_ingredients.protein.map(function(protein)  {return <p>{protein}</p>})}
                          {this.state.taco_ingredients.topping.map(function(topping) {return <p>{topping}</p>})}
                         {this.state.taco_ingredients.cheese.map(function(cheese) {return <p>{cheese}</p>})}
                         {this.state.taco_ingredients.salsa.map(function(salsa) {return <p>{salsa}</p>})} 
                         
                     </div>
-                    <div className="ratings">
+                    <div className="rating">
                     <h1>"Overall Rating"</h1>
                      <Rating
                     name= 'rating'
@@ -133,17 +111,20 @@ class Taco extends Component {
                     <div className="comments">
                         <h2>{notes}</h2>
                     </div>
-                    <div>
-                    <ButtonGroup>
-                    <Button onClick={this.onDelete.bind(this)} id="primaryBtn" component={RouterLink} to="/explore-tacos" color="primary" variant="contained"> 
-                        Delete
-                    </Button>
-                    </ButtonGroup>
-                    </div>
+
+                    <GridList>
+            {this.state.tacofeed.map(taco => {const ingredients = JSON.stringify(taco.ingredients); console.log(taco);
+             return <GridListTile component={RouterLink} to={{pathname:"/my-tacos", state: {restaurantName: taco.restaurantName, date: taco.date, totalTacos: taco.totalTacos, nameOfTaco: taco.nameOfTaco,
+                ingredients: ingredients,
+
+                id: taco.id,
+                rating: taco.rating, notes: taco.notes, tacoLogPhoto: taco.tacoLogPhoto, t_rating: taco.t_rating, a_rating: taco.a_rating, c_rating: taco.c_rating, o_rating: taco.o_rating}}}
+            key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>})}
+            </GridList>
                 </div>
             </div>
         )
     }
 }
 
-export default Taco;
+export default MyTaco;
