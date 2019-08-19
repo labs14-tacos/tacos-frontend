@@ -2,7 +2,7 @@
 import React from 'react';
 import Friends from './Friends.js';
 import TacoView from './TacoLog/TacoView';
-import EditTacoLog from './TacoLog/editTacoLog';
+import EditTacoLog from './TacoLog/EditTacoLog';
 import UpdateUserProfile from './UpdateUserProfile';
 import User from './User';
 import UserTacoImage from './user/TacoUser';
@@ -44,6 +44,7 @@ class LoggedInApp extends React.Component {
         <Route exact path="/taco" component={Taco} />
         <Route exact path="/tacofan" component={Tacofan} />
         <Route exact path="/my-taco" component={MyTaco} />
+        <Route exact path="/edit-taco" component={EditTacoLog} />
     </div>
   );
   }
