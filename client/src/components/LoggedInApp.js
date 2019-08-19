@@ -2,7 +2,7 @@
 import React from 'react';
 import Friends from './Friends.js';
 import TacoView from './TacoLog/TacoView';
-import EditTacoLog from './TacoLog/editTacoLog';
+import EditTacoLog from './TacoLog/EditTacoLog';
 import UpdateUserProfile from './UpdateUserProfile';
 import User from './User';
 import UserTacoImage from './user/TacoUser';
@@ -18,6 +18,7 @@ import sun from '../images/sun.svg';
 import NavBar from './NavBar'
 import Taco from '../components/Taco';
 import Tacofan from '../components/TacoFan.js';
+import MyTaco from './MyTaco.js';
 // The new App.js! 
 
 const token = sessionStorage.getItem('token');
@@ -42,6 +43,8 @@ class LoggedInApp extends React.Component {
         <Route exact path="/user" component={TacoLogHomepage} />
         <Route exact path="/taco" component={Taco} />
         <Route exact path="/tacofan" component={Tacofan} />
+        <Route exact path="/my-taco" component={MyTaco} />
+        <Route exact path="/edit-taco" component={EditTacoLog} />
     </div>
   );
   }

@@ -43,11 +43,11 @@ class MyTacoFeed extends React.Component {
                         return <GridListTile
                             component={RouterLink}
                             to={{
-                                pathname: "/taco",
+                                pathname: "/my-taco",
                                 state: {
                                     restaurantName: taco.restaurantName,
                                     date: taco.date,
-                                    totalTacos: taco.totalTacos,
+                                    numberOfTacos: taco.numberOfTacos,
                                     nameOfTaco: taco.nameOfTaco,
                                     ingredients: ingredients,
                                     firebaseId: taco.firebaseId,

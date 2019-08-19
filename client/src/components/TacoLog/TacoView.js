@@ -153,13 +153,15 @@ class TacoView extends Component {
       ingredients: ingredients
     }
     console.log("taco", taco)
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, taco, { headers: { token: token } }).then(res => console.log(res)).catch(err => console.log(err));
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, taco, { headers: { token: token } }).then(res => console.log(res)).then(() => this.props.history.push('/my-tacos')).catch(err => console.log(err));
   }
 
   viewTacoLog = (event, tacolog_id) => {
     event.preventDefault();
     axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${tacolog_id}`)
-      .then(res => this.setState({ tacolog: res.data }))
+      .then(res => { 
+        this.setState({ tacolog: res.data })
+      })
       .catch(err => console.log(err));
   }
 
@@ -224,6 +226,7 @@ class TacoView extends Component {
             label='Restaurant'
           />
           <TextField
+          required
             className='textField'
             type='text'
             name='notes'
