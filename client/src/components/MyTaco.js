@@ -38,15 +38,6 @@ class MyTaco extends Component {
         .catch(error => console.log(error, "fetchTacoError"))
     }
 
-    onDelete(){
-        let id = this.state.taco.id;
-        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, {headers: {token: token}})
-          .then(response => {
-            this.props.history.push('/api/myTacoFeed');
-          }).catch(err => console.log(err));
-
-        }
-
     
     render() {
         console.log(this.state.taco, 'tacoState')
@@ -119,9 +110,7 @@ class MyTaco extends Component {
                     </div>
                     <div className="comments">
                         <h2>{notes}</h2>
-                    
                     </div>
-                    <button onCLick={this.onDelete.bind(this)} className="delete-btn">Delete Taco log</button>
 
                     <GridList>
             {this.state.tacofeed.map(taco => {const ingredients = JSON.stringify(taco.ingredients); console.log(taco);

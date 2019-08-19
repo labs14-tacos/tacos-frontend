@@ -52,7 +52,13 @@ class Taco extends Component {
         .catch(error => console.log(error, "fetchTacoError"))
     }
 
-    
+    onDelete() {
+        let id = this.props.location.state.id;
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, )
+        .then(response => {
+            this.props.history.push('/');
+        }) .catch(err => console.log(err));
+    }
 
     render() {
         console.log(this.state.taco, 'tacoState')
@@ -84,7 +90,7 @@ class Taco extends Component {
                         <h2>Description:</h2>
                         <p>{this.state.taco_ingredients.protein[0]}</p>
                           {this.state.taco_ingredients.tortilla.map(function(tortilla) {return <p>{tortilla}</p>})} 
-        {this.state.taco_ingredients.protein.map(function(protein)  {return <p>{protein}</p>})}
+                        {this.state.taco_ingredients.protein.map(function(protein)  {return <p>{protein}</p>})}
                          {this.state.taco_ingredients.topping.map(function(topping) {return <p>{topping}</p>})}
                         {this.state.taco_ingredients.cheese.map(function(cheese) {return <p>{cheese}</p>})}
                         {this.state.taco_ingredients.salsa.map(function(salsa) {return <p>{salsa}</p>})} 
@@ -126,7 +132,13 @@ class Taco extends Component {
                     </div>
                     <div className="comments">
                         <h2>{notes}</h2>
-                    
+                    </div>
+                    <div>
+                    <ButtonGroup>
+                    <Button onClick={this.onDelete.bind(this)} id="primaryBtn" component={RouterLink} to="/explore-tacos" color="primary" variant="contained"> 
+                        Delete
+                    </Button>
+                    </ButtonGroup>
                     </div>
                 </div>
             </div>
