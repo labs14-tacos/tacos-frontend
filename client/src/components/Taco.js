@@ -52,14 +52,6 @@ class Taco extends Component {
         .catch(error => console.log(error, "fetchTacoError"))
     }
 
-    onDelete() {
-        let id = this.props.location.state.id;
-        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, )
-        .then(response => {
-            this.props.history.push('/');
-        }) .catch(err => console.log(err));
-    }
-
     render() {
         console.log(this.state.taco, 'tacoState')
 
@@ -134,11 +126,6 @@ class Taco extends Component {
                         <h2>{notes}</h2>
                     </div>
                     <div>
-                    <ButtonGroup>
-                    <Button onClick={this.onDelete.bind(this)} id="primaryBtn" component={RouterLink} to="/explore-tacos" color="primary" variant="contained"> 
-                        Delete
-                    </Button>
-                    </ButtonGroup>
                     </div>
                 </div>
             </div>
