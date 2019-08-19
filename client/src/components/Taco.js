@@ -59,7 +59,7 @@ class Taco extends Component {
             return <div>Loading Taco information...</div>
 
         }
-        const { restaurantName, date, totalTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
+        const { restaurantName, date, numberOfTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
 
         console.log(this.state)
 
@@ -72,7 +72,7 @@ class Taco extends Component {
                         <h2>{date}</h2>
                     </div>
                     <div className="total-tacos">
-                        Total Tacos: <strong>{totalTacos}</strong>
+                        Total Tacos: <strong>{numberOfTacos}</strong>
                     </div>
                     <img src={tacoLogPhoto} alt={nameOfTaco}/>
                     <div className="taco-name">
@@ -80,7 +80,6 @@ class Taco extends Component {
                     </div>
                     <div className="description">
                         <h2>Description:</h2>
-                        <p>{this.state.taco_ingredients.protein[0]}</p>
                           {this.state.taco_ingredients.tortilla.map(function(tortilla) {return <p>{tortilla}</p>})} 
                         {this.state.taco_ingredients.protein.map(function(protein)  {return <p>{protein}</p>})}
                          {this.state.taco_ingredients.topping.map(function(topping) {return <p>{topping}</p>})}

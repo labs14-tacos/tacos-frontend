@@ -6,7 +6,7 @@ class TacoExperience extends React.Component {
         this.state = {
             restaurantName: "",
             date: "",
-            totalTacos: 1,
+            numberOfTacos: 1,
             userPhoto: "",
             tacoName: "",
             description: "",
@@ -51,9 +51,9 @@ class TacoExperience extends React.Component {
                         />
                         <input
                             type="number"
-                            name="totalTacos"
+                            name="numberOfTacos"
                             onChange={this.handleChange}
-                            value={this.totalTacos}
+                            value={this.numberOfTacos}
                             placeholder="Total Tacos"
                         />
                         <input
