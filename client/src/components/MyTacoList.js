@@ -47,7 +47,7 @@ class MyTacoFeed extends React.Component {
                                 state: {
                                     restaurantName: taco.restaurantName,
                                     date: taco.date,
-                                    totalTacos: taco.totalTacos,
+                                    numberOfTacos: taco.numberOfTacos,
                                     nameOfTaco: taco.nameOfTaco,
                                     ingredients: ingredients,
                                     firebaseId: taco.firebaseId,

@@ -38,7 +38,7 @@ class OthersTacos extends React.Component {
             </ButtonGroup>
             <GridList>
             {this.state.tacofeed.map(taco => {const ingredients = JSON.stringify(taco.ingredients); console.log(taco);
-             return <GridListTile component={RouterLink} to={{pathname:"/taco", state: {restaurantName: taco.restaurantName, date: taco.date, totalTacos: taco.totalTacos, nameOfTaco: taco.nameOfTaco,
+             return <GridListTile component={RouterLink} to={{pathname:"/taco", state: {restaurantName: taco.restaurantName, date: taco.date, numberOfTacos: taco.numberOfTacos, nameOfTaco: taco.nameOfTaco,
                 ingredients: ingredients,
                 firebaseId: taco.firebaseId,
                 id: taco.id,
