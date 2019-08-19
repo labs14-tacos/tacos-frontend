@@ -6,6 +6,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import ButtonGroup from '@material-ui/core/Button';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const token = sessionStorage.getItem("token")
 
@@ -85,7 +86,7 @@ class MyTaco extends Component {
                         {this.state.taco_ingredients.salsa.map(function(salsa) {return <p>{salsa}</p>})} 
                         
                     </div>
-                    <div className="rating">
+                    <div className="ratings">
                     <h1>"Overall Rating"</h1>
                      <Rating
                     name= 'rating'
@@ -122,6 +123,7 @@ class MyTaco extends Component {
                     <div className="comments">
                         <h2>{notes}</h2>
                     </div>
+                    <Link className="btn" to={`/my-tacos/edit/${this.props.location.state.id}`}> Edit</Link>
                     <ButtonGroup>
                     <Button onClick={() =>this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained"> 
                         Delete
