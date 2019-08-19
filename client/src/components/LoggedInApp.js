@@ -18,6 +18,7 @@ import sun from '../images/sun.svg';
 import NavBar from './NavBar'
 import Taco from '../components/Taco';
 import Tacofan from '../components/TacoFan.js';
+import MyTaco from './MyTaco.js';
 // The new App.js! 
 
 const token = sessionStorage.getItem('token');
@@ -42,6 +43,7 @@ class LoggedInApp extends React.Component {
         <Route exact path="/user" component={TacoLogHomepage} />
         <Route exact path="/taco" component={Taco} />
         <Route exact path="/tacofan" component={Tacofan} />
+        <Route exact path="/my-taco" component={MyTaco} />
     </div>
   );
   }

@@ -20,11 +20,12 @@ class MyTaco extends Component {
     };
 
     componentDidMount() {
+        const tacoId = this.props.location.state.id
         const ing = this.props.location.state.ingredients
         const ingredientObject = JSON.parse(ing);
-        this.setState({taco_id: this.props.location.state.id, taco_ingredients: ingredientObject});
+        this.setState({taco_id: tacoId, taco_ingredients: ingredientObject});
         this.fetchTaco(this.props.location.state.id);
-        console.log(ingredientObject, "ingredients");
+        console.log(this.props.location.state.id, 'taco');
     }
 
     fetchTaco = id => {
@@ -36,6 +37,16 @@ class MyTaco extends Component {
 
         })
         .catch(error => console.log(error, "fetchTacoError"))
+    }
+
+    onDelete() {
+        // let id = this.state.taco_id;
+        console.log(this.state.taco.id)
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${this.props.location.state.id}`, {headers: {token: token}})
+        .then(response => {
+            console.log('delete working', response)
+            // this.props.history.push('/my-tacos');
+        }) .catch(err => console.log(err));
     }
 
     
@@ -111,16 +122,11 @@ class MyTaco extends Component {
                     <div className="comments">
                         <h2>{notes}</h2>
                     </div>
-
-                    <GridList>
-            {this.state.tacofeed.map(taco => {const ingredients = JSON.stringify(taco.ingredients); console.log(taco);
-             return <GridListTile component={RouterLink} to={{pathname:"/my-tacos", state: {restaurantName: taco.restaurantName, date: taco.date, totalTacos: taco.totalTacos, nameOfTaco: taco.nameOfTaco,
-                ingredients: ingredients,
-
-                id: taco.id,
-                rating: taco.rating, notes: taco.notes, tacoLogPhoto: taco.tacoLogPhoto, t_rating: taco.t_rating, a_rating: taco.a_rating, c_rating: taco.c_rating, o_rating: taco.o_rating}}}
-            key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>})}
-            </GridList>
+                    <ButtonGroup>
+                    <Button onClick={() =>this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained"> 
+                        Delete
+                    </Button>
+                    </ButtonGroup>
                 </div>
             </div>
         )
