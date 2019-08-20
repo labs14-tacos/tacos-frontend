@@ -48,6 +48,7 @@ class TacoFan extends React.Component {
                 <p>Twitter: {this.state.user.twitterHandle}</p>
                 <p>Facebook: {this.state.user.facebookPage}</p> 
                 <p>Website: {this.state.user.website}</p> 
+                <p>Favorite Taco: {this.state.user.favTaco}</p> 
                 <GridList>
             {/* {this.state.tacofeed.map(taco => 
              <GridListTile 
