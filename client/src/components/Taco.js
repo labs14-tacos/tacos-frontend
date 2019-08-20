@@ -91,6 +91,7 @@ class Taco extends Component {
                     <h1>"Overall Rating"</h1>
                      <Rating
                     name= 'rating'
+                    disabled
                     value={rating}
                     />
 
@@ -98,6 +99,7 @@ class Taco extends Component {
                     <h4>"<span>T</span>he Fundamentals"</h4>
                     <Rating
                     name='t_rating'
+                    disabled
                     value={t_rating}
                     />
                     <h3>"A" Rating: {a_rating}</h3>
@@ -105,6 +107,7 @@ class Taco extends Component {
 
                      <Rating
                     name='a_rating'
+                    disabled
                     value={a_rating}
                     />
                     <h3>"C" Rating: {c_rating}</h3>
@@ -112,12 +115,14 @@ class Taco extends Component {
 
                      <Rating
                     name='c_rating'
+                    disabled
                     value={c_rating}
                     />
                     <h3>"O" Rating: {o_rating}</h3>
                     <h4>"<span>O</span>h, Wow!"</h4>
                      <Rating
                     name='o_rating'
+                    disabled
                     value={o_rating}
                     />
                     </div>

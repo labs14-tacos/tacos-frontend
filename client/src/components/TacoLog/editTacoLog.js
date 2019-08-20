@@ -1,6 +1,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
+import Button from '@material-ui/core/Button';
+import {Link as RouterLink} from 'react-router-dom';
 import axios from 'axios';
 
 // we'll need to flip between this and the actual tacolog view or we won't have a way to edit it because we need the taco log id. 
@@ -18,6 +20,7 @@ class EditTacoLog extends React.Component {
 
 async componentDidMount() {
  const tacoInfo = this.props.location.state; 
+ console.log('component did mout', this.props.location.state)
     await this.setState({
         nameOfTaco: tacoInfo.taco.nameOfTaco,
         restaurantName: tacoInfo.taco.restaurantName,
@@ -37,15 +40,27 @@ handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
+    console.log('handlechange', event.target.value)
   } 
 
-updateLog = (event, id) => {
-    event.preventDefault();
+updateLog = () => {
     const tacoLog = {
-        ...this.state
+        nameOfTaco: this.state.nameOfTaco,
+        restaurantName: this.state.restaurantName,
+        numberOfTacos: this.state.numberOfTacos,
+        rating: this.state.rating,
+        t_rating: this.state.t_rating,
+        a_rating: this.state.a_rating,
+        c_rating: this.state.c_rating,
+        o_rating: this.state.o_rating, 
+        notes: this.state.notes
     }; 
-    axios.put(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, {headers: {token: token}}, tacoLog).then(res => console.log(res)).catch(err => console.log(err));
-    this.props.history.push('/');
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${this.state.id}`, tacoLog, 
+       {headers: {token: token}})
+       .then(res => {
+           this.props.history.push('/my-tacos')
+        })
+       .catch(err => console.log({err}));
 };
 
 render() {
@@ -129,7 +144,7 @@ render() {
               onChange={this.handleChange}
             />
           </div>
-          <button className="saveButton" type='submit' onClick={() => this.updateLog(this.state.id)}>Save Taco Log</button>
+          <Button className="saveButton" type='submit' component={RouterLink} to="/my-tacos" onClick={this.updateLog}>Save Taco Log</Button>
                 </form>
             </div>
         </>
