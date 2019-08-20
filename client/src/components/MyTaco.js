@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Rating from '@material-ui/lab/Rating';
-import { Link as RouterLink } from 'react-router-dom';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import ButtonGroup from '@material-ui/core/Button';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 
@@ -98,6 +97,7 @@ class MyTaco extends Component {
                     <h1>"Overall Rating"</h1>
                      <Rating
                     name= 'rating'
+                    disabled
                     value={rating}
                     />
 
@@ -105,6 +105,7 @@ class MyTaco extends Component {
                     <h4>"<span>T</span>he Fundamentals"</h4>
                     <Rating
                     name='t_rating'
+                    disabled
                     value={t_rating}
                     />
                     <h3>"A" Rating: {a_rating}</h3>
@@ -112,6 +113,7 @@ class MyTaco extends Component {
 
                      <Rating
                     name='a_rating'
+                    disabled
                     value={a_rating}
                     />
                     <h3>"C" Rating: {c_rating}</h3>
@@ -119,25 +121,26 @@ class MyTaco extends Component {
 
                      <Rating
                     name='c_rating'
+                    disabled
                     value={c_rating}
                     />
                     <h3>"O" Rating: {o_rating}</h3>
                     <h4>"<span>O</span>h, Wow!"</h4>
                      <Rating
                     name='o_rating'
+                    disabled
                     value={o_rating}
                     />
                     </div>
                     <div className="comments">
                         <h2>{notes}</h2>
                     </div>
-                    <ButtonGroup>
-                    <Button component={RouterLink} className="btn" to={`/my-tacos/edit/${this.props.location.state.id}`}> Edit</Button>
-
-                        <Button onClick={() => this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained">
+                  
+                    <Button component={RouterLink} className="btn" to={{pathname:"/edit-taco", state: {taco: this.state.taco } }}> Edit</Button>
+                    <Button onClick={() => this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained">
                             Delete
                     </Button>
-                    </ButtonGroup>
+                  
                 </div>
             </div>
         )

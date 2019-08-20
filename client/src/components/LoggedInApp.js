@@ -44,6 +44,7 @@ class LoggedInApp extends React.Component {
         <Route exact path="/taco" component={Taco} />
         <Route exact path="/tacofan" component={Tacofan} />
         <Route exact path="/my-taco" component={MyTaco} />
+        <Route exact path="/edit-taco" component={EditTacoLog} />
     </div>
   );
   }
