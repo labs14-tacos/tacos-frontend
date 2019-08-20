@@ -3,13 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@atlaskit/avatar": "^16.0.8",
+    "@atlaskit/datetime-picker": "^8.0.11",
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "@material-ui/core": "^4.3.2",
+    "@material-ui/lab": "^4.0.0-alpha.23",
     "axios": "^0.19.0",
     "dotenv": "^8.0.0",
     "firebase": "^6.3.0",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
+    "react-date-picker": "^7.8.1",
     "react-dom": "^16.8.6",
     "react-firebaseui": "^3.1.2",
-    "react-scripts": "3.0.1"
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "react-star-rating-component": "^1.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
