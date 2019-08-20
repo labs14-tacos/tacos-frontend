@@ -32,6 +32,7 @@ class User extends React.Component {
                     <p><span>Twitter:</span> {this.state.user.twitterHandle}</p>
                     <p><span>Facebook:</span> {this.state.user.facebookPage}</p>
                     <p><span>Website:</span> {this.state.user.website}</p>
+                    <p><span>Favorite Taco:</span> {this.state.user.favTaco}</p>
                     <div className="button-container">
 
                         <Button id="proBtn" component={RouterLink} to="/my-tacos" variant="contained" size="medium" color="primary">
