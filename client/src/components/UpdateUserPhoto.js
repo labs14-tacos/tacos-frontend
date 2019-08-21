@@ -1,17 +1,17 @@
-import React from 'react'; 
-import PhotoUpload from './cloudinary/UserTacoImage'
+import React, { Component } from 'react';
+import PhotoUpload from './cloudinary/UserTacoImage';
 import {Paper, Button, TextField} from '@material-ui/core/';
-import Axios from 'axios';
 import {Link as RouterLink} from 'react-router-dom';
+import Axios from 'axios';
 
 const token = sessionStorage.getItem("token");
 
-// this can be used as the update area for the logged-in person's profile info
-class UpdateUserProfile extends React.Component {
+export default class UpdateUserPhoto extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-           firstName: '',
+            firstName: '',
            lastName: '',
            favTaco: '',
            userPhoto: '', 
@@ -24,20 +24,23 @@ class UpdateUserProfile extends React.Component {
     }
 
     componentDidMount() {
-      let  userInfo = this.props.location.state.user; 
         this.setState({
-            firstName: userInfo.firstName,
-            lastName: userInfo.lastName,
-            favTaco: userInfo.favTaco,
-            Photo: userInfo.userPhoto, 
-            email: userInfo.email,
-            facebookPage: userInfo.facebookPage,
-            twitterHandle: userInfo.twitterHandle,
-            instaHandle: userInfo.instaHandle,
-            website: userInfo.website
-        });
+            user: this.props.location.state.user
+        })
+    //   let  userInfo = this.props.location.state.user; 
+    //     this.setState({
+    //         firstName: userInfo.firstName,
+    //         lastName: userInfo.lastName,
+    //         favTaco: userInfo.favTaco,
+    //         userPhoto: userInfo.userPhoto, 
+    //         email: userInfo.email,
+    //         facebookPage: userInfo.facebookPage,
+    //         twitterHandle: userInfo.twitterHandle,
+    //         instaHandle: userInfo.instaHandle,
+    //         website: userInfo.website
+    //     });
 
-        console.log("componentDidMount in update profile", userInfo);
+        // console.log("componentDidMount in update profile", userInfo);
     }
     
     handleChange = event => {
@@ -45,45 +48,23 @@ class UpdateUserProfile extends React.Component {
     };
 
     setUserPhoto = userPhoto => {
-        this.setState({userPhoto});
-        this.cleanUpPhoto(userPhoto)
-    }
-
-    cleanUpPhoto = (Photo) => {
-        this.setState({
-            Photo: Photo
-        })
-    }
-
-    trashOldPhoto = () => {
-        this.setState({
-            Photo: ''
-        })
+        this.setState({userPhoto})
     }
 
     
-    updateProfile = event => {
-        const updateUser = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            favTaco: this.state.favTaco,
-            Photo: this.state.userPhoto, 
-            email: this.state.email,
-            facebookPage: this.state.facebookPage,
-            twitterHandle: this.state.twitterHandle,
-            instaHandle: this.state.instaHandle,
-            website: this.state.website
-        }
-        event.preventDefault();
-        Axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/users`, updateUser, {headers: {token: token}} )
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-    };
+    // updateProfile = event => {
+    //     event.preventDefault();
+    //     const user = {
+    //         ...this.state.user,
+    //         userPhoto: this.state.userPhoto
+    //       }
+    //     Axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/users`, user, {headers: {token: token}} )
+    //     .then(res => console.log(res)).catch(err => console.log(err))
+    //     this.props.history.push('/update-profile')
+    // };
     
     render() {
         // console.log(this.props.location.state.user, "update user profile props")
-        console.log('photo', this.state.userPhoto)
-        console.log('state', this.state)
         return(
            
                
@@ -91,20 +72,22 @@ class UpdateUserProfile extends React.Component {
                 <form>
                
                 <div >
-                 {
-                     this.state.Photo ? <img className="avatar-image" src={this.state.Photo }/>
-                     
-                         :  <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto}/> 
-                 }
-               
+                <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto}/>
+                   <Button id="proBtn" component={RouterLink} onClick={this.updateProfile} to={{ pathname: "/update-user-photo", 
                    
-
-                   <Button id="proBtn" onClick={this.trashOldPhoto}>Update Photo</Button>
-
+                    state: {
+                        user:
+                        {
+                        ...this.state.user,
+                        userPhoto: this.state.userPhoto
+                        }}
+                   
+                   }}>Save Updated Photo</Button>
+                   
                 </div>
                 <div className="flex-container">
                 
-                <TextField
+                {/* <TextField
                             label="First Name"
                             name="firstName"
                             value={this.state.firstName}
@@ -169,7 +152,7 @@ class UpdateUserProfile extends React.Component {
                             onChange={this.handleChange}
                             placeholder="Favorite Taco"
                 />
-         
+          */}
                 </div>
                 <Button id='proBtn' type="submit" onClick={this.updateProfile} >
                     Save
@@ -182,7 +165,42 @@ class UpdateUserProfile extends React.Component {
                
         );
     }
-    }
 
 
-export default UpdateUserProfile;
+
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //        userPhoto: ''  
+    //     };
+    // }
+
+    // componentDidMount() {
+    //     let  userInfo = this.props.location.state.user; 
+    //       this.setState({   
+    //           userPhoto: userInfo.userPhoto, 
+    //       });
+    //   }
+
+    // setUserPhoto = userPhoto => {
+    //     this.setState({userPhoto})
+    // }
+    // updateProfile = event => {
+    //     event.preventDefault();
+    //     Axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/users`, this.state, {headers: {token: token}} ).then(res => console.log(res)).catch(err => console.log(err))
+    // };
+
+
+    // render() {
+    //     return (
+    //         <div>
+    //             <Paper>
+    //                 <div>
+    //                     <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto}/>
+    //                 </div>
+    //             </Paper>
+    //         </div>
+    //     )
+    // }
+}

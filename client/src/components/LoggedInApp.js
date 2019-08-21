@@ -19,6 +19,7 @@ import NavBar from './NavBar'
 import Taco from '../components/Taco';
 import Tacofan from '../components/TacoFan.js';
 import MyTaco from './MyTaco.js';
+import UpdateUserPhoto from './UpdateUserPhoto';
 // The new App.js! 
 
 const token = sessionStorage.getItem('token');
@@ -45,6 +46,7 @@ class LoggedInApp extends React.Component {
         <Route exact path="/tacofan" component={Tacofan} />
         <Route exact path="/my-taco" component={MyTaco} />
         <Route exact path="/edit-taco" component={EditTacoLog} />
+        <Route exact path="/update-user-photo" component={UpdateUserPhoto} />
     </div>
   );
   }
