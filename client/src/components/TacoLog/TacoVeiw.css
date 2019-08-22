@@ -9,6 +9,12 @@ form {
   color: black;
 }
 
+.extraIng {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .ingBtn {
   width: 133px;
   padding: 3px 0;

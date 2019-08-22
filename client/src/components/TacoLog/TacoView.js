@@ -26,7 +26,7 @@ class TacoView extends Component {
     notes: '',
     date: new Date(),
     numberOfTacos: 1,
-    test: '',
+    typedIng: '',
 
     tortilla: [],
     protein: [],
@@ -125,10 +125,10 @@ class TacoView extends Component {
 
   addToExtraIngList = ing => {
     const extraIng = this.state.extraIng;
-      extraIng.push(ing);
-      this.setState({
-        extraIng
-      })
+    extraIng.push(ing);
+    this.setState({
+      extraIng
+    })
   }
   deleteFromExtraIngList = ings => {
     this.setState({
@@ -177,7 +177,7 @@ class TacoView extends Component {
   viewTacoLog = (event, tacolog_id) => {
     event.preventDefault();
     axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${tacolog_id}`)
-      .then(res => { 
+      .then(res => {
         this.setState({ tacolog: res.data })
       })
       .catch(err => console.log(err));
@@ -208,18 +208,21 @@ class TacoView extends Component {
           salsa={this.state.salsa}
           extraIng={this.state.extraIng}
         />
+        <div className='extraIng'>
           <TextField
             className='textField'
             type='text'
-            name='test'
-            value={this.state.test}
+            name='typedIng'
+            value={this.state.typedIng}
             onChange={this.handleChange}
             label='Other Ingredients:'
           />
-          <button onClick={() => this.addToExtraIngList(this.state.test)}>Add</button>
-        
+          <button className='saveButton' onClick={() => this.addToExtraIngList(this.state.typedIng)}>Add</button>
+        </div>
+
+
         <form>
-        <TextField
+          <TextField
             className='textField-num'
             type='number'
             name='numberOfTacos'
@@ -258,7 +261,7 @@ class TacoView extends Component {
             label='Restaurant'
           />
           <TextField
-          required
+            required
             className='textField'
             type='text'
             name='notes'
@@ -266,7 +269,7 @@ class TacoView extends Component {
             onChange={this.handleChange}
             label="Wanna taco 'bout it?"
           />
-         
+
           <div className="ratings">
             <h2>Overall Rating: {this.state.rating}</h2>
             <Rating
