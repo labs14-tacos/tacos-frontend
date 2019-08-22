@@ -33,7 +33,7 @@ class TacoView extends Component {
     cheese: [],
     topping: [],
     salsa: [],
-    extraIng: ["ponies"],
+    extraIng: [],
 
     crunchy: false,
   }
