@@ -37,10 +37,10 @@ class User extends React.Component {
 
                         <Button id="proBtn" component={RouterLink} to="/my-tacos" variant="contained" size="medium" color="primary">
                             My Tacos
-        </Button>
+                       </Button>
                         <Button id="proBtn" component={RouterLink} onClick={this.passProps} to={{ pathname: "/update-profile", state: { user: this.state.user } }} variant="contained" size="medium" color="primary">
                             Update Profile
-        </Button>
+                       </Button>
                     </div>
 
                 </Paper>
