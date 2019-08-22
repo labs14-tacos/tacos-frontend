@@ -14,17 +14,19 @@ class UpdateUserProfile extends React.Component {
            firstName: '',
            lastName: '',
            favTaco: '',
-           userPhoto: '', 
+           userPhoto: this.props.location.state.userPhoto, 
            email: '',
            facebookPage: '',
            twitterHandle: '',
            instaHandle: '',
-           website: ''
+           website: '',
+         
         };
     }
 
     componentDidMount() {
-      let  userInfo = this.props.location.state.user; 
+      setTimeout(() => {
+        let  userInfo = this.props.location.state.user; 
         this.setState({
             firstName: userInfo.firstName,
             lastName: userInfo.lastName,
@@ -34,11 +36,17 @@ class UpdateUserProfile extends React.Component {
             facebookPage: userInfo.facebookPage,
             twitterHandle: userInfo.twitterHandle,
             instaHandle: userInfo.instaHandle,
-            website: userInfo.website
+            website: userInfo.website,
+          
         });
-
-        console.log("componentDidMount in update profile", userInfo);
+         console.log("componentDidMount in update profile", userInfo);
+      }, 0)
+       
     }
+
+    componentDidUpdate(prevProps) 
+       { if  (this.props !== prevProps) {console.log('cdu', this.props, prevProps)} }
+    
     
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
@@ -46,25 +54,41 @@ class UpdateUserProfile extends React.Component {
 
     setUserPhoto = userPhoto => {
         this.setState({userPhoto})
-
     }
 
-    
+    wipePhoto = () => {
+        this.setState({
+            userPhoto: '',
+
+        })
+    }
     updateProfile = event => {
         event.preventDefault();
         Axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/users`, this.state, {headers: {token: token}} ).then(res => console.log(res)).catch(err => console.log(err))
     };
     
     render() {
-        // console.log(this.props.location.state.user, "update user profile props")
+        console.log('looking at state', this.state)
+        console.log('check for photo', this.state.userPhoto)
         return(
            
                
                <Paper>
                 <form>
-               
+                 {/* User photo us updated here */}
                 <div >
-                <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto}/>
+                    
+                 {
+                     this.state.userPhoto ? 
+                       <>
+                         <img className="avatar-image" src={this.state.userPhoto} alt=""/>
+                         <button onClick={() => this.wipePhoto()}>Change my photo</button>
+                        </>
+                         :
+                         <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto}/>
+                 }
+               
+                  {/* <button onClick={() => this.setState(prevState => ({changePhoto: !prevState.changePhoto}))}>Change my photo</button>  */}
                 </div>
                 <div className="flex-container">
                 
