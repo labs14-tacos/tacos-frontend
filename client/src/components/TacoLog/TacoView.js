@@ -129,6 +129,9 @@ class TacoView extends Component {
     this.setState({
       extraIng
     })
+    this.setState({
+      typedIng: ''
+    })
   }
   deleteFromExtraIngList = ings => {
     this.setState({
