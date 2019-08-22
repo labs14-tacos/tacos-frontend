@@ -1,5 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import PhotoUpload from '../../components/cloudinary/TacoImage'
 import Rating from '@material-ui/lab/Rating';
 import Button from '@material-ui/core/Button';
 import {Link as RouterLink} from 'react-router-dom';
@@ -13,27 +14,41 @@ class EditTacoLog extends React.Component {
     constructor(props) {
     super(props);
     this.state = {
-        taco: {}
-    };
+  
+        tacoLogPhoto: this.props.location.state.taco.tacoLogPhoto,
+        nameOfTaco: this.props.location.state.taco.nameOfTaco,
+        restaurantName: this.props.location.state.taco.restaurantName,
+        numberOfTacos: this.props.location.state.taco.numberOfTacos,
+        rating: this.props.location.state.taco.rating,
+        t_rating: this.props.location.state.taco.t_rating,
+        a_rating: this.props.location.state.taco.a_rating,
+        c_rating: this.props.location.state.taco.c_rating,
+        o_rating: this.props.location.state.taco.o_rating, 
+        notes: this.props.location.state.taco.notes,
+        id: this.props.location.state.taco.id, 
+        firebaseId: this.props.location.state.taco.firebaseId
+        }
+    
 }
 
 
 async componentDidMount() {
- const tacoInfo = this.props.location.state; 
- console.log('component did mout', this.props.location.state)
-    await this.setState({
-        nameOfTaco: tacoInfo.taco.nameOfTaco,
-        restaurantName: tacoInfo.taco.restaurantName,
-        numberOfTacos: tacoInfo.taco.numberOfTacos,
-        rating: tacoInfo.taco.rating,
-        t_rating: tacoInfo.taco.t_rating,
-        a_rating: tacoInfo.taco.a_rating,
-        c_rating: tacoInfo.taco.c_rating,
-        o_rating: tacoInfo.taco.o_rating, 
-        notes: tacoInfo.taco.notes,
-        id: tacoInfo.taco.id, 
-        firebaseId: tacoInfo.taco.firebaseId
-         });
+//  const tacoInfo = this.props.location.state; 
+//  console.log('component did mout', this.props.location.state)
+//     await this.setState({
+//         tacoLogPhoto: tacoInfo.taco.tacoLogPhoto,
+//         nameOfTaco: tacoInfo.taco.nameOfTaco,
+//         restaurantName: tacoInfo.taco.restaurantName,
+//         numberOfTacos: tacoInfo.taco.numberOfTacos,
+//         rating: tacoInfo.taco.rating,
+//         t_rating: tacoInfo.taco.t_rating,
+//         a_rating: tacoInfo.taco.a_rating,
+//         c_rating: tacoInfo.taco.c_rating,
+//         o_rating: tacoInfo.taco.o_rating, 
+//         notes: tacoInfo.taco.notes,
+//         id: tacoInfo.taco.id, 
+//         firebaseId: tacoInfo.taco.firebaseId
+//          });
 }
 
 handleChange = event => {
@@ -45,6 +60,7 @@ handleChange = event => {
 
 updateLog = () => {
     const tacoLog = {
+        tacoLogPhoto: this.state.tacoLogPhoto,
         nameOfTaco: this.state.nameOfTaco,
         restaurantName: this.state.restaurantName,
         numberOfTacos: this.state.numberOfTacos,
@@ -63,12 +79,40 @@ updateLog = () => {
        .catch(err => console.log({err}));
 };
 
+setTacoPhoto = tacoLogPhoto => {
+  this.setState({tacoLogPhoto})
+}
+
+wipePhoto = () => {
+  this.setState({
+      tacoLogPhoto: '',
+
+  })
+}
+
 render() {
+  console.log('State when component mounts',this.state)
     return(
         <>
             <div>
                 <h2 className="form-heading">Update Taco Log</h2>
                 <form className="edit-form">
+               
+                  {
+                    this.state.tacoLogPhoto ?
+                    <>
+                    <img className="avatar-image" src={this.state.tacoLogPhoto} alt=""/>
+                    <button onClick={() => this.wipePhoto()}>Change my photo</button>
+                    </>
+                    :
+                    <PhotoUpload id="photo-container" onClick={() => this.wipePhoto()} 
+                    setTacoLogPhoto={this.setTacoPhoto}
+
+                     />
+                }
+                 
+
+
                 <TextField
             className='textField-num'
             type='number'
