@@ -15,7 +15,7 @@ class Taco extends Component {
         this.state = {
             taco: {},
             taco_id: null,
-            taco_ingredients: {protein: [], topping: [], salsa: [], cheese: [], tortilla: []}, 
+            taco_ingredients: {protein: [], topping: [], salsa: [], cheese: [], tortilla: [], extraIng: []}, 
             tacoCreatorId: '', 
             tacoFanFirstName: 'Taco',
             tacoFanLastName: 'Taco'
@@ -85,6 +85,7 @@ class Taco extends Component {
                          {this.state.taco_ingredients.topping.map(function(topping) {return <p>{topping}</p>})}
                         {this.state.taco_ingredients.cheese.map(function(cheese) {return <p>{cheese}</p>})}
                         {this.state.taco_ingredients.salsa.map(function(salsa) {return <p>{salsa}</p>})} 
+                        {this.state.taco_ingredients.extraIng.map(function(extraIng) {return <p>{extraIng}</p>})} 
                         
                     </div>
                     <div className="ratings">
