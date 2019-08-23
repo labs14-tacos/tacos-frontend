@@ -54,9 +54,6 @@ class EditTacoLog extends React.Component {
   }
 
   deleteFromTortillaList = ings => {
-    console.log(ings, "ingredients delete tortilla")
-    console.log(this.state.tortilla, "state tortilla delete")
-    
     this.setState(prevState => ({
       tortilla: prevState.tortilla.filter(ing => ing != ings)
     }))
@@ -72,9 +69,9 @@ class EditTacoLog extends React.Component {
     }
   }
   deleteFromProteinList = ings => {
-    this.setState({
-      protein: this.state.protein.filter(ing => ing !== ings)
-    })
+    this.setState(prevState => ({
+      protein: prevState.protein.filter(ing => ing != ings)
+    }))
   }
 
   addToCheeseList = ing => {
@@ -88,9 +85,9 @@ class EditTacoLog extends React.Component {
 
   }
   deleteFromCheeseList = ings => {
-    this.setState({
-      cheese: this.state.cheese.filter(ing => ing !== ings)
-    })
+    this.setState(prevState => ({
+      cheese: prevState.cheese.filter(ing => ing != ings)
+    }))
   }
 
   addToToppingList = ing => {
@@ -103,9 +100,9 @@ class EditTacoLog extends React.Component {
     }
   }
   deleteFromToppingList = ings => {
-    this.setState({
-      topping: this.state.topping.filter(ing => ing !== ings)
-    })
+    this.setState(prevState => ({
+      topping: prevState.topping.filter(ing => ing != ings)
+    }))
   }
 
   addToSalsaList = ing => {
@@ -118,9 +115,9 @@ class EditTacoLog extends React.Component {
     }
   }
   deleteFromSalsaList = ings => {
-    this.setState({
-      salsa: this.state.salsa.filter(ing => ing !== ings)
-    })
+    this.setState(prevState => ({
+      salsa: prevState.salsa.filter(ing => ing != ings)
+    }))
   }
 
 
@@ -135,9 +132,9 @@ class EditTacoLog extends React.Component {
     })
   }
   deleteFromExtraIngList = ings => {
-    this.setState({
-      extraIng: this.state.extraIng.filter(ing => ing !== ings)
-    })
+    this.setState(prevState => ({
+      extraIng: prevState.extraIng.filter(ing => ing != ings)
+    }))
   }
 
   updateLog = () => {

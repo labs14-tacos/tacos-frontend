@@ -33,7 +33,8 @@ class EditTacoIngredients extends Component {
       <div>
         <div>
           <h2>Description of Taco:</h2>
-          {this.state.tortilla.map(ing => (
+          {this.state.tortilla.map(ing => ( 
+            console.log("tortilla in map"),
             <span className="blkIng" onClick={() => { this.props.deleteFromTortillaList(ing) }}>{ing + ', '}</span>
           ))}
           {this.state.protein.map(ing => (
