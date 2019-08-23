@@ -15,36 +15,25 @@ class EditTacoLog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      taco: {}
+    nameOfTaco: this.props.location.state.taco.nameOfTaco,
+      restaurantName: this.props.location.state.taco.restaurantName,
+      numberOfTacos: this.props.location.state.taco.numberOfTacos,
+      rating: this.props.location.state.taco.rating,
+      t_rating: this.props.location.state.taco.t_rating,
+      a_rating: this.props.location.state.taco.a_rating,
+      c_rating: this.props.location.state.taco.c_rating,
+      o_rating: this.props.location.state.taco.o_rating,
+      notes: this.props.location.state.taco.notes,
+      id: this.props.location.state.taco.id,
+      firebaseId: this.props.location.state.taco.firebaseId,
+      tortilla: this.props.location.state.taco_ingredients.tortilla,
+      protein: this.props.location.state.taco_ingredients.protein,
+      cheese: this.props.location.state.taco_ingredients.cheese,
+      topping: this.props.location.state.taco_ingredients.topping,
+      salsa: this.props.location.state.taco_ingredients.salsa,
+      extraIng: this.props.location.state.taco_ingredients.extraIng,
+      crunchy: this.props.location.state.taco_ingredients.crunchy
     };
-  }
-
-
-  async componentDidMount() {
-    const tacoInfo = this.props.location.state.taco;
-    const taco_ingredients = this.props.location.state.taco_ingredients;
-    console.log('component did mount', this.props.location.state)
-    console.log('ingredients', taco_ingredients)
-    await this.setState({
-      nameOfTaco: tacoInfo.nameOfTaco,
-      restaurantName: tacoInfo.restaurantName,
-      numberOfTacos: tacoInfo.numberOfTacos,
-      rating: tacoInfo.rating,
-      t_rating: tacoInfo.t_rating,
-      a_rating: tacoInfo.a_rating,
-      c_rating: tacoInfo.c_rating,
-      o_rating: tacoInfo.o_rating,
-      notes: tacoInfo.notes,
-      id: tacoInfo.id,
-      firebaseId: tacoInfo.firebaseId,
-      tortilla: taco_ingredients.tortilla,
-      protein: taco_ingredients.protein,
-      cheese: taco_ingredients.cheese,
-      topping: taco_ingredients.topping,
-      salsa: taco_ingredients.salsa,
-      extraIng: taco_ingredients.extraIng,
-      crunchy: taco_ingredients.crunchy
-    });
   }
 
   handleChange = event => {
@@ -63,10 +52,14 @@ class EditTacoLog extends React.Component {
       })
     }
   }
+
   deleteFromTortillaList = ings => {
-    this.setState({
-      tortilla: this.state.tortilla.filter(ing => ing !== ings)
-    })
+    console.log(ings, "ingredients delete tortilla")
+    console.log(this.state.tortilla, "state tortilla delete")
+    
+    this.setState(prevState => ({
+      tortilla: prevState.tortilla.filter(ing => ing != ings)
+    }))
   }
 
   addToProteinList = ing => {
@@ -178,11 +171,13 @@ class EditTacoLog extends React.Component {
   };
 
   render() {
+    console.log(this.state.tortilla, "why is this doing weird tortilla things")
     return (
       <>
         <div>
           <h2 className="form-heading">Update Taco Log</h2>
-          <EditTacoIngredients
+          {this.state.tortilla &&
+           <EditTacoIngredients
             addToTortillaList={this.addToTortillaList}
             addToProteinList={this.addToProteinList}
             addToCheeseList={this.addToCheeseList}
@@ -201,7 +196,8 @@ class EditTacoLog extends React.Component {
             topping={this.state.topping}
             salsa={this.state.salsa}
             extraIng={this.state.extraIng}
-          />
+          />} 
+         
           <form className="edit-form">
             <TextField
               className='textField-num'

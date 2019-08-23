@@ -86,12 +86,12 @@ class MyTaco extends Component {
                     </div>
                     <div className="description">
                         <h2>Description:</h2>
-                        {this.state.taco_ingredients.tortilla.map(function (tortilla) { return <p>{tortilla}</p> })}
-                        {this.state.taco_ingredients.protein.map(function (protein) { return <p>{protein}</p> })}
-                        {this.state.taco_ingredients.topping.map(function (topping) { return <p>{topping}</p> })}
-                        {this.state.taco_ingredients.cheese.map(function (cheese) { return <p>{cheese}</p> })}
-                        {this.state.taco_ingredients.salsa.map(function (salsa) { return <p>{salsa}</p> })}
-                        {this.state.taco_ingredients.extraIng.map(function (extraIng) { return <p>{extraIng}</p> })}
+                        {this.state.taco_ingredients.tortilla.map(function (tortilla) { return <p key={tortilla} >{tortilla}</p> })}
+                        {this.state.taco_ingredients.protein.map(function (protein) { return <p key={protein} >{protein}</p> })}
+                        {this.state.taco_ingredients.topping.map(function (topping) { return <p key={topping}>{topping}</p> })}
+                        {this.state.taco_ingredients.cheese.map(function (cheese) { return <p key={cheese}>{cheese}</p> })}
+                        {this.state.taco_ingredients.salsa.map(function (salsa) { return <p key={salsa}>{salsa}</p> })}
+                        {this.state.taco_ingredients.extraIng.map(function (extraIng, index) { return <p key={index}>{extraIng}</p> })}
 
 
                     </div>
