@@ -138,7 +138,7 @@ class MyTaco extends Component {
                         <h2>{notes}</h2>
                     </div>
                   
-                    <Button component={RouterLink} className="btn" to={{pathname:"/edit-taco", state: {taco: this.state.taco } }}> Edit</Button>
+                    <Button component={RouterLink} className="btn" to={{pathname:"/edit-taco", state: {taco: this.state.taco, taco_ingredients: this.state.taco_ingredients } }}> Edit</Button>
                     <Button onClick={() => this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained">
                             Delete
                     </Button>
