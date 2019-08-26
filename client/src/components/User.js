@@ -1,5 +1,4 @@
 import React from 'react';
-// import UserAvatar from './UserAvatar';
 import { Paper, Button } from '@material-ui/core/';
 import { Link as RouterLink } from 'react-router-dom';
 import Axios from 'axios';
