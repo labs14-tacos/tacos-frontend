@@ -16,18 +16,12 @@ class MyTaco extends Component {
         super(props);
         this.state = {
             taco: {},
-            taco_id: null,
             taco_ingredients: { protein: [], topping: [], salsa: [], cheese: [], tortilla: [], extraIng: [] }
         };
     };
 
     componentDidMount() {
-        const tacoId = this.props.location.state.id
-        const ing = this.props.location.state.ingredients
-        const ingredientObject = JSON.parse(ing);
-        this.setState({ taco_id: tacoId, taco_ingredients: ingredientObject });
-        this.fetchTaco(this.props.location.state.id);
-        console.log(this.props.location.state.id, 'taco');
+        this.fetchTaco(this.props.location.state.id); // gets taco by taco id passed in as props
     }
 
 
@@ -35,8 +29,9 @@ class MyTaco extends Component {
         axios
             .get(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${id}`, { headers: { token: token } })
             .then(res => {
-                this.setState({ taco: res.data });
-                console.log(this.state.taco, 'fetchTaco')
+                this.setState({ taco: res.data, taco_ingredients: res.data.ingredients });
+                console.log(this.state.taco, 'fetchTaco') 
+                console.log(this.state.taco_ingredients, 'taco ingredients in fetch taco')
 
             })
             .catch(error => console.log(error, "fetchTacoError"))
@@ -54,7 +49,6 @@ class MyTaco extends Component {
 
 
     render() {
-        console.log(this.state.taco, 'tacoState')
 
         if (!this.state.taco) {
             return <div>Loading Taco information...</div>
@@ -62,13 +56,6 @@ class MyTaco extends Component {
         }
         const { restaurantName, date, numberOfTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
 
-        // const tacoDate = new Intl.DateTimeFormat('en-GB', { 
-        //     year: 'numeric', 
-        //     month: 'long', 
-        //     day: '2-digit' 
-        // }).format(this.state.taco.date)
-
-        console.log(this.state)
 
         return (
             <div>
@@ -86,12 +73,12 @@ class MyTaco extends Component {
                     </div>
                     <div className="description">
                         <h2>Description:</h2>
-                        {this.state.taco_ingredients.tortilla.map(function (tortilla) { return <p>{tortilla}</p> })}
-                        {this.state.taco_ingredients.protein.map(function (protein) { return <p>{protein}</p> })}
-                        {this.state.taco_ingredients.topping.map(function (topping) { return <p>{topping}</p> })}
-                        {this.state.taco_ingredients.cheese.map(function (cheese) { return <p>{cheese}</p> })}
-                        {this.state.taco_ingredients.salsa.map(function (salsa) { return <p>{salsa}</p> })}
-                        {this.state.taco_ingredients.extraIng.map(function (extraIng) { return <p>{extraIng}</p> })}
+                        {this.state.taco_ingredients.tortilla.map(function (tortilla, index) { return <p key={index} >{tortilla}</p> })}
+                        {this.state.taco_ingredients.protein.map(function (protein, index) { return <p key={index} >{protein}</p> })}
+                        {this.state.taco_ingredients.topping.map(function (topping, index) { return <p key={index}>{topping}</p> })}
+                        {this.state.taco_ingredients.cheese.map(function (cheese, index) { return <p key={index}>{cheese}</p> })}
+                        {this.state.taco_ingredients.salsa.map(function (salsa, index) { return <p key={index}>{salsa}</p> })}
+                        {this.state.taco_ingredients.extraIng.map(function (extraIng, index) { return <p key={index}>{extraIng}</p> })}
 
 
                     </div>
@@ -138,7 +125,7 @@ class MyTaco extends Component {
                         <h2>{notes}</h2>
                     </div>
                   
-                    <Button component={RouterLink} className="btn" to={{pathname:"/edit-taco", state: {taco: this.state.taco } }}> Edit</Button>
+                    <Button component={RouterLink} className="btn" to={{pathname:"/edit-taco", state: {taco: this.state.taco, taco_ingredients: this.state.taco_ingredients } }}> Edit</Button>
                     <Button onClick={() => this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained">
                             Delete
                     </Button>
