@@ -26,12 +26,14 @@ class TacoView extends Component {
     notes: '',
     date: new Date(),
     numberOfTacos: 1,
+    typedIng: '',
 
     tortilla: [],
     protein: [],
     cheese: [],
     topping: [],
     salsa: [],
+    extraIng: [],
 
     crunchy: false,
   }
@@ -120,6 +122,24 @@ class TacoView extends Component {
     })
   }
 
+
+  addToExtraIngList = ing => {
+    const extraIng = this.state.extraIng;
+    extraIng.push(ing);
+    this.setState({
+      extraIng
+    })
+    this.setState({
+      typedIng: ''
+    })
+  }
+  deleteFromExtraIngList = ings => {
+    this.setState({
+      extraIng: this.state.extraIng.filter(ing => ing !== ings)
+    })
+  }
+
+
   handleCheck = name => event => {
     this.setState({ ...this.state, crunchy: event.target.checked });
   };
@@ -136,6 +156,7 @@ class TacoView extends Component {
       cheese: this.state.cheese,
       topping: this.state.topping,
       salsa: this.state.salsa,
+      extraIng: this.state.extraIng,
       crunchy: this.state.crunchy
     }
     const taco = {
@@ -159,13 +180,14 @@ class TacoView extends Component {
   viewTacoLog = (event, tacolog_id) => {
     event.preventDefault();
     axios(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${tacolog_id}`)
-      .then(res => { 
+      .then(res => {
         this.setState({ tacolog: res.data })
       })
       .catch(err => console.log(err));
   }
 
   render() {
+    console.log('taco', this.state)
     return (
       <div className="tacoLogContainer">
         <h1>Log A Taco</h1>
@@ -175,19 +197,35 @@ class TacoView extends Component {
           addToCheeseList={this.addToCheeseList}
           addToToppingList={this.addToToppingList}
           addToSalsaList={this.addToSalsaList}
+          addToExtraIngList={this.addToExtraIngList}
           deleteFromTortillaList={this.deleteFromTortillaList}
           deleteFromProteinList={this.deleteFromProteinList}
           deleteFromCheeseList={this.deleteFromCheeseList}
           deleteFromToppingList={this.deleteFromToppingList}
           deleteFromSalsaList={this.deleteFromSalsaList}
+          deleteFromExtraIngList={this.deleteFromExtraIngList}
           tortilla={this.state.tortilla}
           protein={this.state.protein}
           cheese={this.state.cheese}
           topping={this.state.topping}
           salsa={this.state.salsa}
+          extraIng={this.state.extraIng}
         />
+        <div className='extraIng'>
+          <TextField
+            className='textField'
+            type='text'
+            name='typedIng'
+            value={this.state.typedIng}
+            onChange={this.handleChange}
+            label='Other Ingredients:'
+          />
+          <button className='saveButton' onClick={() => this.addToExtraIngList(this.state.typedIng)}>Add</button>
+        </div>
+
+
         <form>
-        <TextField
+          <TextField
             className='textField-num'
             type='number'
             name='numberOfTacos'
@@ -226,7 +264,7 @@ class TacoView extends Component {
             label='Restaurant'
           />
           <TextField
-          required
+            required
             className='textField'
             type='text'
             name='notes'
@@ -234,7 +272,7 @@ class TacoView extends Component {
             onChange={this.handleChange}
             label="Wanna taco 'bout it?"
           />
-         
+
           <div className="ratings">
             <h2>Overall Rating: {this.state.rating}</h2>
             <Rating
