@@ -35,6 +35,9 @@ class TacoIngredients extends Component {
           {this.props.salsa.map(ing => (
             <span className="blkIng" onClick={() => { this.props.deleteFromSalsaList(ing) }}>{ing + ', '}</span>
           ))}
+          {this.props.extraIng.map(ing => (
+            <span className="redIng" onClick={() => { this.props.deleteFromExtraIngList(ing) }}>{ing + ', '}</span>
+          ))}
         </div>
         <Tabs>
         <div label="Tortillas">

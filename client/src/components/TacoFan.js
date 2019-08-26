@@ -3,6 +3,8 @@ import React from 'react';
 import {Paper, Button, GridList, GridListTile} from '@material-ui/core/';
 import {Link as RouterLink} from 'react-router-dom';
 import axios from 'axios';
+import Rating from '@material-ui/lab/Rating';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
 
 const token = sessionStorage.getItem("token");
 
@@ -49,6 +51,20 @@ class TacoFan extends React.Component {
                 <p>Facebook: {this.state.user.facebookPage}</p> 
                 <p>Website: {this.state.user.website}</p> 
                 <p>Favorite Taco: {this.state.user.favTaco}</p> 
+                <p><span>Zip Code:</span> {this.state.user.zipcode}</p>
+                <p><span>Tacos Per Month:</span> {this.state.user.tacosPerMonth}</p>
+                <p><span>Hard or Soft:</span> {this.state.user.hardOrSoft}</p>
+                <p><span>Corn or Flour:</span> {this.state.user.cornOrFlour}</p>
+                <p><span>Heat Preference: </span> {this.state.user.heatPreference}</p>
+                    <Rating
+                    name= 'heatPreference'
+                    disabled
+                    value={this.state.user.heatPreference}
+                    icon={<WhatshotIcon fontSize="inherit" />}
+                    />
+                <p><span>Street Or Gourmet:</span> {this.state.user.streetOrGourmet}</p>
+                <p><span>Favorite Taco Location:</span> {this.state.user.favTacoLocation}</p>
+                <p><span>Best Taco Memory:</span> {this.state.user.bestTacoMemory}</p>
                 <GridList>
             {/* {this.state.tacofeed.map(taco => 
              <GridListTile 
