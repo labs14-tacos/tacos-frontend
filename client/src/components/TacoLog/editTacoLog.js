@@ -15,7 +15,8 @@ class EditTacoLog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    nameOfTaco: this.props.location.state.taco.nameOfTaco,
+      tacoLogPhoto: this.props.location.state.taco.tacoLogPhoto,
+      nameOfTaco: this.props.location.state.taco.nameOfTaco,
       restaurantName: this.props.location.state.taco.restaurantName,
       numberOfTacos: this.props.location.state.taco.numberOfTacos,
       rating: this.props.location.state.taco.rating,
@@ -157,7 +158,8 @@ class EditTacoLog extends React.Component {
       c_rating: this.state.c_rating,
       o_rating: this.state.o_rating,
       notes: this.state.notes,
-      ingredients: ingredients
+      ingredients: ingredients, 
+      tacoLogPhoto: this.state.tacoLogPhoto
     };
     axios.put(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${this.state.id}`, tacoLog,
       { headers: { token: token } })
@@ -165,7 +167,18 @@ class EditTacoLog extends React.Component {
         this.props.history.push('/my-tacos')
       })
       .catch(err => console.log({ err }));
-  };
+  }; 
+
+  setTacoPhoto = tacoLogPhoto => {
+    this.setState({tacoLogPhoto})
+  }
+  
+  wipePhoto = () => {
+    this.setState({
+        tacoLogPhoto: '',
+  
+    })
+  }
 
   render() {
     console.log(this.state.tortilla, "why is this doing weird tortilla things")
@@ -173,6 +186,21 @@ class EditTacoLog extends React.Component {
       <>
         <div>
           <h2 className="form-heading">Update Taco Log</h2>
+           
+          {
+                    this.state.tacoLogPhoto ?
+                    <>
+                    <img className="avatar-image" src={this.state.tacoLogPhoto} alt=""/>
+                    <button onClick={() => this.wipePhoto()}>Change my photo</button>
+                    </>
+                    :
+                    <PhotoUpload id="photo-container" onClick={() => this.wipePhoto()} 
+                    setTacoLogPhoto={this.setTacoPhoto}
+
+                     />
+                }
+                 
+
           {this.state.tortilla &&
            <EditTacoIngredients
             addToTortillaList={this.addToTortillaList}
