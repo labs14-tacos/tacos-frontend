@@ -1,152 +1,110 @@
 # tacos-frontend
 
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
+# Let's Get Tacos!
 
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
+You can find the deployed project at [time4tacos.com](https://time4tacos.com/)
 
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
+## Contributors
 
-# 1️⃣ Title of project goes here
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here)
-
-## 4️⃣ Contributors
-
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
-
-|                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
+|                                       [Megan Jones](https://github.com/meginks)                                        |                                       [Raine Wallace](https://github.com/RaineBeauDubs)                                        |                                       [Anthony Johnson](https://github.com/AntMan242)                                        |                                       [David Martinson](https://github.com/pdxdave)                                        |                                                                           |
 | :---------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+|                      [<img src="https://avatars2.githubusercontent.com/u/38929577?s=400&v=4" width = "200" />](https://github.com/meginks)                       |                      [<img src="https://media.licdn.com/dms/image/C4E03AQG-9BA9baxKhw/profile-displayphoto-shrink_800_800/0?e=1571875200&v=beta&t=IGvB99cZ-oRRHHD4Ky_hQbG5IbZpjm6mwv2k_v7et2I" width = "200" />](https://github.com/RaineBeauDubs)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/AntMan242)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/pdxdave)                       |                                          |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/meginks)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/RaineBeauDubs)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/AntMan242)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/pdxdave)                               
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/megan-jones123/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/raine-wallace//) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/martinson/) | 
 
 <br>
 <br>
 
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
-
-![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
 
 ## Project Overview
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+[Trello Board](https://trello.com/b/zbzXSDqM/labs-14-lets-get-tacos-taco-log)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
-
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
-
-🚫 Replace lorem ipsum with a description of your project
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+[Product Canvas](https://www.notion.so/1-Feature-Canvas-released-8-20-2019-d97e76a57db94db388ee3afce6e680bf)
 
 
-### 4️⃣ Key Features
+Let's Get Tacos is a web application for taco connoisseurs that will allow users to log and rate tacos from their favorite restaurants.  This would include a description of the taco (e.g., ingredients), a picture, and a system consisting of five different rating criteria. The long term goal for Let's Get Tacos is to turn it into a full-fledged social media experience.  Users will be able to share pictures and descriptions of tacos as well as locations of great taco restaurants.  Moreover, they will be able to plan taco eating events with other users.
 
--    feature one
--    feature two
--    feature three
--    feature four
--    feature five
 
-## 1️⃣ Tech Stack
+### Key Features
+
+-    Log a taco description selecting form more than 70 ingredients
+-    Take a picture of a taco and post it with the description
+-    View taco logs from other users
+-    Edit and delete taco logs
+-    Create a custom user profile 
+
+## Tech Stack
 
 ### Front end built using:
+    React
 
-#### _Front end framework goes here_
+Why did you choose this framework?
 
-🚫 Why did you choose this framework?
+-    Reusable components
+-    Fast rendering
+-    Interactive UI
+-    Simple state management
 
--    point one
--    point two
--    point three
--    point four
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to `time4tacos.com`
 
-#### [Back end](🚫link to back end repo here) built using:
+#### [Back end](https://github.com/labs14-tacos/tacos-backend) built using:
 
-#### 🚫 back end framework goes here
+#### Node JS / Express
 
--    point one
--    point two
--    point three
+-    Simplicity
+-    Scalability
+-    Flexibility
 
-🚫 List the rest of the back end end features and libraries in the same format as the framework above
+#### Knex
+
+-    SQL query builder for Postgres, MySQL, Oracle, SQLite3 and more
+-    Features traditional node style callbacks as well as a promise interface
+-    Prevents SQL injections
+
 
 # APIs
 
-## 2️⃣ Authentication API here
+## Firebase authO
 
-🚫Replace text below with a description of the API
+Firebase Authentication gives backend services, simple to-use SDKs, and instant UI libraries to confirm clients over your application. It supports authentication using passwords, email id or username.
 
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+## Material-UI
 
-## 2️⃣ Payment API here
 
-🚫Replace text below with a description of the API
+Material Design is a design language that Google developed in 2014. Expanding on the "card" motifs that debuted in Google Now, Material Design uses more grid-based layouts, responsive animations and transitions, padding, and depth effects such as lighting and shadows
 
-This is the way you take out your flustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
 
-## 3️⃣ Misc API here
+## React-moment
 
-🚫Replace text below with a description of the API
+We used react-moment for the date library
 
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
 
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-## 3️⃣ Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
-# 3️⃣ Environment Variables
+# Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-SKIP_PREFLIGHT_CHECK
-REACT_APP_BACKEND_URL_USERS
-REACT_APP_FIREBASE_API_KEY
-REACT_APP_AUTH_DOMAIN
-REACT_APP_BACKEND_URL
+SKIP_PREFLIGHT_CHECK  
+REACT_APP_BACKEND_URL_USERS  
+REACT_APP_FIREBASE_API_KEY  
+REACT_APP_AUTH_DOMAIN  
+REACT_APP_BACKEND_URL  
 
-# 5️⃣ Content Licenses
+# Testing
 
-🚫For all content - images, icons, etc, use this table to document permission of use. Remove the two placeholders and add you content to this table
+We used Jest for testing. Jest is a JavaScript testing framework designed to ensure correctness of any JavaScript codebase. It allows you to write tests with an approachable, familiar and feature-rich API that gives you results quickly.
 
-| Image Filename | Source / Creator | License                                                                      |
-| -------------- | ---------------- | ---------------------------------------------------------------------------- |
-| doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
-| rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
+# Installation Instructions
 
-# 4️⃣ Testing
-
-🚫Document what you used for testing and why
-
-# 4️⃣ Installation Instructions
-
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+Yarn install and yarn start. For environment variables, please contact one of the contributors listed at the top of this readme.
 
 ## Other Scripts
 
-🚫replace these examples with your own
+replace these examples with your own
 
-    * typecheck - runs the TypeScript compiler
     * build - creates a build of the application
     * start - starts the production server after a build is created
     * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
@@ -189,4 +147,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/labs14-tacos/tacos-backend) for details on the backend of our project.
