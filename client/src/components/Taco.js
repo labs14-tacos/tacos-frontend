@@ -72,7 +72,7 @@ class Taco extends Component {
         return (
             <div>
                 <div className="taco-card">
-                    <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{this.state.tacoFanFirstName} {this.state.tacoFanLastName}</Button>
+                    <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{`See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`}</Button>
                     <h2>{restaurantName}</h2>
                     <div className="date">
                         <h2>{date}</h2>
