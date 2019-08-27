@@ -17,8 +17,8 @@ class Taco extends Component {
             taco_id: null,
             taco_ingredients: { protein: [], topping: [], salsa: [], cheese: [], tortilla: [], extraIng: [] },
             tacoCreatorId: '',
-            tacoFanFirstName: 'Taco',
-            tacoFanLastName: 'Taco'
+            tacoFanFirstName: '',
+            tacoFanLastName: ''
         };
     };
 
@@ -29,6 +29,10 @@ class Taco extends Component {
         this.fetchTaco(this.props.location.state.id);
         this.getTacoFan();
         console.log(ingredientObject, "ingredients");
+    }
+
+    componentDidUpdate() {
+        this.getTacoFan();
     }
 
 
@@ -68,7 +72,7 @@ class Taco extends Component {
         return (
             <div>
                 <div className="taco-card">
-                    <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{this.state.tacoFanFirstName} {this.state.tacoFanLastName}</Button>
+                    <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{`See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`}</Button>
                     <h2>{restaurantName}</h2>
                     <div className="date">
                         <h2>{date}</h2>
