@@ -82,7 +82,7 @@ class Login extends Component {
     sessionStorage.removeItem("token");
     this.setState({
       isSignedIn: false
-    });
+    }); 
   }
 
   render() {
