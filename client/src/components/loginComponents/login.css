@@ -1,0 +1,18 @@
+
+  .firebase_auth {
+    background-color: orange;
+    min-height: 100vh;
+  }
+  .firebase_auth > h1 {
+    padding-top: 20px;
+    margin-top: 0px
+  }
+  .firebase_auth >  p {
+    padding: 12px;
+    font-size: 20px;
+  }
+  .firebase_auth > img {
+    max-width: 600px;
+    width: 100%
+  }
+  

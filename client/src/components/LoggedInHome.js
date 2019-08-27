@@ -17,7 +17,7 @@ class LoggedInHome extends React.Component {
   return (
     <div>
      
-      <div className="flex-column container">
+      <div className="flex-column container" > 
       <img className="image" src={sun} alt="sun eating taco" />  
       <div className="button-box">
         <div className="button-container">
