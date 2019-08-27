@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import PhotoUpload from '../../components/cloudinary/TacoImage'
 import Rating from '@material-ui/lab/Rating';
-import Button from '@material-ui/core/Button';
+import { Button, Paper, Container } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import EditTacoIngredients from './EditTacoIngredients';
@@ -158,7 +158,7 @@ class EditTacoLog extends React.Component {
       c_rating: this.state.c_rating,
       o_rating: this.state.o_rating,
       notes: this.state.notes,
-      ingredients: ingredients, 
+      ingredients: ingredients,
       tacoLogPhoto: this.state.tacoLogPhoto
     };
     axios.put(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${this.state.id}`, tacoLog,
@@ -167,16 +167,16 @@ class EditTacoLog extends React.Component {
         this.props.history.push('/my-tacos')
       })
       .catch(err => console.log({ err }));
-  }; 
+  };
 
   setTacoPhoto = tacoLogPhoto => {
-    this.setState({tacoLogPhoto})
+    this.setState({ tacoLogPhoto })
   }
-  
+
   wipePhoto = () => {
     this.setState({
-        tacoLogPhoto: '',
-  
+      tacoLogPhoto: '',
+
     })
   }
 
@@ -184,45 +184,45 @@ class EditTacoLog extends React.Component {
     console.log(this.state.tortilla, "why is this doing weird tortilla things")
     return (
       <>
-        <div>
+        <Paper>
           <h2 className="form-heading">Update Taco Log</h2>
-           
-          {
-                    this.state.tacoLogPhoto ?
-                    <>
-                    <img className="avatar-image" src={this.state.tacoLogPhoto} alt=""/>
-                    <button onClick={() => this.wipePhoto()}>Change my photo</button>
-                    </>
-                    :
-                    <PhotoUpload id="photo-container" onClick={() => this.wipePhoto()} 
-                    setTacoLogPhoto={this.setTacoPhoto}
 
-                     />
-                }
-                 
+          {
+            this.state.tacoLogPhoto ?
+              <>
+                <img className="avatar-image" src={this.state.tacoLogPhoto} alt="" />
+                <button onClick={() => this.wipePhoto()}>Change my photo</button>
+              </>
+              :
+              <PhotoUpload id="photo-container" onClick={() => this.wipePhoto()}
+                setTacoLogPhoto={this.setTacoPhoto}
+
+              />
+          }
+
 
           {this.state.tortilla &&
-           <EditTacoIngredients
-            addToTortillaList={this.addToTortillaList}
-            addToProteinList={this.addToProteinList}
-            addToCheeseList={this.addToCheeseList}
-            addToToppingList={this.addToToppingList}
-            addToSalsaList={this.addToSalsaList}
-            addToExtraIngList={this.addToExtraIngList}
-            deleteFromTortillaList={this.deleteFromTortillaList}
-            deleteFromProteinList={this.deleteFromProteinList}
-            deleteFromCheeseList={this.deleteFromCheeseList}
-            deleteFromToppingList={this.deleteFromToppingList}
-            deleteFromSalsaList={this.deleteFromSalsaList}
-            deleteFromExtraIngList={this.deleteFromExtraIngList}
-            tortilla={this.state.tortilla}
-            protein={this.state.protein}
-            cheese={this.state.cheese}
-            topping={this.state.topping}
-            salsa={this.state.salsa}
-            extraIng={this.state.extraIng}
-          />} 
-         
+            <EditTacoIngredients
+              addToTortillaList={this.addToTortillaList}
+              addToProteinList={this.addToProteinList}
+              addToCheeseList={this.addToCheeseList}
+              addToToppingList={this.addToToppingList}
+              addToSalsaList={this.addToSalsaList}
+              addToExtraIngList={this.addToExtraIngList}
+              deleteFromTortillaList={this.deleteFromTortillaList}
+              deleteFromProteinList={this.deleteFromProteinList}
+              deleteFromCheeseList={this.deleteFromCheeseList}
+              deleteFromToppingList={this.deleteFromToppingList}
+              deleteFromSalsaList={this.deleteFromSalsaList}
+              deleteFromExtraIngList={this.deleteFromExtraIngList}
+              tortilla={this.state.tortilla}
+              protein={this.state.protein}
+              cheese={this.state.cheese}
+              topping={this.state.topping}
+              salsa={this.state.salsa}
+              extraIng={this.state.extraIng}
+            />}
+
           <form className="edit-form">
             <TextField
               className='textField-num'
@@ -258,7 +258,7 @@ class EditTacoLog extends React.Component {
               label="Wanna taco 'bout it?"
             />
 
-            <div className="ratings">
+            <Container className="ratings">
               <h2>Overall Rating: {this.state.rating}</h2>
               <Rating
                 className='rating'
@@ -298,10 +298,10 @@ class EditTacoLog extends React.Component {
                 value={this.state.o_rating}
                 onChange={this.handleChange}
               />
-            </div>
+            </Container>
             <Button className="saveButton" type='submit' component={RouterLink} to="/my-tacos" onClick={this.updateLog}>Save Taco Log</Button>
           </form>
-        </div>
+        </Paper>
       </>
     );
   }
