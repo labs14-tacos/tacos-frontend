@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import TacoIngredients from './TacoIngredients';
 import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
-import Checkbox from '@material-ui/core/Checkbox';
+import { Checkbox, Paper, Button, Container } from '@material-ui/core/';
 import DatePicker from 'react-date-picker';
 import TacoImage from '../cloudinary/TacoImage';
 
@@ -189,7 +189,7 @@ class TacoView extends Component {
   render() {
     console.log('taco', this.state)
     return (
-      <div className="tacoLogContainer">
+      <Paper className="tacoLogContainer">
         <h1>Log A Taco</h1>
         <TacoIngredients
           addToTortillaList={this.addToTortillaList}
@@ -211,7 +211,7 @@ class TacoView extends Component {
           salsa={this.state.salsa}
           extraIng={this.state.extraIng}
         />
-        <div className='extraIng'>
+        <Container className='extraIng'>
           <TextField
             className='textField'
             type='text'
@@ -220,8 +220,8 @@ class TacoView extends Component {
             onChange={this.handleChange}
             label='Other Ingredients:'
           />
-          <button className='saveButton' onClick={() => this.addToExtraIngList(this.state.typedIng)}>Add</button>
-        </div>
+          <Button className='saveButton' onClick={() => this.addToExtraIngList(this.state.typedIng)}>Add</Button>
+        </Container>
 
 
         <form>
@@ -233,7 +233,7 @@ class TacoView extends Component {
             onChange={this.handleChange}
             label="How many tacos?"
           />
-          <div className='checkbox'>
+          <Container className='checkbox'>
             <h3>Crunchy?</h3>
             <Checkbox
               color='primary'
@@ -241,7 +241,7 @@ class TacoView extends Component {
               value={this.state.crunchy}
               onChange={this.handleCheck(this.state.crunchy)}
             />
-          </div>
+          </Container>
           <DatePicker
             onChange={this.onChange}
             value={this.state.date}
@@ -273,7 +273,7 @@ class TacoView extends Component {
             label="Wanna taco 'bout it?"
           />
 
-          <div className="ratings">
+          <Container className="ratings">
             <h2>Overall Rating: {this.state.rating}</h2>
             <Rating
               className='rating'
@@ -313,11 +313,10 @@ class TacoView extends Component {
               value={this.state.o_rating}
               onChange={this.handleChange}
             />
-          </div>
-          <button className="saveButton" type='submit' onClick={this.postTacoLog}>Save Taco Log</button>
+          </Container>
+          <Button id='proBtn' type='submit' onClick={this.postTacoLog}>Save Taco Log</Button>
         </form>
-
-      </div>
+      </Paper>
     )
   }
 }

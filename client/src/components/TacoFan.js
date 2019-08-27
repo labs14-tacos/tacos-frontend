@@ -43,7 +43,6 @@ class TacoFan extends React.Component {
     render() {
         console.log(this.state.user, "user console log")
         return (
-            <div>
                 <Paper>
                     <img className="avatar-image" src={this.state.user.userPhoto} />
                     <h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
@@ -76,7 +75,6 @@ class TacoFan extends React.Component {
                     </GridList>
                     <Button component={RouterLink} to="/explore-tacos">Back to All Tacos</Button>
                 </Paper>
-            </div>
         )
     }
 }
