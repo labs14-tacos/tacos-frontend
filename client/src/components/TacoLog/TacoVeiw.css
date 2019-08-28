@@ -92,15 +92,15 @@ form {
   border-radius: 4px;
   margin: 2px;
   color: #fff;
-  background-color: #F44336;
+  background-color: #a83027;
   cursor: pointer;
   letter-spacing: .5px;
 }
 
 .tab-list-active {
   list-style: none;
-  background:#FAF60C;
-  color: blue;
+  background:#F44336;
+  color: white;
   padding: 0.25rem 1rem;
 }
 .tabs {
@@ -198,4 +198,10 @@ span {
 .taco-card h2 {
   color: #a83027;
   font-weight: bold;
+}
+
+.changeImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
