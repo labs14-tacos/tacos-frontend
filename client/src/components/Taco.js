@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Rating from '@material-ui/lab/Rating';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button, Paper, Container } from '@material-ui/core';
+import DatePicker from 'react-date-picker';
 import axios from 'axios';
 
 const token = sessionStorage.getItem("token")
@@ -66,7 +67,10 @@ class Taco extends Component {
                     <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{`See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`}</Button>
                     <h2>{restaurantName}</h2>
                     <Container className="date">
-                        <h2>{date}</h2>
+                        <DatePicker
+                            disabled
+                            value={date}
+                        />
                     </Container>
                     <Container className="total-tacos">
                         Total Tacos: <strong>{numberOfTacos}</strong>
