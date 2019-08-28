@@ -96,10 +96,10 @@ class UpdateUserProfile extends React.Component {
 
                         {
                             this.state.userPhoto ?
-                                <>
+                                <Container className='changeImg'>
                                     <img className="avatar-image" src={this.state.userPhoto} alt="" />
-                                    <button onClick={() => this.wipePhoto()}>Change my photo</button>
-                                </>
+                                    <Button className='saveButton' onClick={() => this.wipePhoto()}>Change my photo</Button>
+                                </Container>
                                 :
                                 <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto} />
                         }

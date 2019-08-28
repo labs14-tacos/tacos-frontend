@@ -199,3 +199,9 @@ span {
   color: #a83027;
   font-weight: bold;
 }
+
+.changeImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

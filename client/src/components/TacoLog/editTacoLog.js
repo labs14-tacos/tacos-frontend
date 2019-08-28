@@ -189,10 +189,10 @@ class EditTacoLog extends React.Component {
 
           {
             this.state.tacoLogPhoto ?
-              <>
+              <Container className="changeImg">
                 <img className="avatar-image" src={this.state.tacoLogPhoto} alt="" />
-                <button onClick={() => this.wipePhoto()}>Change my photo</button>
-              </>
+                <Button className='saveButton' onClick={() => this.wipePhoto()}>Change my photo</Button>
+              </Container>
               :
               <PhotoUpload id="photo-container" onClick={() => this.wipePhoto()}
                 setTacoLogPhoto={this.setTacoPhoto}
