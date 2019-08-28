@@ -83,17 +83,25 @@ form {
   justify-content: center;
   font-size: 15px
 }
-
+/******************************************************/
 .tab-list-item {
   list-style: none;
   margin-bottom: 1px;
-  padding: 0.5rem 0.5rem;
+  padding: 0.25rem 0.25rem;
+  /* border: .5px solid red; */
+  border-radius: 4px;
+  margin: 2px;
+  color: #fff;
+  background-color: #F44336;
+  cursor: pointer;
+  letter-spacing: .5px;
 }
 
 .tab-list-active {
   list-style: none;
-  background-color: white;
-  color: red;
+  background:#FAF60C;
+  color: blue;
+  padding: 0.25rem 1rem;
 }
 .tabs {
   width: 95vw;

@@ -229,6 +229,7 @@ class TacoView extends Component {
             className='textField-num'
             type='number'
             name='numberOfTacos'
+            inputProps={{ min: 1, max: 100}}
             value={this.state.numberOfTacos}
             onChange={this.handleChange}
             label="How many tacos?"
@@ -246,7 +247,7 @@ class TacoView extends Component {
             onChange={this.onChange}
             value={this.state.date}
           />
-          <TacoImage className="tacoCloud" setTacoLogPhoto={this.setTacoLogPhoto} />
+          <TacoImage className="tacoCloud" setTacoLogPhoto={this.setTacoLogPhoto} /><i class="fa fa-y-combinator" aria-hidden="true"></i>
           <TextField
             className='textField'
             type='text'
