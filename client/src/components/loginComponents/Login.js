@@ -4,6 +4,8 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import LoggedInApp from '../LoggedInApp';
 import axios from 'axios';
 import NavBar from '../NavBar'
+import tacoImg from '../../images/tacos.png'
+import './login.css'
 
 // import User from './User'
 
@@ -27,6 +29,7 @@ class Login extends Component {
     user: {},
     token: ''
   }
+  
 
   uiConfig = {
     signInFlow: 'popup',
@@ -88,22 +91,29 @@ class Login extends Component {
   render() {
     
     return (
-      <div>
-        {/* When you are logged in, you will be able to see the "new App.js". If you are not signed in, you will only be able to see the log-in prompt and anything else in the OG App.js. */}
-        {this.state.isSignedIn ? (
-          <div>
-            {/* <h3>You have been signed in!</h3> */}
-            <NavBar signout={this.fbSignOut}/>
-            
-            <LoggedInApp />
-          </div>
-        ) : (
-            <StyledFirebaseAuth
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebase.auth()}
-            />           
-          )}
-      </div>
+     
+        <div>
+          {/* When you are logged in, you will be able to see the "new App.js". If you are not signed in, you will only be able to see the log-in prompt and anything else in the OG App.js. */}
+          {this.state.isSignedIn ? (
+            <div>
+              {/* <h3>You have been signed in!</h3> */}
+              <NavBar signout={this.fbSignOut}/>
+              
+              <LoggedInApp />
+            </div>
+          ) : (
+            <div className="firebase_auth">
+                  <h1>Let's Get Tacos!</h1>
+                  <p>Log your favorite tacolicious tacos with your personal taco logger</p>
+                  <img src={tacoImg} alt=""/>
+                  <StyledFirebaseAuth
+                    uiConfig={this.uiConfig}
+                    firebaseAuth={firebase.auth()}
+                   />   
+            </div>        
+            )}
+        </div>
+      
     );
   }
 }

@@ -59,13 +59,10 @@ class UpdateUserProfile extends React.Component {
 
 
             });
-            console.log("componentDidMount in update profile", userInfo);
+
         }, 0)
 
     }
-
-    componentDidUpdate(prevProps) { if (this.props !== prevProps) { console.log('cdu', this.props, prevProps) } }
-
 
     handleChange = event => {
         this.setState({ [event.target.name]: event.target.value });
@@ -83,7 +80,7 @@ class UpdateUserProfile extends React.Component {
     }
     updateProfile = event => {
         event.preventDefault();
-        Axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/users`, this.state, { headers: { token: token } }).then(res => console.log(res)).catch(err => console.log(err))
+        Axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/users`, this.state, { headers: { token: token } }).then(res => this.props.history.push('/my-profile')).catch(err => console.log(err))
     };
 
     render() {
@@ -242,9 +239,6 @@ class UpdateUserProfile extends React.Component {
                         Save
                 </Button>
                 </form>
-                <Button id='proBtn' component={RouterLink} to="/my-profile">
-                    Back to Profile
-                </Button>
             </Paper>
 
         );
