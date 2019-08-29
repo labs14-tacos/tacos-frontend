@@ -125,6 +125,7 @@ class TacoView extends Component {
 
   addToExtraIngList = ing => {
     const extraIng = this.state.extraIng;
+    if (ing.length > 0) {
     extraIng.push(ing);
     this.setState({
       extraIng
@@ -132,6 +133,7 @@ class TacoView extends Component {
     this.setState({
       typedIng: ''
     })
+  } 
   }
   deleteFromExtraIngList = ings => {
     this.setState({

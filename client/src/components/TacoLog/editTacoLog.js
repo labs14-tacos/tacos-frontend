@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import PhotoUpload from '../../components/cloudinary/TacoImage'
 import Rating from '@material-ui/lab/Rating';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import EditTacoIngredients from './EditTacoIngredients';
@@ -33,7 +34,8 @@ class EditTacoLog extends React.Component {
       topping: this.props.location.state.taco_ingredients.topping,
       salsa: this.props.location.state.taco_ingredients.salsa,
       extraIng: this.props.location.state.taco_ingredients.extraIng,
-      crunchy: this.props.location.state.taco_ingredients.crunchy
+      crunchy: this.props.location.state.taco_ingredients.crunchy, 
+      typedIng: ''
     };
   }
 
@@ -41,7 +43,6 @@ class EditTacoLog extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log('handlechange', event.target.value)
   }
 
   addToTortillaList = ing => {
@@ -51,7 +52,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         tortilla
       })
-    }
+    } else this.deleteFromTortillaList(ing)
   }
 
   deleteFromTortillaList = ings => {
@@ -67,7 +68,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         protein
       })
-    }
+    } else this.deleteFromProteinList(ing)
   }
   deleteFromProteinList = ings => {
     this.setState(prevState => ({
@@ -82,7 +83,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         cheese
       })
-    }
+    } else this.deleteFromCheeseList(ing)
 
   }
   deleteFromCheeseList = ings => {
@@ -98,7 +99,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         topping
       })
-    }
+    } else this.deleteFromToppingList(ing)
   }
   deleteFromToppingList = ings => {
     this.setState(prevState => ({
@@ -113,7 +114,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         salsa
       })
-    }
+    } else this.deleteFromSalsaList(ing)
   }
   deleteFromSalsaList = ings => {
     this.setState(prevState => ({
@@ -124,13 +125,15 @@ class EditTacoLog extends React.Component {
 
   addToExtraIngList = ing => {
     const extraIng = this.state.extraIng;
-    extraIng.push(ing);
-    this.setState({
-      extraIng
-    })
-    this.setState({
-      typedIng: ''
-    })
+    if (ing.length > 0) {
+      extraIng.push(ing);
+      this.setState({
+        extraIng
+      })
+      this.setState({
+        typedIng: ''
+      })
+    } 
   }
   deleteFromExtraIngList = ings => {
     this.setState(prevState => ({
@@ -222,8 +225,18 @@ class EditTacoLog extends React.Component {
             salsa={this.state.salsa}
             extraIng={this.state.extraIng}
           />} 
-         
           <form className="edit-form">
+          <Container className='extraIng'>
+          <TextField
+            className='textField'
+            type='text'
+            name='typedIng'
+            value={this.state.typedIng}
+            onChange={this.handleChange}
+            label='Other Ingredients:'
+          />
+          <Button className='saveButton' onClick={() => this.addToExtraIngList(this.state.typedIng)}>Add</Button>
+        </Container>
             <TextField
               className='textField-num'
               type='number'
