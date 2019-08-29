@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 =======
 import { Button, Paper, Container } from '@material-ui/core';
->>>>>>> a0f7862520987cf3537ac41f50cf07c4a6c63aa8
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import EditTacoIngredients from './EditTacoIngredients';
