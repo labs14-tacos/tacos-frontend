@@ -53,7 +53,7 @@ class TacoView extends Component {
       this.setState({
         tortilla
       })
-    }
+    } else this.deleteFromTortillaList(ing);
   }
   deleteFromTortillaList = ings => {
     this.setState({
@@ -68,8 +68,8 @@ class TacoView extends Component {
       this.setState({
         protein
       })
-    }
-  }
+    } else this.deleteFromProteinList(ing)
+  } 
   deleteFromProteinList = ings => {
     this.setState({
       protein: this.state.protein.filter(ing => ing !== ings)
@@ -83,7 +83,7 @@ class TacoView extends Component {
       this.setState({
         cheese
       })
-    }
+    } else this.deleteFromCheeseList(ing)
 
   }
   deleteFromCheeseList = ings => {
@@ -99,7 +99,7 @@ class TacoView extends Component {
       this.setState({
         topping
       })
-    }
+    } else this.deleteFromToppingList(ing)
   }
   deleteFromToppingList = ings => {
     this.setState({
@@ -114,7 +114,7 @@ class TacoView extends Component {
       this.setState({
         salsa
       })
-    }
+    } else this.deleteFromSalsaList(ing)
   }
   deleteFromSalsaList = ings => {
     this.setState({
