@@ -24,7 +24,6 @@ class MyTacoFeed extends React.Component {
     }
 
     render() {
-        console.log(this.state.tacofeed, "tacofeed");
         return (
             <div>
                 <ButtonGroup id="btnGrp"
@@ -39,7 +38,6 @@ class MyTacoFeed extends React.Component {
                 <GridList>
                     {this.state.tacofeed.map(taco => {
                         const ingredients = JSON.stringify(taco.ingredients);
-                        console.log(taco);
                         return <GridListTile
                             component={RouterLink}
                             to={{

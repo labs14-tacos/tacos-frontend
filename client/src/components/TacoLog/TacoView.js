@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-
 import TacoIngredients from './TacoIngredients';
 import TextField from '@material-ui/core/TextField';
 import Rating from '@material-ui/lab/Rating';
 import { Checkbox, Paper, Button, Container } from '@material-ui/core/';
 import DatePicker from 'react-date-picker';
 import TacoImage from '../cloudinary/TacoImage';
-
 import axios from 'axios';
-import './TacoVeiw.css';
+import './TacoView.css';
 
 const token = sessionStorage.getItem('token');
 
@@ -27,14 +25,12 @@ class TacoView extends Component {
     date: new Date(),
     numberOfTacos: 1,
     typedIng: '',
-
     tortilla: [],
     protein: [],
     cheese: [],
     topping: [],
     salsa: [],
     extraIng: [],
-
     crunchy: false,
   }
 
@@ -53,7 +49,7 @@ class TacoView extends Component {
       this.setState({
         tortilla
       })
-    }
+    } else this.deleteFromTortillaList(ing);
   }
   deleteFromTortillaList = ings => {
     this.setState({
@@ -68,8 +64,8 @@ class TacoView extends Component {
       this.setState({
         protein
       })
-    }
-  }
+    } else this.deleteFromProteinList(ing)
+  } 
   deleteFromProteinList = ings => {
     this.setState({
       protein: this.state.protein.filter(ing => ing !== ings)
@@ -83,7 +79,7 @@ class TacoView extends Component {
       this.setState({
         cheese
       })
-    }
+    } else this.deleteFromCheeseList(ing)
 
   }
   deleteFromCheeseList = ings => {
@@ -99,7 +95,7 @@ class TacoView extends Component {
       this.setState({
         topping
       })
-    }
+    } else this.deleteFromToppingList(ing)
   }
   deleteFromToppingList = ings => {
     this.setState({
@@ -114,7 +110,7 @@ class TacoView extends Component {
       this.setState({
         salsa
       })
-    }
+    } else this.deleteFromSalsaList(ing)
   }
   deleteFromSalsaList = ings => {
     this.setState({
@@ -125,6 +121,7 @@ class TacoView extends Component {
 
   addToExtraIngList = ing => {
     const extraIng = this.state.extraIng;
+    if (ing.length > 0) {
     extraIng.push(ing);
     this.setState({
       extraIng
@@ -132,6 +129,7 @@ class TacoView extends Component {
     this.setState({
       typedIng: ''
     })
+  } 
   }
   deleteFromExtraIngList = ings => {
     this.setState({
@@ -173,7 +171,6 @@ class TacoView extends Component {
       date: this.state.date,
       ingredients: ingredients
     }
-    console.log("taco", taco)
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/tacolog`, taco, { headers: { token: token } }).then(res => console.log(res)).then(() => this.props.history.push('/my-tacos')).catch(err => console.log(err));
   }
 
@@ -187,7 +184,6 @@ class TacoView extends Component {
   }
 
   render() {
-    console.log('taco', this.state)
     return (
       <Paper className="tacoLogContainer">
         <h1>Log A Taco</h1>

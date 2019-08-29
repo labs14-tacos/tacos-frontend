@@ -37,10 +37,9 @@ class MyTaco extends Component {
 
     onDelete() {
         // let id = this.state.taco_id;
-        console.log(this.state.taco.id)
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${this.props.location.state.id}`, { headers: { token: token } })
             .then(response => {
-                console.log('delete working', response)
+                console.log(response)
                 // this.props.history.push('/my-tacos');
             }).catch(err => console.log(err));
     }
@@ -52,7 +51,7 @@ class MyTaco extends Component {
             return <div>Loading Taco information...</div>
 
         }
-        const { restaurantName, date, numberOfTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
+        const { restaurantName, date, numberOfTacos, nameOfTaco, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
 
 
         return (
@@ -130,7 +129,6 @@ class MyTaco extends Component {
                     <Button onClick={() => this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained">
                         Delete
                     </Button>
-
                 </Container>
             </Container>
         )

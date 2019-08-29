@@ -24,7 +24,6 @@ class OthersTacos extends React.Component {
     }
 
     render() {
-        console.log(this.state.tacofeed, "TACOFEED")
         return (
             <div>
             <ButtonGroup id="btnGrp" 

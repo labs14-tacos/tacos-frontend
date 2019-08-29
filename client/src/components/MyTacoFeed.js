@@ -23,7 +23,6 @@ class MyTacoFeed extends React.Component {
     }
 
     render() {
-        console.log(this.state.tacofeed, "tacofeed");
         return (
             <div>
             <ButtonGroup  

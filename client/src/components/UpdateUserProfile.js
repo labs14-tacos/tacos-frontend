@@ -84,16 +84,10 @@ class UpdateUserProfile extends React.Component {
     };
 
     render() {
-        console.log('looking at state', this.state)
-        console.log('check for photo', this.state.userPhoto)
         return (
-
-
             <Container>
                 <form>
-                    {/* User photo us updated here */}
                     <div >
-
                         {
                             this.state.userPhoto ?
                                 <Container className='changeImg'>
@@ -103,13 +97,11 @@ class UpdateUserProfile extends React.Component {
                                 :
                                 <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto} />
                         }
-
-                        {/* <button onClick={() => this.setState(prevState => ({changePhoto: !prevState.changePhoto}))}>Change my photo</button>  */}
                     </div>
                     <Container className='changeImg'>
 
                         <TextField
-                    className='textField'
+                            className='textField'
                             label="First Name"
                             name="firstName"
                             value={this.state.firstName}

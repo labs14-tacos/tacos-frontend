@@ -17,7 +17,6 @@ class Tabs extends Component {
   }
 
   render() {
-    console.log(this.state.activeTab)
     const {
       onClickTabItem,
       props: {

@@ -1,6 +1,5 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram, faYoutube } from '@fortawesome/free-solid-svg-icons';
+
 import './SocialFollow.css';
 export default function SocialFollow() {
     return (
