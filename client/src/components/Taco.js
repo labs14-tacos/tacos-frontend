@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Rating from '@material-ui/lab/Rating';
 import { Link as RouterLink } from 'react-router-dom';
-import { Button, Paper, Container } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import DatePicker from 'react-date-picker';
 import axios from 'axios';
 
@@ -55,21 +55,16 @@ class Taco extends Component {
     }
 
     render() {
-        console.log(this.state.taco, 'tacoState')
         if (!this.state.taco) {
             return <div>Loading Taco information...</div>
         }
         const { restaurantName, date, numberOfTacos, nameOfTaco, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
-        console.log(this.state)
         return (
-            <div>
-                <div className="taco-card">
+            <Container>
+                <Container className="taco-card">
                     <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{
                         this.state.tacoFanFirstName === null && this.state.tacoFanLastName === null ? `See Taco Fan Profile` : `See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`
                     }</Button>
-            <Paper>
-                <Container className="taco-card">
-                    <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{`See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`}</Button>
                     <h2>{restaurantName}</h2>
                     <Container className="date">
                         <DatePicker
@@ -94,7 +89,7 @@ class Taco extends Component {
                         {this.state.taco_ingredients.extraIng.map(function (extraIng) { return <p>{extraIng}</p> })}
                     </Container>
                     <Container className="ratings">
-                        <h1>"Overall Rating"</h1>
+                        <h2>Overall Rating: {rating}</h2>
                         <Rating
                             name='rating'
                             disabled
@@ -133,7 +128,7 @@ class Taco extends Component {
                         <h2>{notes}</h2>
                     </Container>
                 </Container>
-            </Paper>
+            </Container>
         )
     }
 }

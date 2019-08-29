@@ -1,5 +1,4 @@
 import React from 'react';
-// import UserAvatar from './UserAvatar';
 import { Paper, Button, GridList, GridListTile, Container } from '@material-ui/core/';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
@@ -18,9 +17,7 @@ class TacoFan extends React.Component {
 
     componentDidMount() {
         const fanFirebaseId = this.props.location.state.tacoCreatorId;
-        console.log('tacofan', this.state.tacofeed)
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/tacofan_info/${fanFirebaseId}`, { headers: { token: token } }).then(res => {
-            console.log("it worked!!!!");
             this.setState({
                 user: res.data
             })
@@ -30,10 +27,8 @@ class TacoFan extends React.Component {
     }
 
     getTacoFanTacos() {
-        console.log("function for taco list runs")
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/tacolog/user/${this.state.user.firebaseId}`, { headers: { token: token } }).then(
             res => {
-                console.log(res.data, "taco fan tacos method")
                 this.setState({ tacofeed: res.data })
             }
         ).catch(error => console.log(error))
@@ -41,12 +36,10 @@ class TacoFan extends React.Component {
 
 
     render() {
-        console.log(this.state.user, "user console log")
         return (
                 <Paper>
                     <img className="avatar-image" src={this.state.user.userPhoto} />
                     <h1>{this.state.user.firstName} {this.state.user.lastName}</h1>
-                    <p>Email: {this.state.user.email}</p>
                     <p>Instagram: {this.state.user.instaHandle}</p>
                     <p>Twitter: {this.state.user.twitterHandle}</p>
                     <p>Facebook: {this.state.user.facebookPage}</p>
@@ -68,11 +61,6 @@ class TacoFan extends React.Component {
                     <p><span>Street Or Gourmet:</span> {this.state.user.streetOrGourmet}</p>
                     <p><span>Favorite Taco Location:</span> {this.state.user.favTacoLocation}</p>
                     <p><span>Best Taco Memory:</span> {this.state.user.bestTacoMemory}</p>
-                    <GridList>
-                        {/* {this.state.tacofeed.map(taco => 
-             <GridListTile 
-            key={taco.id}><img src={taco.tacoLogPhoto} alt={taco.nameOfTaco}/></GridListTile>)} */}
-                    </GridList>
                     <Button component={RouterLink} to="/explore-tacos">Back to All Tacos</Button>
                 </Paper>
         )

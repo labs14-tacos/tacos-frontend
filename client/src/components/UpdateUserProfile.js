@@ -84,16 +84,10 @@ class UpdateUserProfile extends React.Component {
     };
 
     render() {
-        console.log('looking at state', this.state)
-        console.log('check for photo', this.state.userPhoto)
         return (
-
-
-            <Paper>
+            <Container>
                 <form>
-                    {/* User photo us updated here */}
                     <div >
-
                         {
                             this.state.userPhoto ?
                                 <Container className='changeImg'>
@@ -103,12 +97,11 @@ class UpdateUserProfile extends React.Component {
                                 :
                                 <PhotoUpload id="photo-container" setUserPhoto={this.setUserPhoto} />
                         }
-
-                        {/* <button onClick={() => this.setState(prevState => ({changePhoto: !prevState.changePhoto}))}>Change my photo</button>  */}
                     </div>
-                    <Container>
+                    <Container className='changeImg'>
 
                         <TextField
+                            className='textField'
                             label="First Name"
                             name="firstName"
                             value={this.state.firstName}
@@ -117,7 +110,7 @@ class UpdateUserProfile extends React.Component {
                         />
 
                         <TextField
-                            className="wider-text-field"
+                            className="wider-text-field textField"
 
                             label="Last Name"
                             name="lastName"
@@ -128,6 +121,7 @@ class UpdateUserProfile extends React.Component {
 
                         <TextField
                             disabled
+                            className='textField'
                             label="Email"
                             name="email"
                             onChange={this.handleChange}
@@ -136,6 +130,7 @@ class UpdateUserProfile extends React.Component {
 
                         <TextField
                             label="Instagram Handle"
+                            className='textField'
                             name="instaHandle"
                             onChange={this.handleChange}
                             value={this.state.instaHandle}
@@ -144,6 +139,7 @@ class UpdateUserProfile extends React.Component {
 
                         <TextField
                             label="Twitter Handle"
+                            className='textField'
                             name="twitterHandle"
                             onChange={this.handleChange}
                             value={this.state.twitterHandle}
@@ -152,6 +148,7 @@ class UpdateUserProfile extends React.Component {
 
                         <TextField
                             label="Facebook Page"
+                            className='textField'
                             name="facebookPage"
                             onChange={this.handleChange}
                             value={this.state.facebookPage}
@@ -160,6 +157,7 @@ class UpdateUserProfile extends React.Component {
 
                         <TextField
                             label="Website"
+                            className='textField'
                             value={this.state.website}
                             name="website"
                             onChange={this.handleChange}
@@ -168,6 +166,7 @@ class UpdateUserProfile extends React.Component {
 
                         <TextField
                             label="Favorite Taco"
+                            className='textField'
                             name="favTaco"
                             value={this.state.favTaco}
                             onChange={this.handleChange}
@@ -175,6 +174,7 @@ class UpdateUserProfile extends React.Component {
                         />
                         <TextField
                             label="Zip Code"
+                            className='textField'
                             name="zipcode"
                             value={this.state.zipcode}
                             onChange={this.handleChange}
@@ -182,6 +182,7 @@ class UpdateUserProfile extends React.Component {
                         />
                         <TextField
                             label="Tacos Per Month"
+                            className='textField'
                             name="tacosPerMonth"
                             value={this.state.tacosPerMonth}
                             onChange={this.handleChange}
@@ -190,12 +191,14 @@ class UpdateUserProfile extends React.Component {
                         <TextField
                             label="Hard Or Soft"
                             name="hardOrSoft"
+                            className='textField'
                             value={this.state.hardOrSoft}
                             onChange={this.handleChange}
                             placeholder="Hard Or Soft"
                         />
                         <TextField
                             label="Corn Or Flour"
+                            className='textField'
                             name="cornOrFlour"
                             value={this.state.cornOrFlour}
                             onChange={this.handleChange}
@@ -214,6 +217,7 @@ class UpdateUserProfile extends React.Component {
                         </Container>
                         <TextField
                             label="Street Or Gourmet"
+                            className='textField'
                             name="streetOrGourmet"
                             value={this.state.streetOrGourmet}
                             onChange={this.handleChange}
@@ -221,6 +225,7 @@ class UpdateUserProfile extends React.Component {
                         />
                         <TextField
                             label="Favorite Taco Location"
+                            className='textField'
                             name="favTacoLocation"
                             value={this.state.favTacoLocation}
                             onChange={this.handleChange}
@@ -228,6 +233,7 @@ class UpdateUserProfile extends React.Component {
                         />
                         <TextField
                             label="Best Taco Memory"
+                            className='textField'
                             name="bestTacoMemory"
                             value={this.state.bestTacoMemory}
                             onChange={this.handleChange}
@@ -239,7 +245,7 @@ class UpdateUserProfile extends React.Component {
                         Save
                 </Button>
                 </form>
-            </Paper>
+            </Container>
 
         );
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rating from '@material-ui/lab/Rating';
-import { Button, Paper, Container } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import axios from 'axios';
 import DatePicker from 'react-date-picker';
 import { Link as RouterLink } from 'react-router-dom';
@@ -37,10 +37,9 @@ class MyTaco extends Component {
 
     onDelete() {
         // let id = this.state.taco_id;
-        console.log(this.state.taco.id)
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/tacolog/${this.props.location.state.id}`, { headers: { token: token } })
             .then(response => {
-                console.log('delete working', response)
+                console.log(response)
                 // this.props.history.push('/my-tacos');
             }).catch(err => console.log(err));
     }
@@ -52,11 +51,11 @@ class MyTaco extends Component {
             return <div>Loading Taco information...</div>
 
         }
-        const { restaurantName, date, numberOfTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
+        const { restaurantName, date, numberOfTacos, nameOfTaco, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
 
 
         return (
-            <Paper>
+            <Container className="tacoContainer">
                 <Container className="taco-card">
                     <h2>{restaurantName}</h2>
                     <Container className="date">
@@ -84,7 +83,7 @@ class MyTaco extends Component {
 
                     </Container>
                     <Container className="ratings">
-                        <h1>"Overall Rating"</h1>
+                        <h2>Overall Rating: {rating}</h2>
                         <Rating
                             name='rating'
                             disabled
@@ -130,9 +129,8 @@ class MyTaco extends Component {
                     <Button onClick={() => this.onDelete()} id="primaryBtn" component={RouterLink} to="/my-tacos" color="primary" variant="contained">
                         Delete
                     </Button>
-
                 </Container>
-            </Paper>
+            </Container>
         )
     }
 }

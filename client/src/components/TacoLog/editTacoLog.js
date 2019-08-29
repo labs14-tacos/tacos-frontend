@@ -183,12 +183,10 @@ class EditTacoLog extends React.Component {
   }
 
   render() {
-    console.log(this.state.tortilla, "why is this doing weird tortilla things")
     return (
       <>
         <Paper>
           <h2 className="form-heading">Update Taco Log</h2>
-
           {
             this.state.tacoLogPhoto ?
               <Container className="changeImg">
@@ -201,8 +199,6 @@ class EditTacoLog extends React.Component {
 
               />
           }
-
-
           {this.state.tortilla &&
            <EditTacoIngredients
             addToTortillaList={this.addToTortillaList}
