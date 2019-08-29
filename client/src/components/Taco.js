@@ -70,7 +70,6 @@ class Taco extends Component {
             <Paper>
                 <Container className="taco-card">
                     <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{`See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`}</Button>
->>>>>>> a0f7862520987cf3537ac41f50cf07c4a6c63aa8
                     <h2>{restaurantName}</h2>
                     <Container className="date">
                         <DatePicker
