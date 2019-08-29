@@ -16,7 +16,6 @@ class EditTacoIngredients extends Component {
     };
   };
   componentDidUpdate(prevProps){
-    console.log("component did update")
     if(prevProps !== this.props){
       this.setState({tortilla: this.props.tortilla,
         protein: this.props.protein, 
@@ -28,13 +27,11 @@ class EditTacoIngredients extends Component {
   }
   
   render() {
-   console.log("tortilla state", this.state.tortilla)
     return (
       <div>
         <div>
           <h2>Description of Taco:</h2>
           {this.state.tortilla.map(ing => ( 
-            console.log("tortilla in map"),
             <span className="blkIng" onClick={() => { this.props.deleteFromTortillaList(ing) }}>{ing + ', '}</span>
           ))}
           {this.state.protein.map(ing => (
@@ -70,7 +67,6 @@ class EditTacoIngredients extends Component {
             {salsa.map(salsa => <button className="ingBtn" onClick={() => { this.props.addToSalsaList(salsa) }}>{salsa}</button>)}
           </div>
         </Tabs>
-
       </div>
     )
   }

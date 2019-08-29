@@ -26,6 +26,7 @@ form {
 
 .rating {
   width: 119px;
+  margin-bottom: 1rem;
 }
 
 .ratings {
@@ -76,24 +77,30 @@ form {
 }
 
 .tab-list {
-  border-bottom: 1px solid #ccc;
-  padding-left: 0;
   display: flex;
   list-style: none;
   justify-content: center;
-  font-size: 15px
+  font-size: 15px;
 }
-
+/******************************************************/
 .tab-list-item {
   list-style: none;
   margin-bottom: 1px;
-  padding: 0.5rem 0.5rem;
+  padding: 0.25rem 0.25rem;
+  /* border: .5px solid red; */
+  border-radius: 4px;
+  margin: 2px;
+  color: #fff;
+  background-color: #a83027;
+  cursor: pointer;
+  letter-spacing: .5px;
 }
 
 .tab-list-active {
   list-style: none;
-  background-color: white;
-  color: red;
+  background:#F44336;
+  color: white;
+  padding: 0.25rem 1rem;
 }
 .tabs {
   width: 95vw;
@@ -138,6 +145,18 @@ span {
 
 #btnGrp {
   margin: 1rem;
+}
+
+.total-tacos {
+  margin: 1rem;
+}
+
+.taco-name {
+  margin-top: 1rem;
+}
+
+.tacoContainer {
+  margin-bottom: 1rem;
 }
 
 /* Ind. taco card styles */
@@ -190,4 +209,18 @@ span {
 .taco-card h2 {
   color: #a83027;
   font-weight: bold;
+}
+
+.changeImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+
+.fa {
+  display: none;
 }

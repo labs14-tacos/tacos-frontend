@@ -19,18 +19,10 @@ class User extends React.Component {
 
     componentDidMount() {
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/my_info`, { headers: { token: `${token}` } }).then(user => this.setState({ user: user.data })).catch(error => console.log(error));
-    }
-
-    passProps() {
-
-    }
+    } 
 
     
     render() {
-        console.log(this.state.user, "user console log")
-
-        const rating = { rating: this.state.rating }
-
 
         return (
             <div>
@@ -53,10 +45,6 @@ class User extends React.Component {
                     <p><span>Favorite Taco Location:</span> {this.state.user.favTacoLocation}</p>
                     <p><span>Best Taco Memory:</span> {this.state.user.bestTacoMemory}</p>
                     <p><span>Email:</span> {this.state.user.email}</p>
-                    {/* <p><span>Instagram:</span> {this.state.user.instaHandle}</p>
-                    <p><span>Twitter:</span> {this.state.user.twitterHandle}</p>
-                    <p><span>Facebook:</span> {this.state.user.facebookPage}</p>
-                    <p><span>Website:</span> {this.state.user.website}</p> */}
                     <p><span>My Social Media: <SocialFollow /></span></p>
                     <div className="button-container">
 

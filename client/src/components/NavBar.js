@@ -40,7 +40,7 @@ export default function NavBar3({signout}) {
             <MenuItem onClick={handleClose}><Link to="/my-profile" className="menu__item">My Profile</Link></MenuItem>
             <MenuItem onClick={handleClose}><Link to="/my-tacos" className="menu__item" >My Tacos</Link></MenuItem>
             <MenuItem onClick={handleClose}><Link to="/explore-tacos" className="menu__item" >Other People's Tacos</Link></MenuItem>
-            <MenuItem onClick={handleClose}><Link onClick={signout} className="menu__item" >Sign Out</Link></MenuItem>
+            <MenuItem onClick={handleClose}><Link to="/" onClick={signout} className="menu__item" >Sign Out</Link></MenuItem>
         </Menu>
         </div>{/* end of flexbox   */}
     </div>
