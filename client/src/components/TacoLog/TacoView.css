@@ -81,6 +81,7 @@ form {
   list-style: none;
   justify-content: center;
   font-size: 14px;
+  margin: 0;
 }
 /******************************************************/
 .tab-list-item {
@@ -102,9 +103,7 @@ form {
   color: white;
   padding: 0.15rem;
 }
-.tabs {
-  width: 95vw;
-}
+
 
 h1 {
   color: #a83027;
@@ -223,4 +222,9 @@ span {
 
 .fa {
   display: none;
+}
+
+ol {
+  margin: 0;
+  padding: 0;
 }
