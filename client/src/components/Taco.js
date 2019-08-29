@@ -62,7 +62,6 @@ class Taco extends Component {
         const { restaurantName, date, numberOfTacos, nameOfTaco, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
         console.log(this.state)
         return (
-<<<<<<< HEAD
             <div>
                 <div className="taco-card">
                     <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{
