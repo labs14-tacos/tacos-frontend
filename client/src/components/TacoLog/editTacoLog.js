@@ -207,7 +207,6 @@ class EditTacoLog extends React.Component {
 
 
           {this.state.tortilla &&
-<<<<<<< HEAD
            <EditTacoIngredients
             addToTortillaList={this.addToTortillaList}
             addToProteinList={this.addToProteinList}
