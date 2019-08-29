@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Rating from '@material-ui/lab/Rating';
 import { Link as RouterLink } from 'react-router-dom';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import ButtonGroup from '@material-ui/core/Button';
-import Button from '@material-ui/core/Button';
+import { Button, Paper, Container } from '@material-ui/core';
+import DatePicker from 'react-date-picker';
 import axios from 'axios';
 
 const token = sessionStorage.getItem("token")
@@ -35,7 +33,6 @@ class Taco extends Component {
         this.getTacoFan();
     }
 
-
     getTacoFan() {
         axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/tacofan_info/${this.state.tacoCreatorId}`, { headers: { token: token } }).then(res => {
             console.log("it worked!!!!");
@@ -45,7 +42,6 @@ class Taco extends Component {
             })
         }).catch(err => console.log("this is an error in the getTacoFan function", err))
     }
-
 
     fetchTaco = id => {
         axios
@@ -60,33 +56,38 @@ class Taco extends Component {
 
     render() {
         console.log(this.state.taco, 'tacoState')
-
         if (!this.state.taco) {
             return <div>Loading Taco information...</div>
-
         }
-        const { restaurantName, date, numberOfTacos, nameOfTaco, ingredients, protein, cheese, salsa, topping, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
-
+        const { restaurantName, date, numberOfTacos, nameOfTaco, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
         console.log(this.state)
-
         return (
+<<<<<<< HEAD
             <div>
                 <div className="taco-card">
                     <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{
                         this.state.tacoFanFirstName === null && this.state.tacoFanLastName === null ? `See Taco Fan Profile` : `See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`
                     }</Button>
+=======
+            <Paper>
+                <Container className="taco-card">
+                    <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{`See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`}</Button>
+>>>>>>> a0f7862520987cf3537ac41f50cf07c4a6c63aa8
                     <h2>{restaurantName}</h2>
-                    <div className="date">
-                        <h2>{date}</h2>
-                    </div>
-                    <div className="total-tacos">
+                    <Container className="date">
+                        <DatePicker
+                            disabled
+                            value={date}
+                        />
+                    </Container>
+                    <Container className="total-tacos">
                         Total Tacos: <strong>{numberOfTacos}</strong>
-                    </div>
+                    </Container>
                     <img src={tacoLogPhoto} alt={nameOfTaco} />
-                    <div className="taco-name">
+                    <Container className="taco-name">
                         Taco Name: <strong>{nameOfTaco}</strong>
-                    </div>
-                    <div className="description">
+                    </Container>
+                    <Container className="description">
                         <h2>Description:</h2>
                         {this.state.taco_ingredients.tortilla.map(function (tortilla) { return <p>{tortilla}</p> })}
                         {this.state.taco_ingredients.protein.map(function (protein) { return <p>{protein}</p> })}
@@ -94,16 +95,14 @@ class Taco extends Component {
                         {this.state.taco_ingredients.cheese.map(function (cheese) { return <p>{cheese}</p> })}
                         {this.state.taco_ingredients.salsa.map(function (salsa) { return <p>{salsa}</p> })}
                         {this.state.taco_ingredients.extraIng.map(function (extraIng) { return <p>{extraIng}</p> })}
-
-                    </div>
-                    <div className="ratings">
+                    </Container>
+                    <Container className="ratings">
                         <h1>"Overall Rating"</h1>
                         <Rating
                             name='rating'
                             disabled
                             value={rating}
                         />
-
                         <h3>"T" Rating: {t_rating}</h3>
                         <h4>"<span>T</span>he Fundamentals"</h4>
                         <Rating
@@ -113,7 +112,6 @@ class Taco extends Component {
                         />
                         <h3>"A" Rating: {a_rating}</h3>
                         <h4>"<span>A</span>lways Different, Positive, Special"</h4>
-
                         <Rating
                             name='a_rating'
                             disabled
@@ -121,7 +119,6 @@ class Taco extends Component {
                         />
                         <h3>"C" Rating: {c_rating}</h3>
                         <h4>"<span>C</span>onsistent Commitment"</h4>
-
                         <Rating
                             name='c_rating'
                             disabled
@@ -134,14 +131,12 @@ class Taco extends Component {
                             disabled
                             value={o_rating}
                         />
-                    </div>
-                    <div className="comments">
+                    </Container>
+                    <Container className="comments">
                         <h2>{notes}</h2>
-                    </div>
-                    <div>
-                    </div>
-                </div>
-            </div>
+                    </Container>
+                </Container>
+            </Paper>
         )
     }
 }

@@ -29,6 +29,7 @@ class Login extends Component {
     user: {},
     token: ''
   }
+  
 
   uiConfig = {
     signInFlow: 'popup',

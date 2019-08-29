@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Tab from './Tab';
 
+
 class Tabs extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +34,7 @@ class Tabs extends Component {
           {children.map((child) => {
             const { label } = child.props;
             return (
-              <Tab 
+              <Tab
                 activeTab={activeTab}
                 key={label}
                 label={label}
