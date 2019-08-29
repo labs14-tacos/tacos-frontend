@@ -2,7 +2,6 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import PhotoUpload from '../../components/cloudinary/TacoImage'
 import Rating from '@material-ui/lab/Rating';
-import Button from '@material-ui/core/Button';
 import { Button, Paper, Container } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
