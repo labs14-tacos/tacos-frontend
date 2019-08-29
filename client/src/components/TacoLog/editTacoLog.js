@@ -248,7 +248,6 @@ class EditTacoLog extends React.Component {
               extraIng={this.state.extraIng}
             />}
 
->>>>>>> a0f7862520987cf3537ac41f50cf07c4a6c63aa8
           <form className="edit-form">
           <Container className='extraIng'>
           <TextField
