@@ -220,26 +220,6 @@ class EditTacoLog extends React.Component {
             salsa={this.state.salsa}
             extraIng={this.state.extraIng}
           />} 
-            <EditTacoIngredients
-              addToTortillaList={this.addToTortillaList}
-              addToProteinList={this.addToProteinList}
-              addToCheeseList={this.addToCheeseList}
-              addToToppingList={this.addToToppingList}
-              addToSalsaList={this.addToSalsaList}
-              addToExtraIngList={this.addToExtraIngList}
-              deleteFromTortillaList={this.deleteFromTortillaList}
-              deleteFromProteinList={this.deleteFromProteinList}
-              deleteFromCheeseList={this.deleteFromCheeseList}
-              deleteFromToppingList={this.deleteFromToppingList}
-              deleteFromSalsaList={this.deleteFromSalsaList}
-              deleteFromExtraIngList={this.deleteFromExtraIngList}
-              tortilla={this.state.tortilla}
-              protein={this.state.protein}
-              cheese={this.state.cheese}
-              topping={this.state.topping}
-              salsa={this.state.salsa}
-              extraIng={this.state.extraIng}
-            />}
 
           <form className="edit-form">
           <Container className='extraIng'>

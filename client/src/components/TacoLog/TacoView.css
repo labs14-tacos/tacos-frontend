@@ -80,13 +80,13 @@ form {
   display: flex;
   list-style: none;
   justify-content: center;
-  font-size: 15px;
+  font-size: 14px;
 }
 /******************************************************/
 .tab-list-item {
   list-style: none;
   margin-bottom: 1px;
-  padding: 0.25rem 0.25rem;
+  padding: 0.15rem 0.15rem;
   /* border: .5px solid red; */
   border-radius: 4px;
   margin: 2px;
@@ -100,7 +100,7 @@ form {
   list-style: none;
   background:#F44336;
   color: white;
-  padding: 0.25rem 1rem;
+  padding: 0.15rem;
 }
 .tabs {
   width: 95vw;
