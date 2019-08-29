@@ -76,12 +76,10 @@ form {
 }
 
 .tab-list {
-  border-bottom: 1px solid #ccc;
-  padding-left: 0;
   display: flex;
   list-style: none;
   justify-content: center;
-  font-size: 15px
+  font-size: 15px;
 }
 /******************************************************/
 .tab-list-item {
@@ -146,6 +144,18 @@ span {
 
 #btnGrp {
   margin: 1rem;
+}
+
+.total-tacos {
+  margin: 1rem;
+}
+
+.taco-name {
+  margin-top: 1rem;
+}
+
+.tacoContainer {
+  margin-bottom: 1rem;
 }
 
 /* Ind. taco card styles */

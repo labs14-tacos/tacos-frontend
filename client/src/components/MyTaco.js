@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Rating from '@material-ui/lab/Rating';
-import { Button, Paper, Container } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import axios from 'axios';
 import DatePicker from 'react-date-picker';
 import { Link as RouterLink } from 'react-router-dom';
@@ -56,7 +56,7 @@ class MyTaco extends Component {
 
 
         return (
-            <Paper>
+            <Container className="tacoContainer">
                 <Container className="taco-card">
                     <h2>{restaurantName}</h2>
                     <Container className="date">
@@ -84,7 +84,7 @@ class MyTaco extends Component {
 
                     </Container>
                     <Container className="ratings">
-                        <h1>"Overall Rating"</h1>
+                        <h2>Overall Rating: {rating}</h2>
                         <Rating
                             name='rating'
                             disabled
@@ -132,7 +132,7 @@ class MyTaco extends Component {
                     </Button>
 
                 </Container>
-            </Paper>
+            </Container>
         )
     }
 }

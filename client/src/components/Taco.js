@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Rating from '@material-ui/lab/Rating';
 import { Link as RouterLink } from 'react-router-dom';
-import { Button, Paper, Container } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import DatePicker from 'react-date-picker';
 import axios from 'axios';
 
@@ -62,7 +62,7 @@ class Taco extends Component {
         const { restaurantName, date, numberOfTacos, nameOfTaco, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
         console.log(this.state)
         return (
-            <Paper>
+            <Container className="tacoContainer">
                 <Container className="taco-card">
                     <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{`See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`}</Button>
                     <h2>{restaurantName}</h2>
@@ -89,7 +89,7 @@ class Taco extends Component {
                         {this.state.taco_ingredients.extraIng.map(function (extraIng) { return <p>{extraIng}</p> })}
                     </Container>
                     <Container className="ratings">
-                        <h1>"Overall Rating"</h1>
+                        <h2>Overall Rating: {rating}</h2>
                         <Rating
                             name='rating'
                             disabled
@@ -128,7 +128,7 @@ class Taco extends Component {
                         <h2>{notes}</h2>
                     </Container>
                 </Container>
-            </Paper>
+            </Container>
         )
     }
 }
