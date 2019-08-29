@@ -227,7 +227,6 @@ class EditTacoLog extends React.Component {
             salsa={this.state.salsa}
             extraIng={this.state.extraIng}
           />} 
-=======
             <EditTacoIngredients
               addToTortillaList={this.addToTortillaList}
               addToProteinList={this.addToProteinList}
