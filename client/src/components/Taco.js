@@ -62,6 +62,11 @@ class Taco extends Component {
         const { restaurantName, date, numberOfTacos, nameOfTaco, rating, notes, tacoLogPhoto, t_rating, a_rating, c_rating, o_rating } = this.state.taco;
         console.log(this.state)
         return (
+            <div>
+                <div className="taco-card">
+                    <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{
+                        this.state.tacoFanFirstName === null && this.state.tacoFanLastName === null ? `See Taco Fan Profile` : `See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`
+                    }</Button>
             <Paper>
                 <Container className="taco-card">
                     <Button component={RouterLink} to={{ pathname: "/tacofan", state: { tacoCreatorId: this.state.tacoCreatorId } }}>{`See ${this.state.tacoFanFirstName} ${this.state.tacoFanLastName} Profile`}</Button>

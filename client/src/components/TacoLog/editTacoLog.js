@@ -33,7 +33,8 @@ class EditTacoLog extends React.Component {
       topping: this.props.location.state.taco_ingredients.topping,
       salsa: this.props.location.state.taco_ingredients.salsa,
       extraIng: this.props.location.state.taco_ingredients.extraIng,
-      crunchy: this.props.location.state.taco_ingredients.crunchy
+      crunchy: this.props.location.state.taco_ingredients.crunchy, 
+      typedIng: ''
     };
   }
 
@@ -41,7 +42,6 @@ class EditTacoLog extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log('handlechange', event.target.value)
   }
 
   addToTortillaList = ing => {
@@ -51,7 +51,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         tortilla
       })
-    }
+    } else this.deleteFromTortillaList(ing)
   }
 
   deleteFromTortillaList = ings => {
@@ -67,7 +67,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         protein
       })
-    }
+    } else this.deleteFromProteinList(ing)
   }
   deleteFromProteinList = ings => {
     this.setState(prevState => ({
@@ -82,7 +82,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         cheese
       })
-    }
+    } else this.deleteFromCheeseList(ing)
 
   }
   deleteFromCheeseList = ings => {
@@ -98,7 +98,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         topping
       })
-    }
+    } else this.deleteFromToppingList(ing)
   }
   deleteFromToppingList = ings => {
     this.setState(prevState => ({
@@ -113,7 +113,7 @@ class EditTacoLog extends React.Component {
       this.setState({
         salsa
       })
-    }
+    } else this.deleteFromSalsaList(ing)
   }
   deleteFromSalsaList = ings => {
     this.setState(prevState => ({
@@ -124,13 +124,15 @@ class EditTacoLog extends React.Component {
 
   addToExtraIngList = ing => {
     const extraIng = this.state.extraIng;
-    extraIng.push(ing);
-    this.setState({
-      extraIng
-    })
-    this.setState({
-      typedIng: ''
-    })
+    if (ing.length > 0) {
+      extraIng.push(ing);
+      this.setState({
+        extraIng
+      })
+      this.setState({
+        typedIng: ''
+      })
+    } 
   }
   deleteFromExtraIngList = ings => {
     this.setState(prevState => ({
@@ -202,6 +204,26 @@ class EditTacoLog extends React.Component {
 
 
           {this.state.tortilla &&
+           <EditTacoIngredients
+            addToTortillaList={this.addToTortillaList}
+            addToProteinList={this.addToProteinList}
+            addToCheeseList={this.addToCheeseList}
+            addToToppingList={this.addToToppingList}
+            addToSalsaList={this.addToSalsaList}
+            addToExtraIngList={this.addToExtraIngList}
+            deleteFromTortillaList={this.deleteFromTortillaList}
+            deleteFromProteinList={this.deleteFromProteinList}
+            deleteFromCheeseList={this.deleteFromCheeseList}
+            deleteFromToppingList={this.deleteFromToppingList}
+            deleteFromSalsaList={this.deleteFromSalsaList}
+            deleteFromExtraIngList={this.deleteFromExtraIngList}
+            tortilla={this.state.tortilla}
+            protein={this.state.protein}
+            cheese={this.state.cheese}
+            topping={this.state.topping}
+            salsa={this.state.salsa}
+            extraIng={this.state.extraIng}
+          />} 
             <EditTacoIngredients
               addToTortillaList={this.addToTortillaList}
               addToProteinList={this.addToProteinList}
@@ -224,6 +246,17 @@ class EditTacoLog extends React.Component {
             />}
 
           <form className="edit-form">
+          <Container className='extraIng'>
+          <TextField
+            className='textField'
+            type='text'
+            name='typedIng'
+            value={this.state.typedIng}
+            onChange={this.handleChange}
+            label='Other Ingredients:'
+          />
+          <Button className='saveButton' onClick={() => this.addToExtraIngList(this.state.typedIng)}>Add</Button>
+        </Container>
             <TextField
               className='textField-num'
               type='number'
